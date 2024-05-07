@@ -2,23 +2,28 @@
 <html>
 <head>
     <title>Registration Page</title>
+    <link rel="stylesheet" type="text/css" href="content/Registration.css">
 </head>
 <body>
-    <h2>Registration Form</h2>
-
-    <form action="/submit_registration" method="post">
-        <label for="fname">First Name:</label><br>
-        <input type="text" id="fname" name="fname"><br>
-        <label for="lname">Last Name:</label><br>
-        <input type="text" id="lname" name="lname"><br>
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email"><br>
-        <label for="pwd">Password:</label><br>
-        <input type="password" id="pwd" name="pwd"><br>
-        <label for="cpwd">Confirm Password:</label><br>
-        <input type="password" id="cpwd" name="cpwd"><br>
-        <input type="submit" value="Submit">
-    </form> 
-
+    <div class="registration-container">
+        <h2>Registration Form</h2>
+        <form action="/submit_registration" method="post">
+            <div class="registration-border">
+                <label for="fname">First Name:</label><br>
+                <input type="text" id="fname" name="fname"><br>
+                <label for="lname">Last Name:</label><br>
+                <input type="text" id="lname" name="lname"><br>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email"><br>
+                <label for="pwd">Password:</label><br>
+                <input type="password" id="pwd" name="pwd"><br>
+                <label for="cpwd">Confirm Password:</label><br>
+                <input type="password" id="cpwd" name="cpwd"><br>
+            </div>
+            <div class="button-container">
+                <input type="submit" value="Submit">
+            </div>
+        </form> 
+    </div>
 </body>
 </html>

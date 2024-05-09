@@ -7,7 +7,8 @@ def hash_password(password):
 
     # Use the hashlib.pbkdf2_hmac method to create a hash
     key = hashlib.pbkdf2_hmac(
-        'sha256',  # The hash digest algorithm to use
+        # The hash digest algorithm to use
+        'sha256',
         # Convert the password to bytes
         password.encode('utf-8'),
         # Provide the salt

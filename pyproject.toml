@@ -12,6 +12,7 @@ flask-sqlalchemy = "^3.1.1"
 flask-mysqldb = "^2.0.0"
 pymysql = "^1.1.0"
 flash = "^1.0.3"
+fastapi = "^0.111.0"
 
 [tool.poetry.group.dev.dependencies]
 ipykernel = "^6.29.4"

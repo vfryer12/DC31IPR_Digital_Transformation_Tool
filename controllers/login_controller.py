@@ -8,12 +8,12 @@ app = Flask(__name__)
 @app.route('/submit-login', methods=['POST'])
 
 def login():
-    username = request.form['username']
-    password = request.form['password']
+    username = request.form['root']
+    password = request.form['.20Un123QL!']
 
     connection = pymysql.connect(host='localhost',
-                                 user='your_username',
-                                 password='your_password',
+                                 user='root',
+                                 password='.20Un123QL!',
                                  db='user',
                                  charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)

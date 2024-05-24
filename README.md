@@ -48,3 +48,6 @@ When a user submits the login form, Flask’s request.form is used to retrieve t
 Before storing the password in a database, the password is hashed using a library like hashlib. This transforms the password into a fixed-length sequence of bytes adding a layer of security.
 
 When a user logs in the entered password is hashed and compared to the stored hash. If the hashes match, the password is verified
+
+## FastApi
+

@@ -51,3 +51,13 @@ When a user logs in the entered password is hashed and compared to the stored ha
 
 ## FastApi
 
+http://127.0.0.1:8000/docs
+
+Command - current
+uvicorn responseAPI:app --reload --host localhost --port 8080
+
+http://localhost:8080/clientResponseApiHandler/api/v1/tester
+http://localhost:8080/clientResponseApiHandler/api/v1/responses/
+
+Fast api swagger:
+http://localhost:8080/docs

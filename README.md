@@ -49,15 +49,8 @@ Before storing the password in a database, the password is hashed using a librar
 
 When a user logs in the entered password is hashed and compared to the stored hash. If the hashes match, the password is verified
 
-## FastApi
+## Using Python Server
 
-http://127.0.0.1:8000/docs
+python -m http.server 8080
 
-Command - current
-uvicorn responseAPI:app --reload --host localhost --port 8080
-
-http://localhost:8080/clientResponseApiHandler/api/v1/tester
-http://localhost:8080/clientResponseApiHandler/api/v1/responses/
-
-Fast api swagger:
-http://localhost:8080/docs
+http://localhost:8080/views/HomePage.html

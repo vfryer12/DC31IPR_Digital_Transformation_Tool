@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page One: Digital Strategy</title>
+    <link rel="stylesheet" type="text/css" href="content/HomePage.css">
+    <link rel="stylesheet" type="text/css" href="content/PageOne.css">
+    <script src="javascript\FetchAssessmentHeader.js" type="module"></script>
+    <script src="javascript\FetchAssessmentFooter.js" type="module"></script>
+</head>
+
+<body>
+    <div class="main">
+        <!-- Main content-->
+        <form action="/submit_page_1" method="post">
+            <div id="header-placeholder"></div>
+            <h1>Digital Strategy</h1>
+            <h2>Section Introduction</h2>
+            <h3>Description</h3>
+            <!-- Question One - Yes/No -->
+            <div class="question-container" id="question-one">
+                <label for="question-one">Question One</label>
+                <h3>How is your digital strategy aligned with your overall business strategy?</h3>
+                <input type="radio" name="question-one" value="yes" id="question-one-yes"><label for="question-one-yes">Yes</label>
+                <input type="radio" name="question-one" value="no" id="question-one-no"><label for="question-one-no">No</label>
+            </div>
+            <div class="question-container" id="question-two">
+                <label for="question-two">Question Two</label>
+                <h3>Who is responsible for driving the digital strategy in your organisation?</h3>
+                <input type="text" name="question-two" id="question-two">
+            </div>
+            <div class="question-container" id="question-three">
+                <label for="question-three">Question Three</label>
+                <h3>How often is your digital strategy reviewed and updated?</h3>
+                <input type="radio" name="question-three" value="true" id="question-three-true"><label for="question-three-true">True</label>
+                <input type="radio" name="question-three" value="false" id="question-three-false"><label for="question-three-false">False</label>
+            </div>
+            <div class="question-container" id="question-four">
+                <label for="question-four">Question Four</label>
+                <h3>How do you measure the success of your digital strategy?</h3>
+                <input type="text" name="question-three" id="question-four">
+            </div>
+            <div class="question-container" id="question-five">
+                <label for="question-five">Question Five</label>
+                <h3>What key performance indicators (KPIs) are used to track your digital strategy? (Select up to three)</h3>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="csat-metrics-answer" name="question-five" value="csat-metrics-answer">
+                    <label for="csat-metrics-answer">Customer Satisfaction Score(CSAT)</label><br>
+                    <input type="checkbox" id="ces-metrics-answer" name="question-five" value="ces-metrics-answer">
+                    <label for="ces-metrics-answer">Customer Effort Score(CES)</label><br>
+                    <input type="checkbox" id="digital-investments-answer" name="question-five" value="digital-investments-answer">
+                    <label for="digital-investments-answer">Return on Digital Investments</label>
+                    <input type="checkbox" id="employee-productivity-answer" name="question-five" value="employee-productivity-answer">
+                    <label for="employee-productivity-answer">Employee Productivity</label>
+                    <input type="checkbox" id="adoption-performance-answer" name="question-five" value="adoption-performance-answer">
+                    <label for="adoption-performance-answer">Adoption Performance Metrics</label>
+                    <input type="checkbox" id="customer-experience-metrics" name="question-five" value="customer-experience-metrics">
+                    <label for="customer-experience-metrics">Customer Experience Metrics</label>
+                    <input type="checkbox" id="percentage-ai-business-answer" name="question-five" value="percentage-ai-business-answer">
+                    <label for="percentage-ai-business-answer">Percentage of AI-enabled Businesses</label>
+                    <input type="checkbox" id="reliability-availability-answer" name="question-five" value="reliability-availability-answer">
+                    <label for="reliability-availability-answer">Reliability and Availability</label>
+                    <input type="checkbox" id="cost-benefit-answer" name="question-five" value="cost-benefit-answer">
+                    <label for="cost-benefit-answer">Cost-Benefit Analysis</label>
+                    <input type="checkbox" id="revenue-digital-tech-answer" name="question-five" value="revenue-digital-tech-answer">
+                    <label for="revenue-digital-tech-answer">Revenue from Digital Technology</label>
+                    <input type="checkbox" id="percent-cloud-deploy-answer" name="question-five" value="percent-cloud-deploy-answer">
+                    <label for="revenue-digital-tech">Percentage of Cloud Deployments</label>
+                    <input type="checkbox" id="active-usage-metric-answer" name="question-five" value="active-usage-metric-answer">
+                    <label for="active-usage-metric-answer">Active Usage Metrics</label>
+                    <input type="checkbox" id="conversion-rate-answer" name="question-five" value="conversion-rate-answer">
+                    <label for="conversion-rate-answer">Conversion Rate</label>
+                    <input type="checkbox" id="customer-value-answer" name="question-five" value="customer-value-answer">
+                    <label for="customer-value-answer">Customer Lifetime Value</label>
+                    <input type="checkbox" id="website-traffic-answer" name="question-five" value="website-traffic-answer">
+                    <label for="website-traffic-answer">Website Traffic</label>
+                    <input type="checkbox" id="social-engagement-answer" name="question-five" value="social-engagement-answer">
+                    <label for="social-engagement-answer">Social Media Engagement</label>
+                    <input type="checkbox" id="brand-engagement-answer" name="question-five" value="brand-engagement-answer">
+                    <label for="brand-engagement-answer">Brand Engagement On Website</label>
+                    <input type="checkbox" id="traffic-sources-answer" name="question-five" value="traffic-sources-answer">
+                    <label for="traffic-sources-answer">Traffic Sources</label>
+                    <input type="checkbox" id="landing-page-answer" name="question-five" value="landing-page-answer">
+                    <label for="landing-page-answer">Landing Page Conversions</label>
+                    <input type="checkbox" id="inbound-marketing-answer" name="question-five" value="inbound-marketing-answer">
+                    <label for="inbound-marketing-answer">Inbound Marketing ROI</label>
+                    <input type="checkbox" id="social-traffic-answer" name="question-five" value="social-traffic-answer">
+                    <label for="social-traffic-answer">Social Media Traffic</label>
+                </div>
+            </div>
+            <div class="question-container" id="question-six">
+                <label for="question-six">Question Six</label>
+                <h3>How do you ensure that all employees understand and align with the digital strategy?</h3>
+                <input type="text" name="question-six" id="question-six">
+            </div>
+            <div class="question-container" id="question-seven">
+                <label>Question Seven</label>
+                <h3>What challenges have you faced in implementing your digital strategy?</h3>
+                <input type="range" name="question-seven" min="0" max="10" id="question-seven">
+                <div class="range-labels">
+                    <span>0 - Strongly Disagree</span>
+                    <span>10 - Strongly Agree</span>
+                </div>
+            </div>
+            <div class="question-container" id="question-eight">
+                <label for="question-eight">Question Eight</label>
+                <h3>How do you incorporate feedback and lessons learned into your digital strategy?</h3>
+                <input type="text" name="question-eight" id="question-eight">
+            </div>
+            <div class="question-container" id="question-nine">
+                <label for="question-nine">Question Nine</label>
+                <h3>How do you integrate emerging technologies into your digital strategy?</h3>
+                <input type="text" name="question-nine" id="question-nine">
+            </div>
+            <div class="question-container" id="question-ten">
+                <label for="question-ten">Question Ten</label>
+                <h3>How does your digital strategy address the customer journey?</h3>
+                <input type="text" name="question-ten" id="question-ten">
+            </div>
+            <!-- Navigation Buttons -->
+            <button type="button" onclick="history.back();">Back</button>
+            <button type="button" onclick="window.location='PageTwoDigitalSkills.html';">Next</button>
+            <!-- Save Button -->
+            <button type="submit" name="save">Save</button>
+        </form>
+    </div>
+    <div id="footer-placeholder"></div>
+    <script src="javascript/CheckboxLimits.js"></script>
+</body>
+</html>

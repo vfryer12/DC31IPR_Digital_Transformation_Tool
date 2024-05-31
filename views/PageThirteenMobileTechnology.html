@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Thirteen: Mobile Technology</title>
+    <link rel="stylesheet" type="text/css" href="content/HomePage.css">
+    <link rel="stylesheet" type="text/css" href="content/PageOne.css">
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <!-- Logo -->
+        </div>
+        <h1>Mobile Technology</h1>
+    </div>
+    <div class="main">
+        <!-- Main content -->
+        <form action="/submit_page_13" method="post">
+            <h2>Section Introduction</h2>
+            <h3>Description</h3>
+            <!-- Question One - Yes/No -->
+            <div class="question-container" id="question-one">
+                <label>Question One</label>
+                <input type="radio" name="question-one" value="yes" id="question-one-yes"><label for="question-one-yes">Yes</label>
+                <input type="radio" name="question-one" value="no" id="question-one-no"><label for="question-one-no">No</label>
+            </div>
+            <div class="question-container" id="question-two">
+                <label for="question-two">Question Two</label>
+                <input type="text" name="question-two" id="question-two">
+            </div>
+            <div class="question-container" id="question-three">
+                <label>Question Three</label>
+                <input type="radio" name="question-three" value="true" id="question-three-true"><label for="question-three-true">True</label>
+                <input type="radio" name="question-three" value="false" id="question-three-false"><label for="question-three-false">False</label>
+            </div>
+            <div class="question-container" id="question-four">
+                <label for="question-four">Question Four</label>
+                <input type="text" name="question-three" id="question-four">
+            </div>
+            <div class="question-container" id="question-five">
+                <label>Question Five</label>
+                <select name="question-five" id="question-five">
+                    <option value="a">A</option>
+                    <option value="b">B</option>
+                    <option value="c">C</option>
+                </select>
+            </div>
+            <div class="question-container" id="question-six">
+                <label for="question-six">Question Six</label>
+                <input type="text" name="question-six" id="question-six">
+            </div>
+            <div class="question-container" id="question-seven">
+                <label>Question Seven</label>
+                <input type="range" name="question-seven" min="0" max="10" id="question-seven">
+                <div class="range-labels">
+                    <span>0 - Strongly Disagree</span>
+                    <span>10 - Strongly Agree</span>
+                </div>
+            </div>
+            <div class="question-container" id="question-eight">
+                <label for="question-eight">Question Eight</label>
+                <input type="text" name="question-eight" id="question-eight">
+            </div>
+            <div class="question-container" id="question-nine">
+                <label for="question-nine">Question Nine</label>
+                <input type="text" name="question-nine" id="question-nine">
+            </div>
+            <div class="question-container" id="question-ten">
+                <label for="question-ten">Question Ten</label>
+                <input type="text" name="question-ten" id="question-ten">
+            </div>
+            <!-- Navigation Buttons -->
+            <button type="button" onclick="history.back();">Back</button>
+            <button type="button" onclick="window.location='PageForteenHardware.html';">Next</button>
+            <!-- Save Button -->
+            <button type="submit" name="save">Save</button>
+        </form>
+    </div>
+    <div class="footer">
+        <!-- Footer content goes here -->
+    </div>
+</body>
+</html>

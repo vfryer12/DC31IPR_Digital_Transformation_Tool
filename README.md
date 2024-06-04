@@ -34,6 +34,8 @@ poetry run <name-of-the-main-script>
 
 Replace <name-of-the-main-script> with the actual name of the main script of the software.
 
+Final step: poetry install
+
 
 ## Flask password protection
 

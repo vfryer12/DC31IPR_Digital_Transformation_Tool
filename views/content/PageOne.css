@@ -1,11 +1,104 @@
+#question-one input[type=range] {
+    -webkit-appearance: none; /* Override default appearance */
+    appearance: none;
+    height: 25px; /* Increase the height to make the range thicker */
+    background: #ddd; /* Light grey background for the range track */
+    cursor: pointer; /* Cursor changes to a pointer when hovering over the range */
+    border-radius: 10px; /* Rounded corners for aesthetics */
+}
+
+/* Style for the thumb (slider) for Webkit browsers like Chrome and Safari */
+#question-one input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default appearance */
+    appearance: none;
+    width: 25px; /* Width of the thumb */
+    height: 25px; /* Height of the thumb, should match the range's thickness */
+    background: #4CAF50; /* Green background for the thumb */
+    cursor: pointer; /* Re-apply the cursor style in case it's not inherited */
+    border-radius: 50%; /* Circular thumb for aesthetics */
+}
+
+/* Style for the thumb for Firefox */
+#question-one input[type=range]::-moz-range-thumb {
+    width: 25px; /* Width of the thumb */
+    height: 25px; /* Height of the thumb, should match the range's thickness */
+    background: #4CAF50; /* Green background for the thumb */
+    cursor: pointer; /* Cursor changes to a pointer when hovering over the thumb */
+    border-radius: 50%; /* Circular thumb for aesthetics */
+}
+
 .question-container {
     border: 1px solid #000;
-    margin-bottom: 10px;
-    padding: 5px;
+    margin-bottom: 20px;
+    margin-top: 10px; /* Ensure this is a valid value with 'px' */
+    padding: 20px;
+    padding-bottom: 80px; /* Increase padding at the bottom to accommodate labels */
+    position: relative;
 }
 
 .question-container label,
+.question-container h3,
 .question-container input {
     display: block;
+    width: 100%;
     margin-bottom: 5px;
+}
+
+#question-one .range-labels,
+#question-one .number-labels {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    left: 15px; /* Align with the padding of the container */
+    right: 15px; /* Align with the padding of the container */
+    width: calc(100% - 30px); /* Adjust width to align with the padding */
+    bottom: 5px; /* Adjust this value if needed to position labels correctly */
+}
+
+#question-one .range-labels {
+    bottom: auto; /* Remove the bottom positioning */
+    top: 100px; /* Position the labels closer to the range input */
+    margin-bottom: 0; /* Remove the margin at the bottom */
+}
+
+.question-container h3 {
+    margin-bottom: 80px; /* Increase the margin to position the h3 above the labels */
+}
+
+#question-one .number-labels {
+    bottom: 50px; /* Position the number labels closer to the range input */
+    padding-bottom: 0; /* Remove additional padding at the bottom */
+}
+
+/* Style adjustments for the left, middle, and right labels */
+.label-left,
+.label-middle,
+.label-right {
+    position: static;
+    transform: none;
+}
+
+#text-output {
+    margin-left: 10px;
+}
+
+#list-output {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#other-text {
+    display: none;
+    width: 150px; /* Adjust the width as needed */
+}
+.list-item {
+    border-bottom: 1px solid #ccc;
+    padding: 5px;
+    position: relative;
+}
+.remove-item {
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
 }

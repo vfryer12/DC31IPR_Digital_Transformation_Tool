@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template_string
-from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:.20Un123QL!@localhost:3306/individual_project'

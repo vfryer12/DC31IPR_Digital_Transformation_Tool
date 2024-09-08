@@ -53,6 +53,14 @@ When a user logs in the entered password is hashed and compared to the stored ha
 
 ## Using Python Server
 
-python -m http.server 8080
+Initial test server: python -m http.server 8080
 
 http://localhost:8080/views/HomePage.html
+
+## Using Flask Server
+
+1/ virtualenv env
+2/ .\env\Scripts\Activate.ps1
+3/ flask run
+4/ http://127.0.0.1:5000
+

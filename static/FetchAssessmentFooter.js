@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
-    fetch('templates/AssessmentHeaderTemplate.html')
+    fetch('/AssessmentFooterTemplate')
         .then(response => response.text())
         .then(data => {
-            document.getElementById('header-placeholder').innerHTML = data;
+            document.getElementById('footer-placeholder').innerHTML = data;
         });
 });

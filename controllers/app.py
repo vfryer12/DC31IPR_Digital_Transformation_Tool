@@ -1,7 +1,4 @@
-#import sys
-#sys.path.append('C:/Users/blueb/Workspace/DC31IPR_Digital_Transformation_Tool')
+# In controllers/__init__.py
+from flask import Flask
 
-from controllers import app
-
-if __name__ == "__main__":
-    app.run(debug=True)
+app = Flask(__name__)

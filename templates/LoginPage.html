@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='content/LoginPage.css') }}">
+    <link rel="stylesheet" type="text/css" href="/static/content/login-page.css">
 </head>
 <body>
     <div class="login-container">
         <div class="login-border">
             <h2>Login</h2>
-            <form action="{{ url_for('login') }}" method="post">
+            <form action="/login" method="post">
                 <div>
                     <label for="username">Username:</label>
                     <input type="text" id="username" name="username" required>
@@ -19,15 +22,10 @@
                 </div>
                 <div class="button-container">
                     <input type="submit" value="Login">
-                    <input type="button" value="Register" onclick="redirectToRegister()">
+                    <input type="button" value="Register" onclick="window.location='/registration';">
                 </div>
             </form>
         </div>
     </div>
-    <script>
-        function redirectToRegister() {
-            window.location.href = "{{ url_for('register') }}";
-        }
-    </script>
 </body>
 </html>

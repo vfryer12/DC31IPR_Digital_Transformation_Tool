@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <link rel="stylesheet" type="text/css" href="static/content/LoginPage.css">
+    <link rel="stylesheet" type="text/css" href="/static/content/login-page.css">
 </head>
 <body>
     <div class="login-container">
@@ -19,15 +22,10 @@
                 </div>
                 <div class="button-container">
                     <input type="submit" value="Login">
-                    <input type="button" value="Register" onclick="redirectToRegister()">
+                    <input type="button" value="Register" onclick="window.location='/registration';">
                 </div>
             </form>
         </div>
     </div>
-    <script>
-        function redirectToRegister() {
-            window.location.href = "{{ url_for('register') }}";
-        }
-    </script>
 </body>
 </html>

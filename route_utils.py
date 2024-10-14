@@ -21,9 +21,10 @@ def create_app():
         else:
             return redirect(url_for('login.login'))
         
-    # @app.route('/registration')
-    # def registration_page():
-    #     return render_template('RegistrationPage.html')
+    
+    @app.route('/registration')
+    def registration_page():
+        return render_template('RegistrationPage.html')
 
     @app.route('/PageOneDigitalStrategy')
     def page_one_digital_strategy():

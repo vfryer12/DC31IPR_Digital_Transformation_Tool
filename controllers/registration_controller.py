@@ -24,10 +24,11 @@ def register():
                     flash('Username or email already exists. Please choose another.', 'danger')
                     return redirect(url_for('registration.register'))
 
-                # Insert new user into the user table
-                insert_query = """
+                # Encrypt the password before inserting
+                encrypted_password_query = "AES_ENCRYPT(%s, 'encryption_key')"
+                insert_query = f"""
                 INSERT INTO user (username, userpassword, useremail) 
-                VALUES (%s, %s, %s)
+                VALUES (%s, {encrypted_password_query}, %s)
                 """
                 user_data = (username, password, email)
                 my_cursor.execute(insert_query, user_data)

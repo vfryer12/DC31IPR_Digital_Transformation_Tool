@@ -56,8 +56,10 @@ document.getElementById('other-text').addEventListener('keypress', function(even
 });
 
 
-document.getElementById('back-button').addEventListener('click', function() {
-    history.back();
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('button[onclick="history.back();"]').addEventListener('click', function() {
+        history.back();
+    });
 });
 
 document.getElementById('next-button').addEventListener('click', function() {

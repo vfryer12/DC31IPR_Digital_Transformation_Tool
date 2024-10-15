@@ -24,16 +24,18 @@
             <div class="question-container" id="question-one">
                 <label for="question-one">Question One</label>
                 <h3>How is your digital strategy aligned with your overall business strategy?</h3>
-                <input type="range" name="question-one" min="0" max="10" value="5" id="question-one">
-                <div class="range-labels">
-                    <span class="label-left">No plan in place</span>
-                    <span class="label-middle">Needs Improvement</span>
-                    <span class="label-right">Fully Aligned</span>
+                
+                <div class="radio-buttons">
+                    <input type="radio" id="no-plan" name="question-one" value="0">
+                    <label for="no-plan">No plan in place</label><br>
+                    
+                    <input type="radio" id="needs-improvement" name="question-one" value="5">
+                    <label for="needs-improvement">Needs Improvement</label><br>
+                    
+                    <input type="radio" id="fully-aligned" name="question-one" value="10">
+                    <label for="fully-aligned">Fully Aligned</label><br>
                 </div>
-                <div class="number-labels">
-                    <!-- Number labels will be added here by JavaScript -->
-                </div>
-            </div>                        
+            </div>
             <!-- Question Two -->
             <div class="question-container" id="question-two">
                 <label for="question-two-dropdown">Question Two</label>
@@ -224,10 +226,11 @@
             <button type="button" onclick="history.back();">Back</button>
             <button type="button" onclick="window.location='/PageTwoDigitalSkills';">Next</button>
             <!-- Save Button -->
-            <button type="submit" id="save-button" name="save">Save</button>
+            <button type="button" id="save-button">Save</button>
         </form>
     </div>
     <div id="footer-placeholder"></div>
     <script src="\static\CheckboxLimits.js"></script>
+    <script src="\static\SaveFunctionality.js"></script>
 </body>
 </html>

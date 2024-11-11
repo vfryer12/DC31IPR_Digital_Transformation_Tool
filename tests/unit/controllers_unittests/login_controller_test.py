@@ -1,45 +1,80 @@
+import sys
+import os
 import unittest
 from unittest.mock import patch, MagicMock
-from flask import request
-from controllers.login_controller import app
-from controllers.utils.password_handler import verify_password
+from flask import Flask
+from flask_testing import TestCase
 
-class TestLogin(unittest.TestCase):
+# Add the project root directory to the Python path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../')))
+
+from controllers.login_controller import login_bp
+
+class LoginTestCase(TestCase):
+    def create_app(self):
+        app = Flask(__name__, template_folder='templates')
+        app.secret_key = 'test_secret_key'
+        app.register_blueprint(login_bp)
+        return app
+
     def setUp(self):
-        self.app = app.test_client()
+        self.client = self.app.test_client()
 
-    @patch('pymysql.connect')
-    def test_login_success(self, mock_sql):
-        # Mock the MySQL connection
-        mock_cursor = MagicMock()
-        mock_sql.return_value.cursor.return_value.__enter__.return_value = mock_cursor
+    def test_login_page_loads(self):
+        response = self.client.get('/login')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'Login', response.data)
 
-        # Mock the fetchone result
-        mock_cursor.fetchone.return_value = {
-            'salt': b'somesalt',
-            'key': verify_password(b'somesalt', 'password')[1]
-        }
+    @patch('controllers.login_controller.create_connection')
+    def test_login_success(self, mock_create_connection):
+        mock_conn = MagicMock()
+        mock_cursor = mock_conn.cursor.return_value
+        mock_cursor.fetchone.side_effect = [
+            {'username': 'test_user'},  # First query result
+            {'username': 'test_user'}   # Second query result
+        ]
+        mock_create_connection.return_value = mock_conn
 
-        # Send a POST request to the /submit-login route
-        response = self.app.post('/submit-login', data={'username': 'test', 'password': 'password'})
+        response = self.client.post('/login', data=dict(
+            username='test_user',
+            password='correct_password'
+        ), follow_redirects=True)
 
-        # Check the response data
-        self.assertEqual(response.data, b'User logged in successfully!')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'Login successful!', response.data)
 
-    @patch('pymysql.connect')
-    def test_login_failure(self, mock_sql):
-        # Mock the MySQL connection
-        mock_cursor = MagicMock()
-        mock_sql.return_value.cursor.return_value.__enter__.return_value = mock_cursor
+    @patch('controllers.login_controller.create_connection')
+    def test_login_wrong_password(self, mock_create_connection):
+        mock_conn = MagicMock()
+        mock_cursor = mock_conn.cursor.return_value
+        mock_cursor.fetchone.side_effect = [
+            {'username': 'test_user'},  # First query result
+            None  # Second query result (wrong password)
+        ]
+        mock_create_connection.return_value = mock_conn
 
-        # Mock the fetchone result
-        mock_cursor.fetchone.return_value = None
+        response = self.client.post('/login', data=dict(
+            username='test_user',
+            password='wrong_password'
+        ), follow_redirects=True)
 
-        # Send a POST request to the /submit-login route
-        response = self.app.post('/submit-login', data={'username': 'test', 'password': 'wrongpassword'})
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'Password incorrect', response.data)
 
-        # Check the response data
-        self.assertEqual(response.data, b'Invalid username or password')
+    @patch('controllers.login_controller.create_connection')
+    def test_login_user_not_found(self, mock_create_connection):
+        mock_conn = MagicMock()
+        mock_cursor = mock_conn.cursor.return_value
+        mock_cursor.fetchone.return_value = None  # No user found
+        mock_create_connection.return_value = mock_conn
+
+        response = self.client.post('/login', data=dict(
+            username='non_existent_user',
+            password='password'
+        ), follow_redirects=True)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'Username not found', response.data)
 
 if __name__ == '__main__':
     unittest.main()

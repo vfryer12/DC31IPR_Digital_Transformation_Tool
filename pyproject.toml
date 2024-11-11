@@ -19,6 +19,7 @@ mysql-connector-python = "^9.0.0"
 [tool.poetry.group.dev.dependencies]
 ipykernel = "^6.29.4"
 black = "^24.4.0"
+flask-testing = "^0.8.1"
 
 [build-system]
 requires = ["poetry-core"]

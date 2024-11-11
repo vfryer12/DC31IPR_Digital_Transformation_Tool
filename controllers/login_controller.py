@@ -10,7 +10,7 @@ def login():
         username = request.form['username']
         password = request.form['password']
         # Debugging line
-        print(f"Username from form: {username}, Password from form: {password}")  # Debugging line
+        print(f"Username from form: {username}, Password from form: {password}")
 
         conn = create_connection()
         if conn:

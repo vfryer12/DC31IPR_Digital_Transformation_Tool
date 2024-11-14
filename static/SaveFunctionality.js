@@ -1,10 +1,11 @@
 
 
+
 document.addEventListener('DOMContentLoaded', function() {
     restoreForm();
 
     document.querySelector('form').addEventListener('submit', function(event) {
-        event.preventDefault();
+        //event.preventDefault();
         saveForm();
     });
 

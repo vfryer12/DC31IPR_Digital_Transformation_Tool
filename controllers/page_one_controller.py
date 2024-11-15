@@ -18,24 +18,14 @@ def page_one_digital_strategy():
         question_three_value = request.form.get('question-three')
         question_four_values = request.form.getlist('question-four')
         question_five_values = request.form.getlist('question-five')
-        question_six_values = request.form.getList('question-six')
+        question_six_values = request.form.getlist('question-six')
         question_seven_values = request.form.getlist('question-seven')
         question_eight_values = request.form.getlist('question-eight')
         question_nine_values = request.form.getlist('question-nine')
         question_ten_values = request.form.getlist('question-ten')
 
-        print(f"Received data -
-              Question One: {question_one_value},
-              Question Two: {question_two_value},
-              Question Three: {question_three_value},
-              Question Four: {question_four_values},
-              Question Five: {question_five_values},
-              Question Six: {question_six_values},
-              Question Seven: {question_seven_values},
-              Question Eight: {question_eight_values},
-              Question Nine: {question_nine_values},
-              Question Ten: {question_ten_values}"
-              )
+        print(f"Received data - Question One: {question_one_value}, Question Two: {question_two_value}, Question Three: {question_three_value}, Question Four: {question_four_values}, Question Five: {question_five_values}, Question Six: {question_six_values}, Question Seven: {question_seven_values}, Question Eight: {question_eight_values}, Question Nine: {question_nine_values}, Question Ten: {question_ten_values}")
+
 
         if 'user_id' in session:
             user_id = session['user_id']

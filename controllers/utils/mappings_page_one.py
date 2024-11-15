@@ -40,16 +40,15 @@ answer_map_q4 = {
     'seo-rankings-answer': 'SEO Rankings'
 }
 
-# Mapping for question five
 answer_map_q5 = {
     'csat-metrics-answer': 'Customer Satisfaction Score (CSAT)',
-    'ces-metrics-answer': 'Customer Effort Score (CES)',
-    'digital-investments-answer': 'Return on Digital Investments',
+    'ces-metrics-answer': 'Customer Effort Service (CES)',
+    'digital-investments-answer': 'Return on Digiital Investments',
     'employee-productivity-answer': 'Employee Productivity',
-    'adoption-performance-answer': 'Adoption Performance Metrics',
+    'adoption-performance-answer': 'Adoption & Performance Metrics',
     'customer-experience-metrics': 'Customer Experience Metrics',
-    'percentage-ai-business-answer': 'Percentage of AI-enabled Businesses',
-    'reliability-availability-answer': 'Reliability and Availability',
+    'percentage-ai-business-answer': 'Percentage of AI-Enabled Businesses',
+    'reliability-availability-answer': 'Reliability & Availability',
     'cost-benefit-answer': 'Cost-Benefit Analysis',
     'revenue-digital-tech-answer': 'Revenue from Digital Technology',
     'percent-cloud-deploy-answer': 'Percentage of Cloud Deployments',

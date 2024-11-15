@@ -78,4 +78,3 @@ document.getElementById('save-button').addEventListener('click', function(event)
         alert('Please specify the role in the text box before saving.');
     }
 });
-

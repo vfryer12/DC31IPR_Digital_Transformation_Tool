@@ -1,16 +1,19 @@
-from flask import Flask, render_template, redirect, url_for, session
+from flask import Flask, render_template, redirect, url_for, session, request
 import secrets
 
 def create_app():
-    app = Flask(__name__)
+    app = Flask(__name__, template_folder='templates')
     app.secret_key = secrets.token_hex(16)
 
     # Import and register blueprints
     from controllers.login_controller import login_bp
     from controllers.registration_controller import registration_bp
+    # Import controller blueprints
+    from controllers.page_one_controller import page_one_bp
 
     app.register_blueprint(login_bp)
     app.register_blueprint(registration_bp)
+    app.register_blueprint(page_one_bp)
     
 
     @app.route('/')
@@ -25,10 +28,19 @@ def create_app():
     @app.route('/registration')
     def registration_page():
         return render_template('RegistrationPage.html')
+    
 
-    @app.route('/PageOneDigitalStrategy')
+    # @app.route('/PageOneDigitalStrategy')
+    # def page_one_digital_strategy():
+    #     return render_template('PageOneDigitalStrategy.html')
+
+    @app.route('/PageOneDigitalStrategy') 
     def page_one_digital_strategy():
-        return render_template('PageOneDigitalStrategy.html')
+        if request.method == 'POST':
+            question_one = request.form.get('question-one')
+            question_two = request.form.get('question-two') 
+            return redirect(url_for('page_one_digital_strategy')) # 
+        return render_template(render_template('PageOneDigitalStrategy.html'))
 
     @app.route('/PageTwoDigitalSkills')
     def page_two_digital_skills():

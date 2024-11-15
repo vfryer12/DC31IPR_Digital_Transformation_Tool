@@ -10,7 +10,7 @@ def login():
         username = request.form['username']
         password = request.form['password']
         # Debugging line
-        print(f"Username from form: {username}, Password from form: {password}")  # Debugging line
+        print(f"Username from form: {username}, Password from form: {password}")
 
         conn = create_connection()
         if conn:
@@ -32,6 +32,8 @@ def login():
                     if user:
                         print("User found")
                         session['username'] = username
+                        session['user_id'] = user[0]  # Ensure index is correct for user ID
+                        print(f"Session data set: user_id={user[0]}, username={username}")
                         flash('Login successful!', 'success')
                         # Redirect to home page after login
                         return redirect(url_for('index'))

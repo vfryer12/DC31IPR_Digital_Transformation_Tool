@@ -15,7 +15,7 @@
 <body>
     <div class="main">
         <!-- Main content-->
-        <form action="/submit_page_1" method="post">
+        <form action="/PageOneDigitalStrategy" method="post">
             <div id="header-placeholder"></div>
             <h1>Digital Strategy</h1>
             <h2>Section Introduction</h2>
@@ -26,13 +26,13 @@
                 <h3>How is your digital strategy aligned with your overall business strategy?</h3>
                 
                 <div class="radio-buttons">
-                    <input type="radio" id="no-plan" name="question-one" value="0">
+                    <input type="radio" id="no-plan" name="question-one" value="1">
                     <label for="no-plan">No plan in place</label><br>
                     
-                    <input type="radio" id="needs-improvement" name="question-one" value="5">
+                    <input type="radio" id="needs-improvement" name="question-one" value="2">
                     <label for="needs-improvement">Needs Improvement</label><br>
                     
-                    <input type="radio" id="fully-aligned" name="question-one" value="10">
+                    <input type="radio" id="fully-aligned" name="question-one" value="3">
                     <label for="fully-aligned">Fully Aligned</label><br>
                 </div>
             </div>
@@ -59,11 +59,11 @@
             <div class="question-container" id="question-three">
                 <label for="question-three">Question Three</label>
                 <h3>How often is your digital strategy reviewed and updated?</h3>
-                <input type="radio" name="question-three" value="true" id="question-three-never"><label for="question-three-never">Never</label>
-                <input type="radio" name="question-three" value="true" id="question-three-monthly"><label for="question-three-monthly">Every Month</label>
-                <input type="radio" name="question-three" value="false" id="question-three-quarterly"><label for="question-three-quarterly">Quarterly</label>
-                <input type="radio" name="question-three" value="false" id="question-three-year"><label for="question-three-year">Annually</label>
-                <input type="radio" name="question-three" value="false" id="question-three-continuous"><label for="question-three-continuous">Continuous</label>
+                <input type="radio" name="question-three" value="never" id="question-three-never"><label for="question-three-never">Never</label>
+                <input type="radio" name="question-three" value="monthly" id="question-three-monthly"><label for="question-three-monthly">Every Month</label>
+                <input type="radio" name="question-three" value="quarterly" id="question-three-quarterly"><label for="question-three-quarterly">Quarterly</label>
+                <input type="radio" name="question-three" value="year" id="question-three-year"><label for="question-three-year">Annually</label>
+                <input type="radio" name="question-three" value="continuous" id="question-three-continuous"><label for="question-three-continuous">Continuous</label>
             </div>
             <!-- Question Four -->
             <div class="question-container" id="question-four">
@@ -98,13 +98,13 @@
                     <input type="checkbox" id="employee-productivity-answer" name="question-five" value="employee-productivity-answer">
                     <label for="employee-productivity-answer">Employee Productivity</label>
                     <input type="checkbox" id="adoption-performance-answer" name="question-five" value="adoption-performance-answer">
-                    <label for="adoption-performance-answer">Adoption Performance Metrics</label>
+                    <label for="adoption-performance-answer">Adoption & Performance Metrics</label>
                     <input type="checkbox" id="customer-experience-metrics" name="question-five" value="customer-experience-metrics">
                     <label for="customer-experience-metrics">Customer Experience Metrics</label>
                     <input type="checkbox" id="percentage-ai-business-answer" name="question-five" value="percentage-ai-business-answer">
                     <label for="percentage-ai-business-answer">Percentage of AI-enabled Businesses</label>
                     <input type="checkbox" id="reliability-availability-answer" name="question-five" value="reliability-availability-answer">
-                    <label for="reliability-availability-answer">Reliability and Availability</label>
+                    <label for="reliability-availability-answer">Reliability & Availability</label>
                     <input type="checkbox" id="cost-benefit-answer" name="question-five" value="cost-benefit-answer">
                     <label for="cost-benefit-answer">Cost-Benefit Analysis</label>
                     <input type="checkbox" id="revenue-digital-tech-answer" name="question-five" value="revenue-digital-tech-answer">
@@ -226,7 +226,9 @@
             <button type="button" onclick="history.back();">Back</button>
             <button type="button" onclick="window.location='/PageTwoDigitalSkills';">Next</button>
             <!-- Save Button -->
-            <button type="button" id="save-button">Save</button>
+            <!-- <button type="button" id="save-button">Save</button> -->
+            <!-- Submit Button -->
+            <button type="submit">Submit</button>
         </form>
     </div>
     <div id="footer-placeholder"></div>

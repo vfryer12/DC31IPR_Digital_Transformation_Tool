@@ -1,4 +1,4 @@
-# utils/mappings.py
+# utils/mappings_page_one.py
 
 # Mapping for question one
 answer_map_q1 = {

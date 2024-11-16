@@ -10,12 +10,12 @@ def page_one_digital_strategy():
     print("page_one_digital_strategy inside function")
     print(request)
     if request.method == 'POST':
-        print("POST request received")
+        print("POST page one request received")
         
         # Get form data
-        question_one_value = request.form.get('question-one')
-        question_two_value = request.form.get('question-two')
-        question_three_value = request.form.get('question-three')
+        question_one_values = request.form.get('question-one')
+        question_two_values = request.form.get('question-two')
+        question_three_values = request.form.get('question-three')
         question_four_values = request.form.getlist('question-four')
         question_five_values = request.form.getlist('question-five')
         question_six_values = request.form.getlist('question-six')
@@ -24,7 +24,7 @@ def page_one_digital_strategy():
         question_nine_values = request.form.getlist('question-nine')
         question_ten_values = request.form.getlist('question-ten')
 
-        print(f"Received data - Question One: {question_one_value}, Question Two: {question_two_value}, Question Three: {question_three_value}, Question Four: {question_four_values}, Question Five: {question_five_values}, Question Six: {question_six_values}, Question Seven: {question_seven_values}, Question Eight: {question_eight_values}, Question Nine: {question_nine_values}, Question Ten: {question_ten_values}")
+        print(f"Received data - Question One: {question_one_values}, Question Two: {question_two_values}, Question Three: {question_three_values}, Question Four: {question_four_values}, Question Five: {question_five_values}, Question Six: {question_six_values}, Question Seven: {question_seven_values}, Question Eight: {question_eight_values}, Question Nine: {question_nine_values}, Question Ten: {question_ten_values}")
 
 
         if 'user_id' in session:
@@ -35,9 +35,9 @@ def page_one_digital_strategy():
             return redirect(url_for('login.login'))
 
         # Ensure the form values are correctly mapped
-        question_one_answer = answer_map_q1.get(question_one_value, None)
-        question_two_answer = answer_map_q2.get(question_two_value, None)
-        question_three_answer = answer_map_q3.get(question_three_value, None)
+        question_one_answer = [answer_map_q1.get(value, None) for value in question_one_values]
+        question_two_answer = [answer_map_q2.get(value, None) for value in question_two_values]
+        question_three_answer = [answer_map_q3.get(value, None) for value in question_three_values]
         question_four_answers = [answer_map_q4.get(value, None) for value in question_four_values]
         question_five_answers = [answer_map_q5.get(value, None) for value in question_five_values]
         question_six_answers = [answer_map_q6.get(value, None) for value in question_six_values]
@@ -45,7 +45,7 @@ def page_one_digital_strategy():
         question_eight_answers = [answer_map_q8.get(value, None) for value in question_eight_values]
         question_nine_answers = [answer_map_q9.get(value, None) for value in question_nine_values]
         question_ten_answers = [answer_map_q10.get(value, None) for value in question_ten_values]
-
+        
         if not question_one_answer:
             print("Invalid answer for question one")
             return redirect(url_for('page_one.page_one_digital_strategy'))
@@ -250,5 +250,5 @@ def page_one_digital_strategy():
 
         return redirect(url_for('page_one.page_one_digital_strategy'))
 
-    print("GET request received - Rendering form")
+    print("GET page one request received - Rendering form")
     return render_template('PageOneDigitalStrategy.html')

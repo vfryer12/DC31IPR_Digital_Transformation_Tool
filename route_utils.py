@@ -10,10 +10,12 @@ def create_app():
     from controllers.registration_controller import registration_bp
     # Import controller blueprints
     from controllers.page_one_controller import page_one_bp
+    from controllers.page_two_controller import page_two_bp
 
     app.register_blueprint(login_bp)
     app.register_blueprint(registration_bp)
     app.register_blueprint(page_one_bp)
+    app.register_blueprint(page_two_bp)
     
 
     @app.route('/')
@@ -34,17 +36,17 @@ def create_app():
     # def page_one_digital_strategy():
     #     return render_template('PageOneDigitalStrategy.html')
 
-    @app.route('/PageOneDigitalStrategy') 
-    def page_one_digital_strategy():
-        if request.method == 'POST':
-            question_one = request.form.get('question-one')
-            question_two = request.form.get('question-two') 
-            return redirect(url_for('page_one_digital_strategy')) # 
-        return render_template(render_template('PageOneDigitalStrategy.html'))
+    # @app.route('/PageOneDigitalStrategy') 
+    # def page_one_digital_strategy():
+    #     if request.method == 'POST':
+    #         question_one = request.form.get('question-one')
+    #         question_two = request.form.get('question-two') 
+    #         return redirect(url_for('page_one_digital_strategy')) # 
+    #     return render_template(render_template('PageOneDigitalStrategy.html'))
 
-    @app.route('/PageTwoDigitalSkills')
-    def page_two_digital_skills():
-        return render_template('PageTwoDigitalSkills.html')
+    # @app.route('/PageTwoDigitalSkills')
+    # def page_two_digital_skills():
+    #     return render_template('PageTwoDigitalSkills.html')
 
     @app.route('/PageThreeTechnologyAdoption')
     def page_three_technology_adoption():

@@ -11,11 +11,13 @@ def create_app():
     # Import controller blueprints
     from controllers.page_one_controller import page_one_bp
     from controllers.page_two_controller import page_two_bp
+    from controllers.page_three_controller import page_three_bp
 
     app.register_blueprint(login_bp)
     app.register_blueprint(registration_bp)
     app.register_blueprint(page_one_bp)
     app.register_blueprint(page_two_bp)
+    app.register_blueprint(page_three_bp)
     
 
     @app.route('/')
@@ -48,9 +50,9 @@ def create_app():
     # def page_two_digital_skills():
     #     return render_template('PageTwoDigitalSkills.html')
 
-    @app.route('/PageThreeTechnologyAdoption')
-    def page_three_technology_adoption():
-        return render_template('PageThreeTechnologyAdoption.html')
+    # @app.route('/PageThreeTechnologyAdoption')
+    # def page_three_technology_adoption():
+    #     return render_template('PageThreeTechnologyAdoption.html')
 
     @app.route('/PageFourMarketTrends')
     def page_four_market_trends():

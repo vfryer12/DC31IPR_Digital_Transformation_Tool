@@ -1,7 +1,6 @@
 from flask import Blueprint, request, session, url_for, redirect, render_template
 from db_connection import create_connection, close_connection
 from controllers.utils.mappings_page_two import answer_map_page_two_q1, answer_map_page_two_q2, answer_map_page_two_q3, answer_map_page_two_q4, answer_map_page_two_q5, answer_map_page_two_q6, answer_map_page_two_q7, answer_map_page_two_q8, answer_map_page_two_q9, answer_map_page_two_q10
-from db_connection import create_connection, close_connection
 
 page_two_bp = Blueprint('page_two', __name__)
 

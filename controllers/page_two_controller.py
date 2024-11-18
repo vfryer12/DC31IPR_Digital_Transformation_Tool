@@ -1,6 +1,7 @@
 from flask import Blueprint, request, session, url_for, redirect, render_template
+from db_connection import create_connection, close_connection
 from controllers.utils.mappings_page_two import answer_map_page_two_q1, answer_map_page_two_q2, answer_map_page_two_q3, answer_map_page_two_q4, answer_map_page_two_q5, answer_map_page_two_q6, answer_map_page_two_q7, answer_map_page_two_q8, answer_map_page_two_q9, answer_map_page_two_q10
-from db_connection import create_connection, close_connection, sql
+from db_connection import create_connection, close_connection
 
 page_two_bp = Blueprint('page_two', __name__)
 
@@ -13,9 +14,9 @@ def page_two_digital_skills():
         print("POST page two request received")
 
         # Get form data
-        page_two_question_one_values   = request.form.get('page-two-question-one')
-        page_two_question_two_values   = request.form.get('page-two-question-two')
-        page_two_question_three_values = request.form.get('page-two-question-three')
+        page_two_question_one_values = request.form.getlist('page-two-question-one')
+        page_two_question_two_values   = request.form.getlist('page-two-question-two')
+        page_two_question_three_values = request.form.getlist('page-two-question-three')
         page_two_question_four_values  = request.form.getlist('page-two-question-four')
         page_two_question_five_values  = request.form.getlist('page-two-question-five')
         page_two_question_six_values   = request.form.getlist('page-two-question-six')
@@ -94,7 +95,7 @@ def page_two_digital_skills():
                 cursor = conn.cursor()
 
                 question_one_id = 11
-                question_two_id = 12
+                question_two_id = 12 
                 question_three_id = 13
                 question_four_id = 14
                 question_five_id = 15
@@ -104,6 +105,8 @@ def page_two_digital_skills():
                 question_nine_id = 19
                 question_ten_id = 20
 
+                sql = "INSERT INTO userAnswers (answersId, userId, questionsId) VALUES (%s, %s, %s)"
+                
                 for answer in page_two_question_one_answers:
                     query_one = "SELECT id FROM answers WHERE questionsId = 11 AND answer = %s"
                     cursor.execute(query_one, (answer,))

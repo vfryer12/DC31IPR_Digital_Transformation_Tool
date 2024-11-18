@@ -12,12 +12,14 @@ def create_app():
     from controllers.page_one_controller import page_one_bp
     from controllers.page_two_controller import page_two_bp
     from controllers.page_three_controller import page_three_bp
+    from controllers.page_four_controller import page_four_bp
 
     app.register_blueprint(login_bp)
     app.register_blueprint(registration_bp)
     app.register_blueprint(page_one_bp)
     app.register_blueprint(page_two_bp)
     app.register_blueprint(page_three_bp)
+    app.register_blueprint(page_four_bp)
     
 
     @app.route('/')
@@ -54,9 +56,9 @@ def create_app():
     # def page_three_technology_adoption():
     #     return render_template('PageThreeTechnologyAdoption.html')
 
-    @app.route('/PageFourMarketTrends')
-    def page_four_market_trends():
-        return render_template('PageFourMarketTrends.html')
+    # @app.route('/PageFourMarketTrends')
+    # def page_four_market_trends():
+    #     return render_template('PageFourMarketTrends.html')
 
     @app.route('/PageFiveDigitalMarketing')
     def page_five_digital_marketing():

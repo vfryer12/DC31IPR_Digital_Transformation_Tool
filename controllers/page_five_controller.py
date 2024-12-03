@@ -13,16 +13,16 @@ def page_five_digital_marketing():
         print('POST page five request received')
 
         # Get form data
-        page_five_question_one_values = request.form.getlist('page-five-question-one')
-        page_five_question_two_values = request.form.getlist('page-five-question-two')
+        page_five_question_one_values   = request.form.getlist('page-five-question-one')
+        page_five_question_two_values   = request.form.getlist('page-five-question-two')
         page_five_question_three_values = request.form.getlist('page-five-question-three')
-        page_five_question_four_values = request.form.getlist('page-five-question-four')
-        page_five_question_five_values = request.form.getlist('page-five-question-five')
-        page_five_question_six_values = request.form.getlist('page-five-question-six')
+        page_five_question_four_values  = request.form.getlist('page-five-question-four')
+        page_five_question_five_values  = request.form.getlist('page-five-question-five')
+        page_five_question_six_values   = request.form.getlist('page-five-question-six')
         page_five_question_seven_values = request.form.getlist('page-five-question-seven')
         page_five_question_eight_values = request.form.getlist('page-five-question-eight')
-        page_five_question_nine_values = request.form.getlist('page-five-question-nine')
-        page_five_question_ten_values = request.form.getlist('page-five-question-ten')
+        page_five_question_nine_values  = request.form.getlist('page-five-question-nine')
+        page_five_question_ten_values   = request.form.getlist('page-five-question-ten')
 
         print(f"Received data - Question One: {page_five_question_one_values}, Question Two: {page_five_question_two_values}, Question Three: {page_five_question_three_values}, Question Four: {page_five_question_four_values}, Question Five: {page_five_question_five_values}, Question Six: {page_five_question_six_values}, Question Seven: {page_five_question_seven_values}, Question Eight: {page_five_question_eight_values}, Question Nine: {page_five_question_nine_values}, Question Ten: {page_five_question_ten_values}")
         
@@ -93,16 +93,16 @@ def page_five_digital_marketing():
                 print("Connection established")
                 cursor = conn.cursor()
 
-                question_one_id = 41
-                question_two_id = 42 
+                question_one_id   = 41
+                question_two_id   = 42 
                 question_three_id = 43
-                question_four_id = 44
-                question_five_id = 45
-                question_six_id = 46
+                question_four_id  = 44
+                question_five_id  = 45
+                question_six_id   = 46
                 question_seven_id = 47
                 question_eight_id = 48
-                question_nine_id = 49
-                question_ten_id = 50
+                question_nine_id  = 49
+                question_ten_id   = 50
                 
                 sql = "INSERT INTO userAnswers (answersId, userId, questionsId) VALUES (%s, %s, %s)"
 

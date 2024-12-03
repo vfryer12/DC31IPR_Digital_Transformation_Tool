@@ -13,16 +13,16 @@ def page_three_technology_adoption():
         print('POST page three request received')
 
         # Get form data
-        page_three_question_one_values = request.form.getlist('page-three-question-one')
-        page_three_question_two_values = request.form.getlist('page-three-question-two')
+        page_three_question_one_values   = request.form.getlist('page-three-question-one')
+        page_three_question_two_values   = request.form.getlist('page-three-question-two')
         page_three_question_three_values = request.form.getlist('page-three-question-three')
-        page_three_question_four_values = request.form.getlist('page-three-question-four')
-        page_three_question_five_values = request.form.getlist('page-three-question-five')
-        page_three_question_six_values = request.form.getlist('page-three-question-six')
+        page_three_question_four_values  = request.form.getlist('page-three-question-four')
+        page_three_question_five_values  = request.form.getlist('page-three-question-five')
+        page_three_question_six_values   = request.form.getlist('page-three-question-six')
         page_three_question_seven_values = request.form.getlist('page-three-question-seven')
         page_three_question_eight_values = request.form.getlist('page-three-question-eight')
-        page_three_question_nine_values = request.form.getlist('page-three-question-nine')
-        page_three_question_ten_values = request.form.getlist('page-three-question-ten')
+        page_three_question_nine_values  = request.form.getlist('page-three-question-nine')
+        page_three_question_ten_values   = request.form.getlist('page-three-question-ten')
 
         print(f"Received data - Question One: {page_three_question_one_values}, Question Two: {page_three_question_two_values}, Question Three: {page_three_question_three_values}, Question Four: {page_three_question_four_values}, Question Five: {page_three_question_five_values}, Question Six: {page_three_question_six_values}, Question Seven: {page_three_question_seven_values}, Question Eight: {page_three_question_eight_values}, Question Nine: {page_three_question_nine_values}, Question Ten: {page_three_question_ten_values}")
 

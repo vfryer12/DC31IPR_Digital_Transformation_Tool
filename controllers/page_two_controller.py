@@ -13,7 +13,7 @@ def page_two_digital_skills():
         print("POST page two request received")
 
         # Get form data
-        page_two_question_one_values = request.form.getlist('page-two-question-one')
+        page_two_question_one_values   = request.form.getlist('page-two-question-one')
         page_two_question_two_values   = request.form.getlist('page-two-question-two')
         page_two_question_three_values = request.form.getlist('page-two-question-three')
         page_two_question_four_values  = request.form.getlist('page-two-question-four')
@@ -93,16 +93,16 @@ def page_two_digital_skills():
                 print("Connection established")
                 cursor = conn.cursor()
 
-                question_one_id = 11
-                question_two_id = 12 
+                question_one_id   = 11
+                question_two_id   = 12 
                 question_three_id = 13
-                question_four_id = 14
-                question_five_id = 15
-                question_six_id = 16
+                question_four_id  = 14
+                question_five_id  = 15
+                question_six_id   = 16
                 question_seven_id = 17
                 question_eight_id = 18
-                question_nine_id = 19
-                question_ten_id = 20
+                question_nine_id  = 19
+                question_ten_id   = 20
 
                 sql = "INSERT INTO userAnswers (answersId, userId, questionsId) VALUES (%s, %s, %s)"
                 

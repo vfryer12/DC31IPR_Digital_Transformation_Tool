@@ -25,7 +25,7 @@ answer_map_q3 = {
     'never': 'Never',
     'monthly': 'Every Month',
     'quarterly': 'Quarterly',
-    'year': 'Annually',
+    'year': 'Annual',
     'continuous': 'Continuous'
 }
 

@@ -1,3 +1,5 @@
+#algorithm_controller.py
+
 from flask import Blueprint, session, jsonify
 from db_connection import create_connection
 
@@ -6,7 +8,8 @@ calculate_score_bp = Blueprint('calculate_score', __name__)
 
 # Function to retrieve user answers and weights from the database
 def get_user_weights(user_id):
-    conn = create_connection()  # Establish a database connection
+    # Establish a database connection
+    conn = create_connection()
     cursor = conn.cursor()
     # Execute a query to fetch question IDs and weights for the given user ID
     cursor.execute("""
@@ -15,17 +18,23 @@ def get_user_weights(user_id):
         JOIN answers a ON ua.answersId = a.id
         WHERE ua.userId = %s
     """, (user_id,))
-    weights = cursor.fetchall()  # Fetch all results
-    cursor.close()  # Close the cursor
-    conn.close()  # Close the database connection
-    return weights  # Return the fetched weights
+    # Fetch all results
+    weights = cursor.fetchall()
+    # Close the cursor
+    cursor.close()
+    # Close the database connection
+    conn.close()
+    # Return the fetched weights
+    return weights
 
 # Function to calculate the total score across all sections
 def calculate_total_weight(all_section_weights):
     total_score = 0
     for section_weights in all_section_weights:
-        total_score += sum(section_weights)  # Sum up all weights in each section
-    return total_score  # Return the calculated total score
+        # Sum up all weights in each section
+        total_score += sum(section_weights)
+    # Return the calculated total score
+    return total_score
 
 # Function to assess the total score and provide feedback
 def assess_score(total_score, low_threshold, high_threshold, happy_path_range):
@@ -44,9 +53,10 @@ def calculate_score():
     # Check if the user is logged in
     if 'user_id' not in session:
         return jsonify({"error": "User not logged in"}), 400
-
-    user_id = session['user_id']  # Get user ID from session
-    user_weights = get_user_weights(user_id)  # Fetch weights
+    # Get user ID from session
+    user_id = session['user_id']
+    # Fetch weights
+    user_weights = get_user_weights(user_id)
 
     # Debugging print to verify retrieved data
     print("Retrieved weights:", user_weights)
@@ -60,7 +70,7 @@ def calculate_score():
 
     # Map weights to their respective sections/pages
     for question_id, weight in user_weights:
-        print(f"Question ID: {question_id}, Weight: {weight}")  # Debugging print
+        print(f"Question ID: {question_id}, Weight: {weight}")
         if 1 <= question_id <= 10:
             all_section_weights['page_one'].append(weight)
         elif 11 <= question_id <= 20:
@@ -88,7 +98,7 @@ def calculate_score():
 
     # Assess the total score and provide feedback
     feedback = assess_score(total_score, low_threshold=10, high_threshold=20, happy_path_range=(15, 18))
-    print("Feedback:", feedback)  # Debugging print
+    print("Feedback:", feedback)
 
     # Return the total score and feedback as a JSON response
     return jsonify({"total_score": total_score, "feedback": feedback})

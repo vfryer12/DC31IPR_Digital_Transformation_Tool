@@ -13,16 +13,16 @@ def page_four_market_trends():
         print('POST page four request received')
 
         # Get form data
-        page_four_question_one_values = request.form.getlist('page-four-question-one')
-        page_four_question_two_values = request.form.getlist('page-four-question-two')
+        page_four_question_one_values   = request.form.getlist('page-four-question-one')
+        page_four_question_two_values   = request.form.getlist('page-four-question-two')
         page_four_question_three_values = request.form.getlist('page-four-question-three')
-        page_four_question_four_values = request.form.getlist('page-four-question-four')
-        page_four_question_five_values = request.form.getlist('page-four-question-five')
-        page_four_question_six_values = request.form.getlist('page-four-question-six')
+        page_four_question_four_values  = request.form.getlist('page-four-question-four')
+        page_four_question_five_values  = request.form.getlist('page-four-question-five')
+        page_four_question_six_values   = request.form.getlist('page-four-question-six')
         page_four_question_seven_values = request.form.getlist('page-four-question-seven')
         page_four_question_eight_values = request.form.getlist('page-four-question-eight')
-        page_four_question_nine_values = request.form.getlist('page-four-question-nine')
-        page_four_question_ten_values = request.form.getlist('page-four-question-ten')
+        page_four_question_nine_values  = request.form.getlist('page-four-question-nine')
+        page_four_question_ten_values   = request.form.getlist('page-four-question-ten')
 
         print(f"Received data - Question One: {page_four_question_one_values}, Question Two: {page_four_question_two_values}, Question Three: {page_four_question_three_values}, Question Four: {page_four_question_four_values}, Question Five: {page_four_question_five_values}, Question Six: {page_four_question_six_values}, Question Seven: {page_four_question_seven_values}, Question Eight: {page_four_question_eight_values}, Question Nine: {page_four_question_nine_values}, Question Ten: {page_four_question_ten_values}")
 
@@ -93,16 +93,16 @@ def page_four_market_trends():
                 print("Connection established")
                 cursor = conn.cursor()
 
-                question_one_id = 31
-                question_two_id = 32 
+                question_one_id   = 31
+                question_two_id   = 32 
                 question_three_id = 33
-                question_four_id = 34
-                question_five_id = 35
-                question_six_id = 36
+                question_four_id  = 34
+                question_five_id  = 35
+                question_six_id   = 36
                 question_seven_id = 37
                 question_eight_id = 38
-                question_nine_id = 39
-                question_ten_id = 40
+                question_nine_id  = 39
+                question_ten_id   = 40
 
                 sql = "INSERT INTO userAnswers (answersId, userId, questionsId) VALUES (%s, %s, %s)"
 

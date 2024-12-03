@@ -8,12 +8,14 @@ def create_app():
     # Import and register blueprints
     from controllers.login_controller import login_bp
     from controllers.registration_controller import registration_bp
-    # Import controller blueprints
+    # Import page controller blueprints
     from controllers.page_one_controller import page_one_bp
     from controllers.page_two_controller import page_two_bp
     from controllers.page_three_controller import page_three_bp
     from controllers.page_four_controller import page_four_bp
     from controllers.page_five_controller import page_five_bp
+    # Import survey controller blueprints
+    from controllers.algorithm_controller import calculate_score_bp
 
     app.register_blueprint(login_bp)
     app.register_blueprint(registration_bp)
@@ -22,6 +24,7 @@ def create_app():
     app.register_blueprint(page_three_bp)
     app.register_blueprint(page_four_bp)
     app.register_blueprint(page_five_bp)
+    app.register_blueprint(calculate_score_bp)
     
 
     @app.route('/')

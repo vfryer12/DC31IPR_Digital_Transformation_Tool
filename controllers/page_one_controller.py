@@ -13,16 +13,16 @@ def page_one_digital_strategy():
         print("POST page one request received")
         
         # Get form data
-        question_one_values = request.form.get('question-one')
-        question_two_values = request.form.get('question-two')
+        question_one_values   = request.form.get('question-one')
+        question_two_values   = request.form.get('question-two')
         question_three_values = request.form.get('question-three')
-        question_four_values = request.form.getlist('question-four')
-        question_five_values = request.form.getlist('question-five')
-        question_six_values = request.form.getlist('question-six')
+        question_four_values  = request.form.getlist('question-four')
+        question_five_values  = request.form.getlist('question-five')
+        question_six_values   = request.form.getlist('question-six')
         question_seven_values = request.form.getlist('question-seven')
         question_eight_values = request.form.getlist('question-eight')
-        question_nine_values = request.form.getlist('question-nine')
-        question_ten_values = request.form.getlist('question-ten')
+        question_nine_values  = request.form.getlist('question-nine')
+        question_ten_values   = request.form.getlist('question-ten')
 
         print(f"Received data - Question One: {question_one_values}, Question Two: {question_two_values}, Question Three: {question_three_values}, Question Four: {question_four_values}, Question Five: {question_five_values}, Question Six: {question_six_values}, Question Seven: {question_seven_values}, Question Eight: {question_eight_values}, Question Nine: {question_nine_values}, Question Ten: {question_ten_values}")
 
@@ -35,16 +35,16 @@ def page_one_digital_strategy():
             return redirect(url_for('login.login'))
 
         # Ensure the form values are correctly mapped
-        question_one_answer = [answer_map_q1.get(value, None) for value in question_one_values]
-        question_two_answer = [answer_map_q2.get(value, None) for value in question_two_values]
-        question_three_answer = [answer_map_q3.get(value, None) for value in question_three_values]
-        question_four_answers = [answer_map_q4.get(value, None) for value in question_four_values]
-        question_five_answers = [answer_map_q5.get(value, None) for value in question_five_values]
-        question_six_answers = [answer_map_q6.get(value, None) for value in question_six_values]
+        question_one_answer    = [answer_map_q1.get(value, None) for value in question_one_values]
+        question_two_answer    = [answer_map_q2.get(value, None) for value in question_two_values]
+        question_three_answer  = [answer_map_q3.get(value, None) for value in question_three_values]
+        question_four_answers  = [answer_map_q4.get(value, None) for value in question_four_values]
+        question_five_answers  = [answer_map_q5.get(value, None) for value in question_five_values]
+        question_six_answers   = [answer_map_q6.get(value, None) for value in question_six_values]
         question_seven_answers = [answer_map_q7.get(value, None) for value in question_seven_values]
         question_eight_answers = [answer_map_q8.get(value, None) for value in question_eight_values]
-        question_nine_answers = [answer_map_q9.get(value, None) for value in question_nine_values]
-        question_ten_answers = [answer_map_q10.get(value, None) for value in question_ten_values]
+        question_nine_answers  = [answer_map_q9.get(value, None) for value in question_nine_values]
+        question_ten_answers   = [answer_map_q10.get(value, None) for value in question_ten_values]
         
         if not question_one_answer:
             print("Invalid answer for question one")
@@ -126,16 +126,16 @@ def page_one_digital_strategy():
                     print("No answer found for question three")
                     return redirect(url_for('page_one.page_one_digital_strategy'))
                 
-                question_one_id = 1
-                question_two_id = 2
+                question_one_id   = 1
+                question_two_id   = 2
                 question_three_id = 3
-                question_four_id = 4
-                question_five_id = 5
-                question_six_id = 6
+                question_four_id  = 4
+                question_five_id  = 5
+                question_six_id   = 6
                 question_seven_id = 7
                 question_eight_id = 8
-                question_nine_id = 9
-                question_ten_id = 10
+                question_nine_id  = 9
+                question_ten_id   = 10
 
                 # Insert data into the userAnswers table
                 sql = "INSERT INTO userAnswers (answersId, userId, questionsId) VALUES (%s, %s, %s)"

@@ -6,7 +6,8 @@ calculate_score_bp = Blueprint('calculate_score', __name__)
 
 # Function to retrieve user answers and weights from the database
 def get_user_answers_and_weights(user_id):
-    conn = create_connection()  # Establish a database connection
+    # Establish a database connection
+    conn = create_connection()
     cursor = conn.cursor()
     # Execute a query to fetch question IDs, answers, and weights for the given user ID
     cursor.execute("""
@@ -15,25 +16,38 @@ def get_user_answers_and_weights(user_id):
         JOIN answers a ON ua.answersId = a.id
         WHERE ua.userId = %s
     """, (user_id,))
-    answers_and_weights = cursor.fetchall()  # Fetch all results
-    cursor.close()  # Close the cursor
-    conn.close()  # Close the database connection
-    return answers_and_weights  # Return the fetched answers and weights
+    # Fetch all results
+    answers_and_weights = cursor.fetchall()
+    # Close the cursor
+    cursor.close()
+    # Close the database connection
+    conn.close()
+    # Return the fetched answers and weights
+    return answers_and_weights
 
 # Function to calculate the score for a single section
 def calculate_section_score(section_answers, section_weights):
     score = 0
     for answer, weight in zip(section_answers, section_weights):
-        score += answer * weight  # Add weighted answer to the score
-    return score  # Return the calculated section score
+        try:
+            # Convert answer to a float
+            numeric_answer = float(answer)
+            # Add weighted answer to the score
+            score += numeric_answer * weight
+        except ValueError:
+            continue
+    # Return the calculated section score
+    return score
 
 # Function to calculate the total score across all sections
 def calculate_total_score(all_section_answers, all_section_weights):
     total_score = 0
     for section_answers, section_weights in zip(all_section_answers, all_section_weights):
         section_score = calculate_section_score(section_answers, section_weights)
-        total_score += section_score  # Add section score to the total score
-    return total_score  # Return the calculated total score
+        # Add section score to the total score
+        total_score += section_score
+    # Return the calculated total score
+    return total_score
 
 # Function to assess the total score and provide feedback
 def assess_score(total_score, low_threshold, high_threshold, happy_path_range):
@@ -53,8 +67,10 @@ def calculate_score():
     if 'user_id' not in session:
         return jsonify({"error": "User not logged in"}), 400
 
-    user_id = session['user_id']  # Get user ID from session
-    user_answers_and_weights = get_user_answers_and_weights(user_id)  # Fetch answers and weights
+    # Get user ID from session
+    user_id = session['user_id']
+    # Fetch answers and weights
+    user_answers_and_weights = get_user_answers_and_weights(user_id)
 
     # Create dictionaries to hold answers and weights for each section dynamically
     all_section_answers = {}

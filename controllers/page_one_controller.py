@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, redirect, url_for, sessio
 from db_connection import create_connection, close_connection
 from controllers.utils.mappings_page_one import answer_map_q1, answer_map_q2, answer_map_q3, answer_map_q4, answer_map_q5, answer_map_q6, answer_map_q7, answer_map_q8, answer_map_q9, answer_map_q10
 from daos.upsert_data import upsert_multiple_answers, upsert_single_answer
+
 page_one_bp = Blueprint('page_one', __name__)
 
 @page_one_bp.route('/PageOneDigitalStrategy', methods=['GET', 'POST'])
@@ -103,26 +104,28 @@ def page_one_digital_strategy():
                 question_nine_id  = 9
                 question_ten_id   = 10
 
-                sql = """
-                INSERT INTO userAnswers (answersId, userId, questionsId)
-                VALUES (%s, %s, %s)
-                ON DUPLICATE KEY UPDATE answersId = VALUES(answersId), userId = VALUES(userId), questionsId = VALUES(questionsId)
-                """
-
                 # Single value handling
-                upsert_single_answer(cursor, question_one_answer, question_one_id,user_id, sql)
-                upsert_single_answer(cursor, question_two_answer, question_two_id, user_id, sql)
-                upsert_single_answer(cursor, question_three_answer, question_three_id, user_id, sql)
-                
+                upsert_single_answer(cursor, question_one_answer, question_one_id, user_id)
+                upsert_single_answer(cursor, question_two_answer, question_two_id, user_id)
+                upsert_single_answer(cursor, question_three_answer, question_three_id, user_id)
+
                 # List value handling
-                upsert_multiple_answers(cursor, question_four_answers, question_four_id, user_id, sql)
-                upsert_multiple_answers(cursor, question_five_answers, question_five_id, user_id, sql)
-                upsert_multiple_answers(cursor, question_six_answers, question_six_id, user_id, sql)
-                upsert_multiple_answers(cursor, question_seven_answers, question_seven_id, user_id, sql)
-                upsert_multiple_answers(cursor, question_eight_answers, question_eight_id, user_id, sql)
-                upsert_multiple_answers(cursor, question_nine_answers, question_nine_id, user_id, sql)
-                upsert_multiple_answers(cursor, question_ten_answers, question_ten_id, user_id, sql)
-                
+                upsert_multiple_answers(cursor, question_four_answers, question_four_id, user_id)
+                upsert_multiple_answers(cursor, question_five_answers, question_five_id, user_id)
+                upsert_multiple_answers(cursor, question_six_answers, question_six_id, user_id)
+                upsert_multiple_answers(cursor, question_seven_answers, question_seven_id, user_id)
+                upsert_multiple_answers(cursor, question_eight_answers, question_eight_id, user_id)
+                upsert_multiple_answers(cursor, question_nine_answers, question_nine_id, user_id)
+                upsert_multiple_answers(cursor, question_ten_answers, question_ten_id, user_id)
+
+
+                # sql = """
+                # DELETE FROM userAnswers WHERE userId = %s AND questionsId = %s;
+
+                # INSERT INTO userAnswers (answersId, userId, questionsId)
+                # VALUES (%s, %s, %s);
+                # """
+
                 conn.commit()
                 print("Successfully inserted/upserted data into userAnswers table")
 

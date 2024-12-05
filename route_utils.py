@@ -39,35 +39,6 @@ def create_app():
     @app.route('/registration')
     def registration_page():
         return render_template('RegistrationPage.html')
-    
-
-    # @app.route('/PageOneDigitalStrategy')
-    # def page_one_digital_strategy():
-    #     return render_template('PageOneDigitalStrategy.html')
-
-    # @app.route('/PageOneDigitalStrategy') 
-    # def page_one_digital_strategy():
-    #     if request.method == 'POST':
-    #         question_one = request.form.get('question-one')
-    #         question_two = request.form.get('question-two') 
-    #         return redirect(url_for('page_one_digital_strategy')) # 
-    #     return render_template(render_template('PageOneDigitalStrategy.html'))
-
-    # @app.route('/PageTwoDigitalSkills')
-    # def page_two_digital_skills():
-    #     return render_template('PageTwoDigitalSkills.html')
-
-    # @app.route('/PageThreeTechnologyAdoption')
-    # def page_three_technology_adoption():
-    #     return render_template('PageThreeTechnologyAdoption.html')
-
-    # @app.route('/PageFourMarketTrends')
-    # def page_four_market_trends():
-    #     return render_template('PageFourMarketTrends.html')
-
-    # @app.route('/PageFiveDigitalMarketing')
-    # def page_five_digital_marketing():
-    #     return render_template('PageFiveDigitalMarketing.html')
 
     @app.route('/AssessmentHeaderTemplate')
     def assessment_header_template():

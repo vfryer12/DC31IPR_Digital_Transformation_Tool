@@ -1,6 +1,7 @@
 from flask import Blueprint, request, session, redirect, url_for, render_template
 from controllers.utils.mappings_page_four import answer_map_page_four_q1, answer_map_page_four_q2, answer_map_page_four_q3, answer_map_page_four_q4, answer_map_page_four_q5, answer_map_page_four_q6, answer_map_page_four_q7, answer_map_page_four_q8, answer_map_page_four_q9, answer_map_page_four_q10
 from db_connection import create_connection, close_connection
+from daos.upsert_data_multiple import upsert_multiple_answers
 
 page_four_bp = Blueprint('page_four', __name__)
 
@@ -104,127 +105,17 @@ def page_four_market_trends():
                 question_nine_id  = 39
                 question_ten_id   = 40
 
-                sql = "INSERT INTO userAnswers (answersId, userId, questionsId) VALUES (%s, %s, %s)"
-
-                for answer in page_four_question_one_answers:
-                    query_one = "SELECT id FROM answers WHERE questionsId = 31 AND answer = %s"
-                    cursor.execute(query_one, (answer,))
-                    answer_one = cursor.fetchone()
-                    if answer_one:
-                        answer_one_id = answer_one[0]
-                        print(f"Page four, answer one ID: {answer_one_id}")
-                        cursor.execute(sql, (answer_one_id, user_id, question_one_id))
-                    else:
-                        print("No answer found for Page four, question one")
-                        return redirect(url_for('page_four.page_four_market_trends'))
-                    
-                for answer in page_four_question_two_answers:
-                    query_two = "SELECT id FROM answers WHERE questionsId = 32 AND answer = %s"
-                    cursor.execute(query_two, (answer,))
-                    answer_two = cursor.fetchone()
-                    if answer_two:
-                        answer_two_id = answer_two[0]
-                        print(f"Page four, answer two ID: {answer_two_id}")
-                        cursor.execute(sql, (answer_two_id, user_id, question_two_id))
-                    else:
-                        print("No answer found for Page four, question two")
-                        return redirect(url_for('page_four.page_four_market_trends'))
-                    
-                for answer in page_four_question_three_answers:
-                    query_three = "SELECT id FROM answers WHERE questionsId = 33 AND answer = %s"
-                    cursor.execute(query_three, (answer,))
-                    answer_three = cursor.fetchone()
-                    if answer_three:
-                        answer_three_id = answer_three[0]
-                        print(f"Page four, answer two ID: {answer_three_id}")
-                        cursor.execute(sql, (answer_three_id, user_id, question_three_id))
-                    else:
-                        print("No answer found for Page four, question two")
-                        return redirect(url_for('page_four.page_four_market_trends'))
-
-                for answer in page_four_question_four_answers:
-                    query_four = "SELECT id FROM answers WHERE questionsId = 34 AND answer = %s"
-                    cursor.execute(query_four, (answer,))
-                    answer_four = cursor.fetchone()
-                    if answer_four:
-                        answer_four_id = answer_four[0]
-                        print(f"Page four, answer four ID: {answer_four_id}")
-                        cursor.execute(sql, (answer_four_id, user_id, question_four_id))
-                    else:
-                        print("No answer found for Page four, question four")
-                        return redirect(url_for('page_four.page_four_market_trends'))
-
-                for answer in page_four_question_five_answers:
-                    query_five = "SELECT id FROM answers WHERE questionsId = 35 AND answer = %s"
-                    cursor.execute(query_five, (answer,))
-                    answer_five = cursor.fetchone()
-                    if answer_five:
-                        answer_five_id = answer_five[0]
-                        print(f"Page four, answer five ID: {answer_five_id}")
-                        cursor.execute(sql, (answer_five_id, user_id, question_five_id))
-                    else:
-                        print("No answer found for Page four, question five")
-                        return redirect(url_for('page_four.page_four_market_trends'))
-
-                for answer in page_four_question_six_answers:
-                    query_six = "SELECT id FROM answers WHERE questionsId = 36 AND answer = %s"
-                    cursor.execute(query_six, (answer,))
-                    answer_six = cursor.fetchone()
-                    if answer_six:
-                        answer_six_id = answer_six[0]
-                        print(f"Page four, answer six ID: {answer_six_id}")
-                        cursor.execute(sql, (answer_six_id, user_id, question_six_id))
-                    else:
-                        print("No answer found for Page four, question six")
-                        return redirect(url_for('page_four.page_four_market_trends'))
-
-                for answer in page_four_question_seven_answers:
-                    query_seven = "SELECT id FROM answers WHERE questionsId = 37 AND answer = %s"
-                    cursor.execute(query_seven, (answer,))
-                    answer_seven = cursor.fetchone()
-                    if answer_seven:
-                        answer_seven_id = answer_seven[0]
-                        print(f"Page four, answer seven ID: {answer_seven_id}")
-                        cursor.execute(sql, (answer_seven_id, user_id, question_seven_id))
-                    else:
-                        print("No answer found for Page four, question seven")
-                        return redirect(url_for('page_four.page_four_market_trends'))
-
-                for answer in page_four_question_eight_answers:
-                    query_eight = "SELECT id FROM answers WHERE questionsId = 38 AND answer = %s"
-                    cursor.execute(query_eight, (answer,))
-                    answer_eight = cursor.fetchone()
-                    if answer_eight:
-                        answer_eight_id = answer_eight[0]
-                        print(f"Page four, answer eight ID: {answer_eight_id}")
-                        cursor.execute(sql, (answer_eight_id, user_id, question_eight_id))
-                    else:
-                        print("No answer found for Page four, question eight")
-                        return redirect(url_for('page_four.page_four_market_trends'))
-
-                for answer in page_four_question_nine_answers:
-                    query_nine = "SELECT id FROM answers WHERE questionsId = 39 AND answer = %s"
-                    cursor.execute(query_nine, (answer,))
-                    answer_nine = cursor.fetchone()
-                    if answer_nine:
-                        answer_nine_id = answer_nine[0]
-                        print(f"Page four, answer nine ID: {answer_nine_id}")
-                        cursor.execute(sql, (answer_nine_id, user_id, question_nine_id))
-                    else:
-                        print("No answer found for Page four, question nine")
-                        return redirect(url_for('page_four.page_four_market_trends'))
-
-                for answer in page_four_question_ten_answers:
-                    query_ten = "SELECT id FROM answers WHERE questionsId = 40 AND answer = %s"
-                    cursor.execute(query_ten, (answer,))
-                    answer_ten = cursor.fetchone()
-                    if answer_ten:
-                        answer_ten_id = answer_ten[0]
-                        print(f"Page four, answer ten ID: {answer_ten_id}")
-                        cursor.execute(sql, (answer_ten_id, user_id, question_ten_id))
-                    else:
-                        print("No answer found for Page four, question ten")
-                        return redirect(url_for('page_four.page_four_market_trends'))
+                # List value handling
+                upsert_multiple_answers(cursor, page_four_question_one_answers, question_one_id, user_id)
+                upsert_multiple_answers(cursor, page_four_question_two_answers, question_two_id, user_id)
+                upsert_multiple_answers(cursor, page_four_question_three_answers, question_three_id, user_id)
+                upsert_multiple_answers(cursor, page_four_question_four_answers, question_four_id, user_id)
+                upsert_multiple_answers(cursor, page_four_question_five_answers, question_five_id, user_id)
+                upsert_multiple_answers(cursor, page_four_question_six_answers, question_six_id, user_id)
+                upsert_multiple_answers(cursor, page_four_question_seven_answers, question_seven_id, user_id)
+                upsert_multiple_answers(cursor, page_four_question_eight_answers, question_eight_id, user_id)
+                upsert_multiple_answers(cursor, page_four_question_nine_answers, question_nine_id, user_id)
+                upsert_multiple_answers(cursor, page_four_question_ten_answers, question_ten_id, user_id)
 
                 conn.commit()
                 print("Successfully inserted data into userAnswers table")

@@ -23,17 +23,3 @@ def close_connection(conn):
             print("Connection closed.")
     except NameError:
         print("Connection was never established")
-
-# main_script.py (or any other module)
-
-# from db_connection import create_connection, close_connection
-
-# conn = create_connection()
-# if conn:
-#     my_cursor = conn.cursor()
-#     # Your SQL operations here
-#     conn.commit()
-#     close_connection(conn)
-# else:
-#     print("Failed to create connection.")
-

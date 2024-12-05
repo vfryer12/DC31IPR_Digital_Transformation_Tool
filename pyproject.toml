@@ -15,6 +15,7 @@ flash = "^1.0.3"
 fastapi = "^0.111.0"
 uvicorn = "^0.29.0"
 mysql-connector-python = "^9.0.0"
+beautifulsoup4 = "^4.12.3"
 
 [tool.poetry.group.dev.dependencies]
 ipykernel = "^6.29.4"

@@ -43,6 +43,10 @@ def create_app():
     @app.route('/SubmitAssessmentPage')
     def submit_assessment_page():
         return render_template('SubmitAssessmentPage.html')
+    
+    @app.route('/ReportPage')
+    def report_page():
+        return render_template('ReportPage.html')
 
     @app.route('/AssessmentHeaderTemplate')
     def assessment_header_template():

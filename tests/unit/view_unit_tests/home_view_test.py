@@ -30,7 +30,6 @@ def test_user_profile_page_render(client):
     # Check logo
     logo = header.find('div', {'class': 'logo'})
     assert logo is not None
-    # You can also check for logo content here, if required
 
     # Check main section
     main = soup.find('div', {'class': 'main'})

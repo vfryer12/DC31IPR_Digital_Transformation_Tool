@@ -7,17 +7,21 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Submit Page</title>
      <link rel="stylesheet" type="text/css" href="/static/content/submit-page.css">
+     <script src="\static\FetchAssessmentHeader.js" type="module"></script>
+     <script src="\static\FetchAssessmentFooter.js" type="module"></script>
  </head>
  <body>
-     <div class="container">
-         <h1>Thank You</h1>
-         <p>Thank you for completing this page.</p>
-         <!-- Submit the form to the calculate_score endpoint -->
-         <form action="/calculate_score" method="get">
-             <div class="button">
+    <div id="header-placeholder"></div>
+    <div class="container">
+        <h1>Thank You</h1>
+        <p>Thank you for completing this page.</p>
+        <!-- Submit the form to the calculate_score endpoint -->
+        <form action="/calculate_score" method="get">
+            <div class="button">
                  <button type="submit" id="finalSubmitButton">Finish</button>
-             </div>
-         </form>
-     </div>
+            </div>
+        </form>
+    </div>
+    <div id="footer-placeholder"></div>
  </body> 
  </html>

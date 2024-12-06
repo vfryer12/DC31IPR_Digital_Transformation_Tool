@@ -1,6 +1,6 @@
 #algorithm_controller.py
 
-from flask import Blueprint, session, jsonify
+from flask import Blueprint, session, jsonify, request
 from db_connection import create_connection
 
 # Create a Blueprint named 'calculate_score' for this controller
@@ -47,58 +47,35 @@ def assess_score(total_score, low_threshold, high_threshold, happy_path_range):
     else:
         return "Score is acceptable but could be optimized."
 
-# Route to calculate and return the score and feedback
+
 @calculate_score_bp.route('/calculate_score', methods=['GET'])
 def calculate_score():
+    """
+    Retrieve user data and calculate the score.
+    """
     # Check if the user is logged in
     if 'user_id' not in session:
         return jsonify({"error": "User not logged in"}), 400
-    # Get user ID from session
+
     user_id = session['user_id']
-    # Fetch weights
-    user_weights = get_user_weights(user_id)
+    conn = create_connection()
+    cursor = conn.cursor()
 
-    # Debugging print to verify retrieved data
-    print("Retrieved weights:", user_weights)
+    # Fetch user-specific data (e.g., answers, weights)
+    cursor.execute("""
+        SELECT ua.questionsId, a.weighting
+        FROM userAnswers ua
+        JOIN answers a ON ua.answersId = a.id
+        WHERE ua.userId = %s
+    """, (user_id,))
+    user_weights = cursor.fetchall()
 
-    # Create dictionaries to hold weights for each section dynamically
-    all_section_weights = {}
-    section_names = ['page_one', 'page_two', 'page_three', 'page_four', 'page_five']
+    cursor.close()
+    conn.close()
 
-    for section in section_names:
-        all_section_weights[section] = []
+    # Calculate the total score
+    total_score = sum(weight for _, weight in user_weights)
+    feedback = "Score is within the happy path: Keep up the good work!" if total_score >= 15 else "Consider improving."
 
-    # Map weights to their respective sections/pages
-    for question_id, weight in user_weights:
-        print(f"Question ID: {question_id}, Weight: {weight}")
-        if 1 <= question_id <= 10:
-            all_section_weights['page_one'].append(weight)
-        elif 11 <= question_id <= 20:
-            all_section_weights['page_two'].append(weight)
-        elif 21 <= question_id <= 30:
-            all_section_weights['page_three'].append(weight)
-        elif 31 <= question_id <= 40:
-            all_section_weights['page_four'].append(weight)
-        elif 41 <= question_id <= 50:
-            all_section_weights['page_five'].append(weight)
-
-    # Debugging print to verify mapping
-    print("Section weights:", all_section_weights)
-
-    # Convert dictionary values to lists
-    all_section_weights_list = list(all_section_weights.values())
-
-    # Debugging print to verify list conversion
-    print("Section weights list:", all_section_weights_list)
-
-    # Calculate the total weight
-    total_score = calculate_total_weight(all_section_weights_list)
-    # Debugging print to verify total score
-    print("Total score:", total_score)
-
-    # Assess the total score and provide feedback
-    feedback = assess_score(total_score, low_threshold=10, high_threshold=20, happy_path_range=(15, 18))
-    print("Feedback:", feedback)
-
-    # Return the total score and feedback as a JSON response
+    # Return JSON response or render a page with results
     return jsonify({"total_score": total_score, "feedback": feedback})

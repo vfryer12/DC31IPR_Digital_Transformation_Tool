@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, session, request
+from flask import Flask, render_template, redirect, url_for, session
 import secrets
 
 def create_app():
@@ -39,6 +39,10 @@ def create_app():
     @app.route('/registration')
     def registration_page():
         return render_template('RegistrationPage.html')
+    
+    @app.route('/SubmitAssessmentPage')
+    def submit_assessment_page():
+        return render_template('SubmitAssessmentPage.html')
 
     @app.route('/AssessmentHeaderTemplate')
     def assessment_header_template():

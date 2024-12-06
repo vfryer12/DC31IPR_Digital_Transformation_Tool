@@ -1,22 +1,23 @@
  <!-- This page triggers the algorithm on submit -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Submit Page</title>
-    <link rel="stylesheet" type="text/css" href="/static/content/submit-page.css">
-</head>
-<body>
-    <div class="container">
-        <h1>Thank You</h1>
-        <p>Thank you for completing this page.</p>
-        <form action="/SubmitAssessmentPage" method="post">
-            <div class="button">
-                <button type="submit" id="finalSubmitButton">Finish</button>
-            </div>
-        </form>
-    </div>
-</body>
-</html>
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Submit Page</title>
+     <link rel="stylesheet" type="text/css" href="/static/content/submit-page.css">
+ </head>
+ <body>
+     <div class="container">
+         <h1>Thank You</h1>
+         <p>Thank you for completing this page.</p>
+         <!-- Submit the form to the calculate_score endpoint -->
+         <form action="/calculate_score" method="get">
+             <div class="button">
+                 <button type="submit" id="finalSubmitButton">Finish</button>
+             </div>
+         </form>
+     </div>
+ </body> 
+ </html>

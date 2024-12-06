@@ -6,6 +6,10 @@ from app import app
 def client():
     app.config['TESTING'] = True
     with app.test_client() as client:
+        with client.session_transaction() as sess:
+            # Simulate a logged-in user by adding 'username' to the session
+            sess['username'] = 'testuser'
+            sess['password'] = 'password'
         yield client
 
 def test_login_page_render(client):
@@ -46,8 +50,8 @@ def test_login_page_render(client):
 def test_login_page_post_failure(client):
     """Test posting to the login endpoint with invalid credentials."""
     response = client.post('/login', data={
-        'username': 'wronguser',
-        'password': 'wrongpassword'
+        'username': 'invaliduser',
+        'password': 'invalidpassword'
     })
     assert response.status_code == 302
     assert response.headers['Location'] == '/login'

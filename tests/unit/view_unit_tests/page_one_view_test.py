@@ -142,7 +142,7 @@ def test_page_one_question_five(client):
     assert question_four_div is not None
 
     checkboxes = question_four_div.find_all('input', type='checkbox')
-    assert len(checkboxes) == 21  # There are 21 checkboxes in the HTML for Question Four
+    assert len(checkboxes) == 21  # There are 21 checkboxes in the HTML for Question Five
 
     # Validate checkbox values
     expected_checkbox_values = [
@@ -182,7 +182,7 @@ def test_page_one_question_six(client):
     assert question_four_div is not None
 
     checkboxes = question_four_div.find_all('input', type='checkbox')
-    assert len(checkboxes) == 7  # There are 7 checkboxes in the HTML for Question Four
+    assert len(checkboxes) == 7  # There are 7 checkboxes in the HTML for Question Five
 
     # Validate checkbox values
     expected_checkbox_values = [
@@ -207,7 +207,7 @@ def test_page_one_question_seven(client):
     assert question_four_div is not None
 
     checkboxes = question_four_div.find_all('input', type='checkbox')
-    assert len(checkboxes) == 7  # There are 7 checkboxes in the HTML for Question Four
+    assert len(checkboxes) == 7  # There are 7 checkboxes in the HTML for Question Five
 
     # Validate checkbox values
     expected_checkbox_values = [
@@ -232,7 +232,7 @@ def test_page_one_question_eight(client):
     assert question_four_div is not None
 
     checkboxes = question_four_div.find_all('input', type='checkbox')
-    assert len(checkboxes) == 6  # There are 6 checkboxes in the HTML for Question Four
+    assert len(checkboxes) == 6  # There are 6 checkboxes in the HTML for Question Five
 
     # Validate checkbox values
     expected_checkbox_values = [
@@ -256,7 +256,7 @@ def test_page_one_question_nine(client):
     assert question_four_div is not None
 
     checkboxes = question_four_div.find_all('input', type='checkbox')
-    assert len(checkboxes) == 6  # There are 6 checkboxes in the HTML for Question Four
+    assert len(checkboxes) == 6  # There are 6 checkboxes in the HTML for Question Five
 
     # Validate checkbox values
     expected_checkbox_values = [
@@ -280,7 +280,7 @@ def test_page_one_question_ten(client):
     assert question_four_div is not None
 
     checkboxes = question_four_div.find_all('input', type='checkbox')
-    assert len(checkboxes) == 6  # There are 6 checkboxes in the HTML for Question Four
+    assert len(checkboxes) == 6  # There are 6 checkboxes in the HTML for Question Five
 
     # Validate checkbox values
     expected_checkbox_values = [

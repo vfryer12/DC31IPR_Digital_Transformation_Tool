@@ -48,18 +48,37 @@ def test_page_one_structure(client):
     for script in expected_scripts:
         assert script in srcs
 
+    # Check header
+    header = soup.find('div', {'id': 'header-placeholder'})
+    assert header is not None
+
+    # Check footer
+    footer = soup.find('div', {'id': 'footer-placeholder'})
+    assert footer is not None
+
+    # Check for presence of h1 tag directly in the main content
+    main_content = soup.find('div', {'class': 'main'})
+    assert main_content is not None
+    h1_tag = main_content.find('h1')
+    assert h1_tag is not None
+    assert h1_tag.string == 'Digital Strategy'
+
 def test_page_one_navigation_buttons(client):
     """Test the navigation buttons on Page One: Digital Strategy."""
     response = client.get('/PageOneDigitalStrategy')
     soup = BeautifulSoup(response.data, 'html.parser')
 
     # Check navigation buttons using the `string` argument
-    back_button = soup.find('button', string='Back')
-    next_button = soup.find('button', string='Next')
     submit_button = soup.find('button', type='submit')
-    assert back_button is not None
-    assert next_button is not None
     assert submit_button is not None
+
+    back_button = soup.find('button', string='Back')
+    assert back_button is not None
+    assert back_button['onclick'] == "history.back();"
+
+    next_button = soup.find('button', string='Next')
+    assert next_button is not None
+    assert next_button['onclick'] == "window.location='/PageTwoDigitalSkills';"
 
 def test_page_one_question_one(client):
     """Test Question One (radio buttons) on Page One: Digital Strategy."""

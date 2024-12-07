@@ -13,7 +13,7 @@ def test_footer_template_render(client):
     response = client.get('/AssessmentFooterTemplate')
     assert response.status_code == 200
 
-        # Parse the HTML
+    # Parse the HTML
     soup = BeautifulSoup(response.data, 'html.parser')
 
     # Check title

@@ -48,6 +48,39 @@ def test_page_two_struture(client):
     for script in expected_scripts:
         assert script in srcs
 
+    # Check header
+    header = soup.find('div', {'id': 'header-placeholder'})
+    assert header is not None
+
+    # Check footer
+    footer = soup.find('div', {'id': 'footer-placeholder'})
+    assert footer is not None
+
+    # Check for presence of h1 tag directly in the main content
+    main_content = soup.find('div', {'class': 'main'})
+    assert main_content is not None
+    h1_tag = main_content.find('h1')
+    assert h1_tag is not None
+    assert h1_tag.string == 'Digital Strategy'
+
+def test_page_two_navigation_buttons(client):
+    """Test the navigation buttons on Page Two: Digital Skills."""
+    response = client.get('/PageTwoDigitalSkills')
+    soup = BeautifulSoup(response.data, 'html.parser')
+
+    # Check navigation buttons using the `string` argument
+    submit_button = soup.find('button', type='submit')
+    assert submit_button is not None
+
+    back_button = soup.find('button', string='Back')
+    assert back_button is not None
+    assert back_button['onclick'] == "history.back();"
+
+    next_button = soup.find('button', string='Next')
+    assert next_button is not None
+    assert next_button['onclick'] == "window.location='/PageThreeTechnologyAdoption';"
+
+
 def test_page_two_question_one(client):
     """Test Question One (checkboxes) on Page Two: Digital Skills."""
     response = client.get('/PageTwoDigitalSkills')

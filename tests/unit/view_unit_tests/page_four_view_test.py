@@ -232,8 +232,117 @@ def test_page_four_question_six(client):
 
     # Validate checkbox values
     expected_checkbox_values = [
-        'data-driven-insights-answer'
-        //TODO 
+        'investing-in-emerging-technologies-answer',
+        'continuous-learning-and-development-answer',
+        'agile-and-flexible-approach-answer',
+        'customer-centric-focus-answer',
+        'strategic-partnerships-answer',
+        'innovation-culture-answer',
+        'regular-market-analysis-answer',
+        'upskilling-and-reskilling-answer',
+        'cybersecurity-measures-answer',
+        'adopting-best-practices-answer'
+    ]
+    actual_checkbox_values = [checkbox['value'] for checkbox in checkboxes]
+    for value in expected_checkbox_values:
+        assert value in actual_checkbox_values
+
+
+def test_page_four_question_seven(client):
+    """Test Question Seven (checkboxes) on Page Four: Market Trends."""
+    response = client.get('/PageFourMarketTrends')
+    soup = BeautifulSoup(response.data, 'html.parser')
+
+    question_one_div = soup.find('div', id='page-four-question-seven')
+    assert question_one_div is not None
+
+    checkboxes = question_one_div.find_all('input', type='checkbox')
+    assert len(checkboxes) == 10 # There are 10 checkboxes in the HMTL for Question One
+
+    # Validate checkbox values
+    expected_checkbox_values = [
+        'data-driven-insights-answer',
+        'personalization-and-customer-experience-answer',
+        'adapting-to-technological Advancements-answer',
+        'content-strategy-optimization-answer',
+        'social-media-engagement-answer',
+        'seo-and-sem-strategies-answer',
+        'competitive-analysis-answer',
+        'customer-feedback-and-surveys-answer',
+        'influencer-and-partnership-collaborations-answer',
+        'agile-marketing-approach-answer'
+    ]
+    actual_checkbox_values = [checkbox['value'] for checkbox in checkboxes]
+    for value in expected_checkbox_values:
+        assert value in actual_checkbox_values
+
+def test_page_four_question_eight(client):
+    """Test Question Eight (checkboxes) on Page Four: Market Trends."""
+    response = client.get('/PageFourMarketTrends')
+    soup = BeautifulSoup(response.data, 'html.parser')
+
+    question_one_div = soup.find('div', id='page-four-question-eight')
+    assert question_one_div is not None
+
+    checkboxes = question_one_div.find_all('input', type='checkbox')
+    assert len(checkboxes) == 6 # There are 10 checkboxes in the HMTL for Question One
+
+    # Validate checkbox values
+    expected_checkbox_values = [
+        'continuous-market-research-answer',
+        'customer-feedback-and-surveys-answer',
+        'competitive-analysis-answer',
+        'trend-analysis-tools-answer',
+        'industry-reports-and-publications-answer',
+        'collaborations-and-partnerships-answer'
+    ]
+    actual_checkbox_values = [checkbox['value'] for checkbox in checkboxes]
+    for value in expected_checkbox_values:
+        assert value in actual_checkbox_values
+
+def test_page_four_question_nine(client):
+    """Test Question Nine (checkboxes) on Page Four: Market Trends."""
+    response = client.get('/PageFourMarketTrends')
+    soup = BeautifulSoup(response.data, 'html.parser')
+
+    question_one_div = soup.find('div', id='page-four-question-nine')
+    assert question_one_div is not None
+
+    checkboxes = question_one_div.find_all('input', type='checkbox')
+    assert len(checkboxes) == 6 # There are 10 checkboxes in the HMTL for Question One
+
+    # Validate checkbox values
+    expected_checkbox_values = [
+        'personalized-customer-interactions-answer',
+        'omnichannel-integration-answer',
+        'adopting-AI-powered-support-answer',
+        'voice-of-customer-programs-answer',
+        'proactive-customer-support-answer',
+        'enhanced-data-privacy-and-security-answer'
+    ]
+    actual_checkbox_values = [checkbox['value'] for checkbox in checkboxes]
+    for value in expected_checkbox_values:
+        assert value in actual_checkbox_values
+
+def test_page_four_question_ten(client):
+    """Test Question Ten (checkboxes) on Page Four: Market Trends."""
+    response = client.get('/PageFourMarketTrends')
+    soup = BeautifulSoup(response.data, 'html.parser')
+
+    question_one_div = soup.find('div', id='page-four-question-ten')
+    assert question_one_div is not None
+
+    checkboxes = question_one_div.find_all('input', type='checkbox')
+    assert len(checkboxes) == 6 # There are 10 checkboxes in the HMTL for Question One
+
+    # Validate checkbox values
+    expected_checkbox_values = [
+        'identifying-emerging-markets-answer',
+        'sales-forecasting-answer',
+        'adjusting-sales-tactics-answer',
+        'product-positioning-and-messaging-answer',
+        'customer-segmentation-answer',
+        'competitive-benchmarking-answer'
     ]
     actual_checkbox_values = [checkbox['value'] for checkbox in checkboxes]
     for value in expected_checkbox_values:

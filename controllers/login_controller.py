@@ -24,9 +24,6 @@ def login():
 
             try:
                 print("Executing query")
-                # query = "SELECT * FROM user WHERE username = %s"
-                # my_cursor.execute(query, (login_model.username,))
-                # user = my_cursor.fetchone()
                 user = find_user_by_username(my_cursor, login_model.username)
                 if user:
                     # Check password
@@ -35,7 +32,8 @@ def login():
                     if authenticated_user:
                         print("User found")
                         session['username'] = login_model.username
-                        session['user_id'] = user[0]  # Ensure index is correct for user ID
+                        # Ensure index is correct for user ID
+                        session['user_id'] = user[0]
                         print(f"Session data set: user_id={user[0]}, username={login_model.username}")
                         flash('Login successful!', 'success')
                         # Redirect to home page after login

@@ -6,6 +6,10 @@ from app import app
 def client():
     app.config['TESTING'] = True
     with app.test_client() as client:
+        with client.session_transaction() as sess:
+            # Simulate a logged-in user by adding 'username' to the session
+            sess['username'] = 'testuser'
+            sess['password'] = 'password'
         yield client
 
 def test_login_page_render(client):
@@ -35,6 +39,23 @@ def test_login_page_render(client):
     assert password_input['id'] == "password"
     assert 'required' in password_input.attrs
 
+    # Check stylesheets
+    stylesheets = soup.find_all('link', rel='stylesheet')
+    expected_stylesheets = [
+        '/static/content/login-page.css'
+    ]
+    hrefs = [link['href'] for link in stylesheets]
+    for stylesheet in expected_stylesheets:
+        assert stylesheet in hrefs
+
+    # Check meta tags
+    meta_charset = soup.find('meta', attrs={'charset': 'UTF-8'})
+    meta_viewport = soup.find('meta', attrs={'name': 'viewport', 'content': 'width=device-width, initial-scale=1.0'})
+    meta_compat = soup.find('meta', attrs={'http-equiv': 'X-UA-Compatible', 'content': 'IE=edge'})
+    assert meta_charset is not None
+    assert meta_viewport is not None
+    assert meta_compat is not None
+
     # Check buttons
     login_button = soup.find('input', {'value': 'Login'})
     assert login_button['type'] == "submit"
@@ -46,8 +67,8 @@ def test_login_page_render(client):
 def test_login_page_post_failure(client):
     """Test posting to the login endpoint with invalid credentials."""
     response = client.post('/login', data={
-        'username': 'wronguser',
-        'password': 'wrongpassword'
+        'username': 'invaliduser',
+        'password': 'invalidpassword'
     })
     assert response.status_code == 302
     assert response.headers['Location'] == '/login'

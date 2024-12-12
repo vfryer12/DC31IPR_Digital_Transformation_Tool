@@ -115,4 +115,3 @@ answer_map_q10 = {
     'engagement-answer': 'Engagement',
     'measurement-answer': 'Measurement'
 }
-

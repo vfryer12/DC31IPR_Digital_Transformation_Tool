@@ -4,7 +4,7 @@ from db_connection import create_connection, close_connection
 
 registration_bp = Blueprint('registration', __name__)
 
-@registration_bp.route('/registration', methods=['GET', 'POST'])
+@registration_bp.route('/registration', methods=['POST'])
 def register():
     if request.method == 'POST':
         username = request.form['username']

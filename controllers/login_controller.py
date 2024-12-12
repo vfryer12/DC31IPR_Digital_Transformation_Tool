@@ -13,9 +13,9 @@ def login():
 
     if request.method == 'POST':
         login_model.username = request.form.get('username', '').strip()
-        password = request.form.get('password', '').strip()
+        login_model.password = request.form.get('password', '').strip()
         # Debugging line
-        print(f"Username from form: {login_model.username}, Password from form: {password}")
+        print(f"Username from form: {login_model.username}, Password from form: {login_model.password}")
 
         conn = create_connection()
         if conn:
@@ -27,7 +27,7 @@ def login():
                 user = find_user_by_username(my_cursor, login_model.username)
                 if user:
                     # Check password
-                    authenticated_user = authenticate_user(my_cursor, login_model.username, password)
+                    authenticated_user = authenticate_user(my_cursor, login_model.username, login_model.password)
 
                     if authenticated_user:
                         print("User found")

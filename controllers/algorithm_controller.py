@@ -1,7 +1,7 @@
 #algorithm_controller.py
 
 from flask import Blueprint, session, jsonify, request
-from db_connection import create_connection
+from db_connector import create_connection
 
 # Create a Blueprint named 'calculate_score' for this controller
 calculate_score_bp = Blueprint('calculate_score', __name__)

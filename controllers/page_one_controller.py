@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for, session
-from db_connection import create_connection, close_connection
+from db_connector import create_connection, close_connection
 from controllers.utils.mappings_page_one import answer_map_q1, answer_map_q2, answer_map_q3, answer_map_q4, answer_map_q5, answer_map_q6, answer_map_q7, answer_map_q8, answer_map_q9, answer_map_q10
 from daos.upsert_data_single import upsert_single_answer
 from daos.upsert_data_multiple import upsert_multiple_answers

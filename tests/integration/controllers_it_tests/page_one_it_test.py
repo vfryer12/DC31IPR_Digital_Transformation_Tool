@@ -30,8 +30,8 @@ def test_page_one_valid_submission(client, monkeypatch):
     mock_conn = MagicMock()
     mock_cursor = MagicMock()
     mock_conn.cursor.return_value = mock_cursor
-    monkeypatch.setattr('db_connection.create_connection', lambda: mock_conn)
-    monkeypatch.setattr('db_connection.close_connection', lambda conn: None)
+    monkeypatch.setattr('db_connector.create_connection', lambda: mock_conn)
+    monkeypatch.setattr('db_connector.close_connection', lambda conn: None)
     
     # Mock the upsert operations
     mock_upsert_single = MagicMock()
@@ -92,8 +92,8 @@ def test_page_one_invalid_submission(client, monkeypatch):
     mock_conn = MagicMock()
     mock_cursor = MagicMock()
     mock_conn.cursor.return_value = mock_cursor
-    monkeypatch.setattr('db_connection.create_connection', lambda: mock_conn)
-    monkeypatch.setattr('db_connection.close_connection', lambda conn: None)
+    monkeypatch.setattr('db_connector.create_connection', lambda: mock_conn)
+    monkeypatch.setattr('db_connector.close_connection', lambda conn: None)
 
     # Mock answer mappings with missing data
     monkeypatch.setattr('controllers.utils.mappings_page_one.answer_map_q1', {'valid_option': 'mapped_valid_option'})
@@ -107,7 +107,7 @@ def test_page_one_invalid_submission(client, monkeypatch):
     assert response.location == '/PageOneDigitalStrategy'
 
 # Test for database connection failure
-def test_page_one_db_connection_failure(client, monkeypatch):
+def test_page_one_db_connector_failure(client, monkeypatch):
     """
     Test if database connection failure is handled correctly.
     """
@@ -115,7 +115,7 @@ def test_page_one_db_connection_failure(client, monkeypatch):
         sess['user_id'] = 1
 
     # Mock database connection failure
-    monkeypatch.setattr('db_connection.create_connection', lambda: None)
+    monkeypatch.setattr('db_connector.create_connection', lambda: None)
 
     response = client.post('/PageOneDigitalStrategy', data={
         'question-one': 'option1',

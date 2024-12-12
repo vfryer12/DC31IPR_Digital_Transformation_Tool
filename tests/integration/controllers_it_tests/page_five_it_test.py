@@ -29,8 +29,8 @@ def test_page_five_valid_submission(client, monkeypatch):
     mock_conn = MagicMock()
     mock_cursor = MagicMock()
     mock_conn.cursor.return_value = mock_cursor
-    monkeypatch.setattr('db_connection.create_connection', lambda: mock_conn)
-    monkeypatch.setattr('db_connection.close_connection', lambda conn: None)
+    monkeypatch.setattr('db_connector.create_connection', lambda: mock_conn)
+    monkeypatch.setattr('db_connector.close_connection', lambda conn: None)
 
     # Mock answer mappings
     answer_map_page_five_q1 = {'1': 'Option 1'}
@@ -78,7 +78,7 @@ def test_page_five_invalid_submission(client, monkeypatch):
     assert response.status_code == 302
     assert response.location.endswith('/PageFiveDigitalMarketing')  # Redirect to the same page
 
-def test_page_five_db_connection_failure(client, monkeypatch):
+def test_page_five_db_connector_failure(client, monkeypatch):
     """
     Test handling of database connection failure.
     """
@@ -86,7 +86,7 @@ def test_page_five_db_connection_failure(client, monkeypatch):
         sess['user_id'] = 1
 
     # Simulate database connection failure
-    monkeypatch.setattr('db_connection.create_connection', lambda: None)
+    monkeypatch.setattr('db_connector.create_connection', lambda: None)
 
     response = client.post('/PageFiveDigitalMarketing', data={
         'page-five-question-one': ['1'],

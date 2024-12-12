@@ -35,7 +35,7 @@ def test_login_success(client, monkeypatch):
     mock_conn = MagicMock()
     mock_cursor = MagicMock()
     mock_conn.cursor.return_value = mock_cursor
-    monkeypatch.setattr('db_connection.create_connection', lambda: mock_conn)
+    monkeypatch.setattr('db_connector.create_connection', lambda: mock_conn)
 
     # Mock execute and fetchone for successful login
     def mock_execute(query, params):
@@ -67,7 +67,7 @@ def test_login_invalid_username(client, monkeypatch):
     mock_conn = MagicMock()
     mock_cursor = MagicMock()
     mock_conn.cursor.return_value = mock_cursor
-    monkeypatch.setattr('db_connection.create_connection', lambda: mock_conn)
+    monkeypatch.setattr('db_connector.create_connection', lambda: mock_conn)
 
     # Mock execute and fetchone for invalid username
     def mock_execute(query, params):
@@ -94,7 +94,7 @@ def test_login_invalid_password(client, monkeypatch):
     mock_conn = MagicMock()
     mock_cursor = MagicMock()
     mock_conn.cursor.return_value = mock_cursor
-    monkeypatch.setattr('db_connection.create_connection', lambda: mock_conn)
+    monkeypatch.setattr('db_connector.create_connection', lambda: mock_conn)
 
     # Mock execute and fetchone for valid username but incorrect password
     def mock_execute(query, params):

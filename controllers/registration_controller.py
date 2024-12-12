@@ -1,6 +1,6 @@
 # registration_controller.py
 from flask import Blueprint, render_template, request, redirect, url_for, flash
-from db_connection import create_connection, close_connection
+from db_connector import create_connection, close_connection
 
 registration_bp = Blueprint('registration', __name__)
 

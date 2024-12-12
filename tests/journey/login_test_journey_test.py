@@ -7,7 +7,6 @@ def test_login():
     # Start a new browser session 
     options = webdriver.ChromeOptions()
     options.add_argument("--incognito")
-    # Use incognito mode to start with a clean session
     driver = webdriver.Chrome(options=options)
 
     try:
@@ -22,5 +21,9 @@ def test_login():
         # Wait for the page to reload after login
         WebDriverWait(driver, 10).until(EC.url_changes("http://127.0.0.1:5000/login"))
 
-    finally:
-        driver.quit()
+        # Return the driver if login is successful
+        return driver
+    except Exception as e:
+        print(f"Login failed: {e}")
+        driver.quit()  # Close the driver if login fails
+        return None

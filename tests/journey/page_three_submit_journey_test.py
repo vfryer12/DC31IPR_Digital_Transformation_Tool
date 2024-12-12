@@ -1,62 +1,58 @@
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from login_test_journey_test import test_login
-import time
 
-def test_page_one_to_page_two():
+def test_page_three_submit_journey():
     driver = test_login()
     if driver is None:
         print("Login failed, cannot proceed with the test.")
         return
 
     try:
-        # Step 1: Navigate to Page One Digital Strategy
-        print("Navigating to Page One Digital Strategy...")
-        driver.get("http://127.0.0.1:5000/PageOneDigitalStrategy")
-        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "no-plan")))
-        
+        # Step 1: Navigate to Page Three Digital Skills
+        print("Navigating to Page Three Digital Skills...")
+        driver.get("http://127.0.0.1:5000/PageThreeTechnologyAdoption")
+
         # Fill in question one
         print("Filling in question one...")
-        driver.find_element(By.ID, "no-plan").click()
+        driver.find_element(By.ID, "risk-analysis-answer").click()
 
         # Fill in question two
         print("Filling in question two...")
-        dropdown = Select(driver.find_element(By.ID, "question-two-dropdown"))
-        dropdown.select_by_visible_text("Chief Information Officer (CIO)")
+        driver.find_element(By.ID, "pilot-testing-answer").click()
 
         # Fill in question three
         print("Filling in question three...")
-        driver.find_element(By.ID, "question-three-monthly").click()
+        driver.find_element(By.ID, "security-concerns-answer").click()
 
         # Fill in question four
         print("Filling in question four...")
-        driver.find_element(By.ID, "customer-engagement-answer").click()
+        driver.find_element(By.ID, "return-on-investment-answer").click()
 
         # Fill in question five
         print("Filling in question five...")
-        driver.find_element(By.ID, "digital-investments-answer").click()
+        driver.find_element(By.ID, "implement-governance-and-accountability-answer").click()
 
         # Fill in question six
         print("Filling in question six...")
-        driver.find_element(By.ID, "engagement-answer").click()
+        driver.find_element(By.ID, "plan-for-resistance-answer").click()
 
         # Fill in question seven
         print("Filling in question seven...")
-        driver.find_element(By.ID, "resistance-to-change-answer").click()
+        driver.find_element(By.ID, "follow-tech-news-and-blogs-answer").click()
 
         # Fill in question eight
         print("Filling in question eight...")
-        driver.find_element(By.ID, "documentation-answer").click()
+        driver.find_element(By.ID, "conduct-regular-audits-answer").click()
 
         # Fill in question nine
         print("Filling in question nine...")
-        driver.find_element(By.ID, "risk-assessment-answer").click()
+        driver.find_element(By.ID, "engage-with-stakeholders-answer").click()
 
         # Fill in question ten
         print("Filling in question ten...")
-        driver.find_element(By.ID, "customer-feedback-answer").click()
+        driver.find_element(By.ID, "foster-a-positive-culture-answer").click()
 
         # Click submit
         print("Clicking submit...")
@@ -79,11 +75,9 @@ def test_page_one_to_page_two():
 
         # Wait for the page to reload after next navigation
         print("Waiting for the next page to load...")
-        WebDriverWait(driver, 10).until(EC.url_contains("/PageTwoDigitalSkills"))
+        WebDriverWait(driver, 10).until(EC.url_contains("/PageFourMarketTrends"))
         
-        print("Navigation to Page Two Digital Skills completed successfully.")
+        print("Navigation to Page Four Market Trends completed successfully.")
 
     finally:
         driver.quit()
-
-test_page_one_to_page_two()

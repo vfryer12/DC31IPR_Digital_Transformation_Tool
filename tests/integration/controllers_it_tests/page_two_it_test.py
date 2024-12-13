@@ -31,8 +31,8 @@ def test_page_two_valid_submission(client, monkeypatch):
     mock_conn = MagicMock()
     mock_cursor = MagicMock()
     mock_conn.cursor.return_value = mock_cursor
-    monkeypatch.setattr('db_connection.create_connection', lambda: mock_conn)
-    monkeypatch.setattr('db_connection.close_connection', lambda conn: None)
+    monkeypatch.setattr('db_connector.create_connection', lambda: mock_conn)
+    monkeypatch.setattr('db_connector.close_connection', lambda conn: None)
 
     # Mock the `upsert_multiple_answers` function
     mock_upsert_multiple = MagicMock()
@@ -89,7 +89,7 @@ def test_page_two_invalid_submission(client, monkeypatch):
     assert response.location == url_for('page_two.page_two_digital_skills', _external=False)
 
 # Test for database connection failure
-def test_page_two_db_connection_failure(client, monkeypatch):
+def test_page_two_db_connector_failure(client, monkeypatch):
     """
     Test if database connection failure is handled gracefully.
     """
@@ -98,7 +98,7 @@ def test_page_two_db_connection_failure(client, monkeypatch):
         sess['user_id'] = 1
 
     # Mock database connection to return None
-    monkeypatch.setattr('db_connection.create_connection', lambda: None)
+    monkeypatch.setattr('db_connector.create_connection', lambda: None)
 
     response = client.post('/PageTwoDigitalSkills', data={
         'page-two-question-one': ['valid_option']

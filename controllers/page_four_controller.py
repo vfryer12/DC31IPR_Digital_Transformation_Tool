@@ -1,6 +1,6 @@
 from flask import Blueprint, request, session, redirect, url_for, render_template
 from controllers.utils.mappings_page_four import answer_map_page_four_q1, answer_map_page_four_q2, answer_map_page_four_q3, answer_map_page_four_q4, answer_map_page_four_q5, answer_map_page_four_q6, answer_map_page_four_q7, answer_map_page_four_q8, answer_map_page_four_q9, answer_map_page_four_q10
-from db_connection import create_connection, close_connection
+from db_connector import create_connection, close_connection
 from daos.upsert_data_multiple import upsert_multiple_answers
 
 page_four_bp = Blueprint('page_four', __name__)

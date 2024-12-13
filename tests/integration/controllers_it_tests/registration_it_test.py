@@ -35,7 +35,7 @@ def test_registration_success(client, monkeypatch):
     mock_conn = MagicMock()
     mock_cursor = MagicMock()
     mock_conn.cursor.return_value = mock_cursor
-    monkeypatch.setattr('db_connection.create_connection', lambda: mock_conn)
+    monkeypatch.setattr('db_connector.create_connection', lambda: mock_conn)
 
     # Mock execute and fetchone
     def mock_execute(query, params):
@@ -65,7 +65,7 @@ def test_registration_existing_user(client, monkeypatch):
     mock_conn = MagicMock()
     mock_cursor = MagicMock()
     mock_conn.cursor.return_value = mock_cursor
-    monkeypatch.setattr('db_connection.create_connection', lambda: mock_conn)
+    monkeypatch.setattr('db_connector.create_connection', lambda: mock_conn)
 
     # Simulate an existing user in the database
     def mock_execute(query, params):
@@ -91,7 +91,7 @@ def test_registration_db_error(client, monkeypatch):
     Test if the system handles database connection failure gracefully.
     """
     # Mock the database connection failure
-    monkeypatch.setattr('db_connection.create_connection', lambda: None)
+    monkeypatch.setattr('db_connector.create_connection', lambda: None)
 
     # Simulate sending a POST request to the registration page
     response = client.post('/registration', data={

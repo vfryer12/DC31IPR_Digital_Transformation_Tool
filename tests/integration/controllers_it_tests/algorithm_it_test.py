@@ -44,7 +44,7 @@ def test_submit_page_get(client, monkeypatch):
     mock_conn = MagicMock()
     mock_cursor = MagicMock()
     mock_conn.cursor.return_value = mock_cursor
-    monkeypatch.setattr('db_connection.create_connection', lambda: mock_conn)
+    monkeypatch.setattr('db_connector.create_connection', lambda: mock_conn)
     
     # Mock the database query result
     mock_cursor.fetchall.return_value = [(1, 18), (2, 18)]  # Simulate two records with weights 18 and 18

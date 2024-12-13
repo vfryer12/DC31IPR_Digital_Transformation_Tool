@@ -1,7 +1,8 @@
-#algorithm_controller.py
+# algorithm_controller.py
 
 from flask import Blueprint, session, jsonify, request
 from db_connector import create_connection
+from daos.get_user_answer_weights import get_user_answer_weights
 
 # Create a Blueprint named 'calculate_score' for this controller
 calculate_score_bp = Blueprint('calculate_score', __name__)
@@ -12,20 +13,13 @@ def get_user_weights(user_id):
     conn = create_connection()
     cursor = conn.cursor()
     # Execute a query to fetch question IDs and weights for the given user ID
-    cursor.execute("""
-        SELECT ua.questionsId, a.weighting
-        FROM userAnswers ua
-        JOIN answers a ON ua.answersId = a.id
-        WHERE ua.userId = %s
-    """, (user_id,))
-    # Fetch all results
-    weights = cursor.fetchall()
+    user_weights = get_user_answer_weights(cursor, user_id)
     # Close the cursor
     cursor.close()
     # Close the database connection
     conn.close()
     # Return the fetched weights
-    return weights
+    return user_weights
 
 # Function to calculate the total score across all sections
 def calculate_total_weight(all_section_weights):
@@ -61,14 +55,7 @@ def calculate_score():
     conn = create_connection()
     cursor = conn.cursor()
 
-    # Fetch user-specific data (e.g., answers, weights)
-    cursor.execute("""
-        SELECT ua.questionsId, a.weighting
-        FROM userAnswers ua
-        JOIN answers a ON ua.answersId = a.id
-        WHERE ua.userId = %s
-    """, (user_id,))
-    user_weights = cursor.fetchall()
+    user_weights = get_user_answer_weights(cursor, user_id)
 
     cursor.close()
     conn.close()

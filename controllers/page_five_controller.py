@@ -46,46 +46,46 @@ def page_five_digital_marketing():
         page_five_question_nine_answers  = [answer_map_page_five_q9.get(value, None) for value in page_five_question_nine_values]
         page_five_question_ten_answers   = [answer_map_page_five_q10.get(value, None) for value in page_five_question_ten_values]
         
-                # Has to be separate mappings ready for the validation checks
+         # Has to be separate mappings ready for the validation checks
 
-        if None in page_five_question_one_answers:
-            print("Invalid answer for page five, question one")
+        if len(page_five_question_one_answers) > 3 or None in page_five_question_one_answers:
+            print("Invalid answer for page five,  question one or more than 3 selections made")
             return redirect(url_for('page_five.page_five_digital_marketing'))
         
-        if None in page_five_question_two_answers:
-            print("Invalid answer for page five, question two")
+        if  len(page_five_question_two_answers) > 3 or None in page_five_question_two_answers:
+            print("Invalid answer for page five, question two or more than 3 selections made")
             return redirect(url_for('page_five.page_five_digital_marketing'))
         
-        if None in page_five_question_three_answers:
-            print("Invalid answer for page five, question three")
+        if  len(page_five_question_three_answers) > 3 or None in page_five_question_three_answers:
+            print("Invalid answer for page five, question three or more than 3 selections made")
             return redirect(url_for('page_five.page_five_digital_marketing'))
 
-        if None in page_five_question_four_answers:
-            print("Invalid answer for page five, question four")
+        if len(page_five_question_four_answers) != 1 or None in page_five_question_four_answers:
+            print("Invalid answer for page five, question four or more than 1 selection made")
             return redirect(url_for('page_five.page_five_digital_marketing'))
         
-        if None in page_five_question_five_answers:
-            print("Invalid answer for page five, question five")
+        if len(page_five_question_five_answers) != 1 or None in page_five_question_five_answers:
+            print("Invalid answer for page five, question five or more than 1 selection made")
             return redirect(url_for('page_five.page_five_digital_marketing'))
         
-        if None in page_five_question_six_answers:
-            print("Invalid answer for page five, question six")
+        if len(page_five_question_six_answers) != 1 or None in page_five_question_six_answers:
+            print("Invalid answer for page five, question six or more than 3 selections made")
             return redirect(url_for('page_five.page_five_digital_marketing'))
         
-        if None in page_five_question_seven_answers:
-            print("Invalid answer for page five, question seven")
+        if len(page_five_question_seven_answers) != 1 or None in page_five_question_seven_answers:
+            print("Invalid answer for page five, question seven or more than 3 selections made")
             return redirect(url_for('page_five.page_five_digital_marketing'))
         
-        if None in page_five_question_eight_answers:
-            print("Invalid answer for page five, question eight")
+        if len(page_five_question_eight_answers) != 1 or None in page_five_question_eight_answers:
+            print("Invalid answer for page five, question eight or more than 1 selection made")
             return redirect(url_for('page_five.page_five_digital_marketing'))
         
-        if None in page_five_question_nine_answers:
-            print("Invalid answer for page five, question nine")
+        if len(page_five_question_nine_answers) != 1 or None in page_five_question_nine_answers:
+            print("Invalid answer for page five, question nine or more than 1 selection made")
             return redirect(url_for('page_five.page_five_digital_marketing'))
         
-        if None in page_five_question_ten_answers:
-            print("Invalid answer for page five, question ten")
+        if len(page_five_question_ten_answers) != 1 or None in page_five_question_ten_answers:
+            print("Invalid answer for page five, question ten or more than 1 selection made")
             return redirect(url_for('page_five.page_five_digital_marketing'))
         
         try:

@@ -1,5 +1,5 @@
 import pytest
-from unittest.mock import MagicMock
+from unittest.mock import MagicMock, call
 from daos.upsert_data_multiple import upsert_multiple_answers
 
 
@@ -10,112 +10,90 @@ def mock_cursor():
 
 
 def test_upsert_multiple_answers_success(mock_cursor):
-    # Example data
     answers_list = ["Answer 1", "Answer 2", "Answer 3"]
     question_id = 101
     user_id = 5
 
     # Mock database responses
-    # Simulate finding the answer IDs for "Answer 1", "Answer 2", "Answer 3"
     mock_cursor.fetchone.side_effect = [
-        (1,),  # Answer ID for "Answer 1"
-        (2,),  # Answer ID for "Answer 2"
-        (3,)   # Answer ID for "Answer 3"
+        (1,),  # ID for "Answer 1"
+        (2,),  # ID for "Answer 2"
+        (3,)   # ID for "Answer 3"
     ]
 
-    # Call the function
     upsert_multiple_answers(mock_cursor, answers_list, question_id, user_id)
 
-    # Verify delete query is called once
+    # Verify the delete query
     mock_cursor.execute.assert_any_call(
         "DELETE FROM userAnswers WHERE userId = %s AND questionsId = %s",
         (user_id, question_id)
     )
 
-    # Verify the SELECT query is called for each answer
-    mock_cursor.execute.assert_any_call(
-        "SELECT id FROM answers WHERE questionsId = %s AND answer = %s",
-        (question_id, "Answer 1")
-    )
-    mock_cursor.execute.assert_any_call(
-        "SELECT id FROM answers WHERE questionsId = %s AND answer = %s",
-        (question_id, "Answer 2")
-    )
-    mock_cursor.execute.assert_any_call(
-        "SELECT id FROM answers WHERE questionsId = %s AND answer = %s",
-        (question_id, "Answer 3")
-    )
+    # Verify SELECT queries
+    select_calls = [
+        call("SELECT id FROM answers WHERE questionsId = %s AND answer = %s", (question_id, "Answer 1")),
+        call("SELECT id FROM answers WHERE questionsId = %s AND answer = %s", (question_id, "Answer 2")),
+        call("SELECT id FROM answers WHERE questionsId = %s AND answer = %s", (question_id, "Answer 3"))
+    ]
+    mock_cursor.execute.assert_has_calls(select_calls, any_order=True)
 
-    # Verify the INSERT query is called for each answer
-    mock_cursor.execute.assert_any_call(
-        "INSERT INTO userAnswers (answersId, userId, questionsId) VALUES (%s, %s, %s)",
-        (1, user_id, question_id)
-    )
-    mock_cursor.execute.assert_any_call(
-        "INSERT INTO userAnswers (answersId, userId, questionsId) VALUES (%s, %s, %s)",
-        (2, user_id, question_id)
-    )
-    mock_cursor.execute.assert_any_call(
-        "INSERT INTO userAnswers (answersId, userId, questionsId) VALUES (%s, %s, %s)",
-        (3, user_id, question_id)
-    )
+    # Verify INSERT queries
+    insert_calls = [
+        call("INSERT INTO userAnswers (answersId, userId, questionsId) VALUES (%s, %s, %s)", (1, user_id, question_id)),
+        call("INSERT INTO userAnswers (answersId, userId, questionsId) VALUES (%s, %s, %s)", (2, user_id, question_id)),
+        call("INSERT INTO userAnswers (answersId, userId, questionsId) VALUES (%s, %s, %s)", (3, user_id, question_id))
+    ]
+    mock_cursor.execute.assert_has_calls(insert_calls, any_order=True)
 
-    # Check the total number of `execute` calls
-    assert mock_cursor.execute.call_count == 7  # 1 delete + 3 select + 3 insert
+    # Assert the total number of queries executed
+    assert mock_cursor.execute.call_count == 7  # 1 DELETE + 3 SELECT + 3 INSERT
 
 
 def test_upsert_multiple_answers_skip_missing(mock_cursor):
-    # Example data with one missing answer
     answers_list = ["Answer 1", "Answer 2", "Missing Answer"]
     question_id = 102
     user_id = 6
 
     # Mock database responses
     mock_cursor.fetchone.side_effect = [
-        (1,),  # Answer ID for "Answer 1"
-        (2,),  # Answer ID for "Answer 2"
-        None   # "Missing Answer" not found
+        (1,),  # ID for "Answer 1"
+        (2,),  # ID for "Answer 2"
+        None   # No ID for "Missing Answer"
     ]
 
-    # Call the function
     upsert_multiple_answers(mock_cursor, answers_list, question_id, user_id)
 
-    # Verify delete query is called
+    # Verify the delete query
     mock_cursor.execute.assert_any_call(
         "DELETE FROM userAnswers WHERE userId = %s AND questionsId = %s",
         (user_id, question_id)
     )
 
-    # Verify the SELECT query is called for each answer
+    # Verify SELECT queries
     mock_cursor.execute.assert_any_call(
-        "SELECT id FROM answers WHERE questionsId = %s AND answer = %s",
-        (question_id, "Answer 1")
+        "SELECT id FROM answers WHERE questionsId = %s AND answer = %s", (question_id, "Answer 1")
     )
     mock_cursor.execute.assert_any_call(
-        "SELECT id FROM answers WHERE questionsId = %s AND answer = %s",
-        (question_id, "Answer 2")
+        "SELECT id FROM answers WHERE questionsId = %s AND answer = %s", (question_id, "Answer 2")
     )
     mock_cursor.execute.assert_any_call(
-        "SELECT id FROM answers WHERE questionsId = %s AND answer = %s",
-        (question_id, "Missing Answer")
+        "SELECT id FROM answers WHERE questionsId = %s AND answer = %s", (question_id, "Missing Answer")
     )
 
-    # Verify the INSERT query is called only for found answers
+    # Verify INSERT queries only for found answers
     mock_cursor.execute.assert_any_call(
-        "INSERT INTO userAnswers (answersId, userId, questionsId) VALUES (%s, %s, %s)",
-        (1, user_id, question_id)
+        "INSERT INTO userAnswers (answersId, userId, questionsId) VALUES (%s, %s, %s)", (1, user_id, question_id)
     )
     mock_cursor.execute.assert_any_call(
-        "INSERT INTO userAnswers (answersId, userId, questionsId) VALUES (%s, %s, %s)",
-        (2, user_id, question_id)
+        "INSERT INTO userAnswers (answersId, userId, questionsId) VALUES (%s, %s, %s)", (2, user_id, question_id)
     )
 
-    # Ensure no INSERT is called for "Missing Answer"
-    for call in mock_cursor.execute.call_args_list:
-        assert call[0][0] != (
-            "INSERT INTO userAnswers (answersId, userId, questionsId) VALUES (%s, %s, %s)",
-            (None, user_id, question_id)
-        )
+    # Ensure no INSERT for "Missing Answer"
+    assert not any(
+        call[0][0] == "INSERT INTO userAnswers (answersId, userId, questionsId) VALUES (%s, %s, %s)" and
+        call[0][1][0] is None
+        for call in mock_cursor.execute.call_args_list
+    )
 
-    # Check the total number of `execute` calls
-    assert mock_cursor.execute.call_count == 6  # 1 delete + 3 select + 2 insert
+    # Assert the total number of queries executed
+    assert mock_cursor.execute.call_count == 6  # 1 DELETE + 3 SELECT + 2 INSERT

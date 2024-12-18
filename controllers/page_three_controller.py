@@ -48,43 +48,43 @@ def page_three_technology_adoption():
         
                 # Has to be separate mappings ready for the validation checks
 
-        if None in page_three_question_one_answers:
-            print("Invalid answer for page three, question one")
+        if len(page_three_question_one_answers) > 3 or None in page_three_question_one_answers:
+            print("Invalid answer for page three, question one or more than 3 selections made")
             return redirect(url_for('page_three.page_three_technology_adoption'))
         
-        if None in page_three_question_two_answers:
-            print("Invalid answer for page three, question two")
+        if len(page_three_question_two_answers) != 1 or None in page_three_question_two_answers:
+            print("Invalid answer for page three, question two or more than 1 selection made")
             return redirect(url_for('page_three.page_three_technology_adoption'))
         
-        if None in page_three_question_three_answers:
-            print("Invalid answer for page three, question three")
+        if len(page_three_question_three_answers) > 3 or None in page_three_question_three_answers:
+            print("Invalid answer for page three, question three or more than 3 selections made")
             return redirect(url_for('page_three.page_three_technology_adoption'))
 
-        if None in page_three_question_four_answers:
-            print("Invalid answer for page three, question four")
+        if len(page_three_question_four_answers) > 3 or None in page_three_question_four_answers:
+            print("Invalid answer for page three, question four or more than 3 selections made")
             return redirect(url_for('page_three.page_three_technology_adoption'))
         
-        if None in page_three_question_five_answers:
-            print("Invalid answer for page three, question five")
+        if len(page_three_question_five_answers) > 3 or None in page_three_question_five_answers:
+            print("Invalid answer for page three, question five or more than 3 selections made")
             return redirect(url_for('page_three.page_three_technology_adoption'))
         
-        if None in page_three_question_six_answers:
-            print("Invalid answer for page three, question six")
+        if len(page_three_question_six_answers) > 3 or None in page_three_question_six_answers:
+            print("Invalid answer for page three, question six or more than 3 selections made")
             return redirect(url_for('page_three.page_three_technology_adoption'))
         
-        if None in page_three_question_seven_answers:
-            print("Invalid answer for page three, question seven")
+        if len(page_three_question_seven_answers) > 3 or None in page_three_question_seven_answers:
+            print("Invalid answer for page three, question seven or more than 3 selections made")
             return redirect(url_for('page_three.page_three_technology_adoption'))
         
-        if None in page_three_question_eight_answers:
-            print("Invalid answer for page three, question eight")
+        if len(page_three_question_eight_answers) > 3 or None in page_three_question_eight_answers:
+            print("Invalid answer for page three, question eight or more than 3 selections made")
             return redirect(url_for('page_three.page_three_technology_adoption'))
         
-        if None in page_three_question_nine_answers:
-            print("Invalid answer for page three, question nine")
+        if len(page_three_question_nine_answers) > 3 or None in page_three_question_nine_answers:
+            print("Invalid answer for page three, question nine or more than 3 selections made")
             return redirect(url_for('page_three.page_three_technology_adoption'))
         
-        if None in page_three_question_ten_answers:
+        if len(page_three_question_ten_answers) > 3 or None in page_three_question_ten_answers:
             print("Invalid answer for page three, question ten")
             return redirect(url_for('page_three.page_three_technology_adoption'))
         

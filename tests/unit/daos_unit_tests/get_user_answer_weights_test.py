@@ -7,6 +7,8 @@ def mock_cursor():
     """Fixture to provide a mock database cursor."""
     return MagicMock()
 
+from textwrap import dedent
+
 def test_get_user_weights(mock_cursor):
     user_id = 1
 
@@ -18,12 +20,12 @@ def test_get_user_weights(mock_cursor):
 
     # Assert the query is executed with the correct parameters
     mock_cursor.execute.assert_called_once_with(
-        """
-        SELECT ua.questionsId, a.weighting
-        FROM userAnswers ua
-        JOIN answers a ON ua.answersId = a.id
-        WHERE ua.userId = %s
-        """, 
+        dedent("""
+            SELECT ua.questionsId, a.weighting
+            FROM userAnswers ua
+            JOIN answers a ON ua.answersId = a.id
+            WHERE ua.userId = %s
+        """),
         (user_id,)
     )
 

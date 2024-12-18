@@ -48,44 +48,44 @@ def page_two_digital_skills():
         
         # Has to be separate mappings ready for the validation checks
 
-        if None in page_two_question_one_answers:
-            print("Invalid answer for page two, question one")
+        if len(page_two_question_one_answers) != 3 or None in page_two_question_one_answers:
+            print("Invalid answer for page two, question one. Exactly 3 selections must be made.")
             return redirect(url_for('page_two.page_two_digital_skills'))
         
-        if None in page_two_question_two_answers:
-            print("Invalid answer for page two, question two")
+        if len(page_two_question_two_answers) > 3 or None in page_two_question_two_answers:
+            print("Invalid answer for page two, question two or more than 3 selections made")
             return redirect(url_for('page_two.page_two_digital_skills'))
         
-        if None in page_two_question_three_answers:
-            print("Invalid answer for page two, question three")
+        if len(page_two_question_three_answers) > 3 or None in page_two_question_three_answers:
+            print("Invalid answer for page two, question three or more than 3 selections made")
             return redirect(url_for('page_two.page_two_digital_skills'))
 
-        if None in page_two_question_four_answers:
-            print("Invalid answer for page two, question four")
+        if len(page_two_question_four_answers) > 3 or None in page_two_question_four_answers:
+            print("Invalid answer for page two, question four or mroe than 3 selections made")
             return redirect(url_for('page_two.page_two_digital_skills'))
         
-        if None in page_two_question_five_answers:
-            print("Invalid answer for page two, question five")
+        if len(page_two_question_five_answers) > 3 or None in page_two_question_five_answers:
+            print("Invalid answer for page two, question five or more than 3 selections made")
             return redirect(url_for('page_two.page_two_digital_skills'))
         
-        if None in page_two_question_six_answers:
-            print("Invalid answer for page two, question six")
+        if len(page_two_question_six_answers) > 3 or None in page_two_question_six_answers:
+            print("Invalid answer for page two, question six or more than 3 selections made")
             return redirect(url_for('page_two.page_two_digital_skills'))
         
-        if None in page_two_question_seven_answers:
-            print("Invalid answer for page two, question seven")
+        if len(page_two_question_seven_answers) > 3 or None in page_two_question_seven_answers:
+            print("Invalid answer for page two, question seven or more than 3 selections made")
             return redirect(url_for('page_two.page_two_digital_skills'))
 
-        if None in page_two_question_eight_answers:
-            print("Invalid answer for page two, question eight")
+        if len(page_two_question_eight_answers) > 3 or None in page_two_question_eight_answers:
+            print("Invalid answer for page two, question eight or more than 3 selections made")
             return redirect(url_for('page_two.page_two_digital_skills'))
         
-        if None in page_two_question_nine_answers:
-            print("Invalid answer for page two, question nine")
+        if len(page_two_question_nine_answers) > 3 or None in page_two_question_nine_answers:
+            print("Invalid answer for page two, question nine or more than 3 selections made")
             return redirect(url_for('page_two.page_two_digital_skills'))
         
-        if None in page_two_question_ten_answers:
-            print("Invalid answer for page two, question ten")
+        if len(page_two_question_ten_answers) > 3 or None in page_two_question_ten_answers:
+            print("Invalid answer for page two, question ten or more than 3 selections made")
             return redirect(url_for('page_two.page_two_digital_skills'))
         
         try:

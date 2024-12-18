@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  
+
   //Page One
   // Restrict selection for page one question one (exactly one required answer)
   enforceSingleSelection('#question-one', 'You must select exactly one option for Question One.');
@@ -66,6 +66,27 @@ document.addEventListener('DOMContentLoaded', function () {
   // Restrict up to 3 answers for page three question ten
   enforceMaxSelection('#page-three-question-ten', 3, 'You can only select up to three options for Question Ten.');
 
+  //Page Four
+  // Restrict up to 3 answers for page four question One
+  enforceMaxSelection('#page-four-question-one', 3, 'You can only select up to three options for Question One.');
+  // Restrict selection for page four question one (exactly one required answer)
+  enforceSingleSelection('#page-four-question-two', 'You must select exactly one option for Question Two.');
+  // Restrict up to 3 answers for page four question three
+  enforceMaxSelection('#page-four-question-three', 3, 'You can only select up to three options for Question Three.');
+  // Restrict up to 3 answers for page four question four
+  enforceSingleSelection('#page-four-question-four', 'You must select exactly one option for Question Four.');
+  // Restrict up to 3 answers for page four question five
+  enforceSingleSelection('#page-four-question-five', 'You must select exactly one option for Question Five.');
+  // Restrict up to 3 answers for page four question six
+  enforceMaxSelection('#page-four-question-six', 3, 'You must select exactly one option for Question Six.');
+  // Restrict up to 3 answers for page four question seven
+  enforceMaxSelection('#page-four-question-seven', 3, 'You must select exactly one option for Question Seven.');
+  // Restrict up to 3 answers for page four question eight
+  enforceSingleSelection('#page-four-question-eight', 'You must select exactly one option for Question Eight.');
+  // Restrict up to 3 answers for page four question nine
+  enforceSingleSelection('#page-four-question-nine', 'You must select exactly one option for Question Nine.');
+  // Restrict up to 3 answers for page four question ten
+  enforceSingleSelection('#page-four-question-ten', 'You must select exactly one option for Question Ten.');
 });
 
 /**

@@ -48,44 +48,44 @@ def page_four_market_trends():
         
         # Has to be separate mappings ready for the validation checks
 
-        if None in page_four_question_one_answers:
-            print("Invalid answer for page four, question one")
+        if len(page_four_question_one_answers) > 3 or None in page_four_question_one_answers:
+            print("Invalid answer for page four, question one or more than 3 selections made")
             return redirect(url_for('page_four.page_four_market_trends'))
         
-        if None in page_four_question_two_answers:
-            print("Invalid answer for page four, question two")
+        if len(page_four_question_two_answers) != 1 or None in page_four_question_two_answers:
+            print("Invalid answer for page four, question two or more than 1 selection made")
             return redirect(url_for('page_four.page_four_market_trends'))
         
-        if None in page_four_question_three_answers:
-            print("Invalid answer for page four, question three")
+        if len(page_four_question_three_answers) > 3 or None in page_four_question_three_answers:
+            print("Invalid answer for page four, question three or more than 3 selections made")
             return redirect(url_for('page_four.page_four_market_trends'))
 
-        if None in page_four_question_four_answers:
-            print("Invalid answer for page four, question four")
+        if len(page_four_question_four_answers) != 1 or None in page_four_question_four_answers:
+            print("Invalid answer for page four, question four or more than 1 selection made")
             return redirect(url_for('page_four.page_four_market_trends'))
         
-        if None in page_four_question_five_answers:
-            print("Invalid answer for page four, question five")
+        if len(page_four_question_five_answers) != 1 or None in page_four_question_five_answers:
+            print("Invalid answer for page four, question five or more than 1 selection made")
             return redirect(url_for('page_four.page_four_market_trends'))
         
-        if None in page_four_question_six_answers:
-            print("Invalid answer for page four, question six")
+        if len(page_four_question_six_answers) > 3 or None in page_four_question_six_answers:
+            print("Invalid answer for page four, question six or more than 3 selections made")
             return redirect(url_for('page_four.page_four_market_trends'))
         
-        if None in page_four_question_seven_answers:
-            print("Invalid answer for page four, question seven")
+        if len(page_four_question_seven_answers) > 3 or None in page_four_question_seven_answers:
+            print("Invalid answer for page four, question seven or more than 3 selections made")
             return redirect(url_for('page_four.page_four_market_trends'))
         
-        if None in page_four_question_eight_answers:
-            print("Invalid answer for page four, question eight")
+        if len(page_four_question_eight_answers) != 1 or None in page_four_question_eight_answers:
+            print("Invalid answer for page four, question eight or more than 1 selection made")
             return redirect(url_for('page_four.page_four_market_trends'))
         
-        if None in page_four_question_nine_answers:
-            print("Invalid answer for page four, question nine")
+        if len(page_four_question_nine_answers) != 1 or None in page_four_question_nine_answers:
+            print("Invalid answer for page four, question nine or more than 1 selection made")
             return redirect(url_for('page_four.page_four_market_trends'))
         
-        if None in page_four_question_ten_answers:
-            print("Invalid answer for page four, question ten")
+        if len(page_four_question_ten_answers) != 1  or None in page_four_question_ten_answers:
+            print("Invalid answer for page four, question ten or more than 1 selection made")
             return redirect(url_for('page_four.page_four_market_trends'))
         
         try:

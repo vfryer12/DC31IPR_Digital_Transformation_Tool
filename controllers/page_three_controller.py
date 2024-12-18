@@ -84,7 +84,7 @@ def page_three_technology_adoption():
             print("Invalid answer for page three, question nine or more than 3 selections made")
             return redirect(url_for('page_three.page_three_technology_adoption'))
         
-        if None in page_three_question_ten_answers:
+        if len(page_three_question_ten_answers) > 3 or None in page_three_question_ten_answers:
             print("Invalid answer for page three, question ten")
             return redirect(url_for('page_three.page_three_technology_adoption'))
         

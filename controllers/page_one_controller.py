@@ -60,32 +60,32 @@ def page_one_digital_strategy():
             print("Invalid answer for question three")
             return redirect(url_for('page_one.page_one_digital_strategy'))
 
-        if None in question_four_answers:
-            print("Invalid answer for question four")
+        if len(question_four_answers) != 1 or None in question_four_answers:
+            print("Invalid answer for question four: Must have exactly one valid answer")
             return redirect(url_for('page_one.page_one_digital_strategy'))
 
         if len(question_five_answers) > 3 or None in question_five_answers:
             print("Invalid answer for question five or more than three selections made")
             return redirect(url_for('page_one.page_one_digital_strategy'))
         
-        if None in question_six_answers:
-            print("Invalid answer for question six")
+        if len(question_six_answers) > 3 or None in question_six_answers:
+            print("Invalid answer for question six or more than three selections made")
             return redirect(url_for('page_one.page_one_digital_strategy'))
         
-        if None in question_seven_answers:
-            print("Invalid answer for question seven")
+        if len(question_seven_answers) > 3 or None in question_seven_answers:
+            print("Invalid answer for question seven or more than three selections made")
             return redirect(url_for('page_one.page_one_digital_strategy'))
         
-        if None in question_eight_answers:
-            print("Invalid answer for question eight")
+        if len(question_eight_answers) !=1 or None in question_eight_answers:
+            print("Invalid answer for question eight or more than one selection made")
             return redirect(url_for('page_one.page_one_digital_strategy'))
         
-        if None in question_nine_answers:
-            print("Invalid answer for question nine")
+        if len(question_nine_answers) > 2 or None in question_nine_answers:
+            print("Invalid answer for question nine or more than two selections made")
             return redirect(url_for('page_one.page_one_digital_strategy'))
         
-        if None in question_ten_answers:
-            print("Invalid answer for question ten")
+        if len(question_ten_answers) != 1 or None in question_ten_answers:
+            print("Invalid answer for question te or more than one selection made")
             return redirect(url_for('page_one.page_one_digital_strategy'))
 
         try:

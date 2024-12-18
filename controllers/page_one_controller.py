@@ -76,7 +76,7 @@ def page_one_digital_strategy():
             print("Invalid answer for question seven or more than three selections made")
             return redirect(url_for('page_one.page_one_digital_strategy'))
         
-        if len(question_eight_answers) !=1 or None in question_eight_answers:
+        if len(question_eight_answers) != 1 or None in question_eight_answers:
             print("Invalid answer for question eight or more than one selection made")
             return redirect(url_for('page_one.page_one_digital_strategy'))
         

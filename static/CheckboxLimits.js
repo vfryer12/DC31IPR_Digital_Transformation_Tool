@@ -1,63 +1,71 @@
 document.addEventListener('DOMContentLoaded', function () {
+  
+  //Page One
   // Restrict selection for page one question one (exactly one required answer)
   enforceSingleSelection('#question-one', 'You must select exactly one option for Question One.');
-
   // Restrict selection for page one question two (exactly one required answer)
   enforceSingleSelection('#question-two', 'You must select exactly one option for Question Two.');
-
   // Restrict selection for page one question three (exactly one required answer)
   enforceSingleSelection('#question-three', 'You must select exactly one option for Question Three.');
-
   // Restrict selection for page one question four (exactly one required answer)
   enforceSingleSelection('#question-four', 'You must select exactly one option for Question Four.');
-
   // Restrict up to 3 answers for page one question five
   enforceMaxSelection('#question-five', 3, 'You can only select up to three options for Question Five.');
-
   // Restrict up to 3 answers for page one question six
   enforceMaxSelection('#question-six', 3, 'You can only select up to three options for Question Six.');
-
   // Restrict up to 3 answers for page one question seven
   enforceMaxSelection('#question-seven', 3, 'You can only select up to three options for Question Seven.');
-
   // Restrict selection for page one question eight (exactly one required answer)
   enforceSingleSelection('#question-eight', 'You must select exactly one option for Question Eight.');
-
   // Restrict up to 2 answers for page one question nine
   enforceMaxSelection('#question-nine', 2, 'You can only select up to two options for Question Nine.');
-
   // Restrict selection for page one question ten (exactly one required answer)
   enforceSingleSelection('#question-ten', 'You must select exactly one option for Question Ten.');
 
+  //Page Two
   // Restrict up to 3 answers for page two question one
   enforceMaxSelection('#page-two-question-one', 3, 'You can only select up to three options for Question One.');
-
   // Restrict up to 3 answers for page two question two
   enforceMaxSelection('#page-two-question-two', 3, 'You can only select up to three options for Question Two.');
-
   // Restrict up to 3 answers for page two question three
   enforceMaxSelection('#page-two-question-three', 3, 'You can only select up to three options for Question Three.');
-
   // Restrict up to 3 answers for page two question four
   enforceMaxSelection('#page-two-question-four', 3, 'You can only select up to three options for Question Four.');
-
   // Restrict up to 3 answers for page two question five
   enforceMaxSelection('#page-two-question-five', 3, 'You can only select up to three options for Question Five.');
-
   // Restrict up to 3 answers for page two question six
   enforceMaxSelection('#page-two-question-six', 3, 'You can only select up to three options for Question Six.');
-
   // Restrict up to 3 answers for page two question seven
   enforceMaxSelection('#page-two-question-seven', 3, 'You can only select up to three options for Question Seven.');
-
   // Restrict up to 3 answers for page two question eight
   enforceMaxSelection('#page-two-question-eight', 3, 'You can only select up to three options for Question Eight.');
-
   // Restrict up to 3 answers for page two question nine
   enforceMaxSelection('#page-two-question-nine', 3, 'You can only select up to three options for Question Nine.');
-
   // Restrict up to 3 answers for page two question ten
   enforceMaxSelection('#page-two-question-ten', 3, 'You can only select up to three options for Question Ten.');
+
+  //Page Three
+  // Restrict up to 3 answers for page three question one
+  enforceMaxSelection('#page-three-question-one', 3, 'You can only select up to three options for Question One.');
+  // Restrict selection for page three question two (exactly one required answer)
+  enforceSingleSelection('#page-three-question-two', 'You must select exactly one option for Question Two.');
+  // Restrict up to 3 answers for page three question three
+  enforceMaxSelection('#page-three-question-three', 3, 'You can only select up to three options for Question Three.');
+  // Restrict up to 3 answers for page three question four
+  enforceMaxSelection('#page-three-question-four', 3, 'You can only select up to three options for Question Four.');
+  // Restrict up to 3 answers for page three question five
+  enforceMaxSelection('#page-three-question-five', 3, 'You can only select up to three options for Question Five.');
+  // Restrict up to 3 answers for page three question six
+  enforceMaxSelection('#page-three-question-six', 3, 'You can only select up to three options for Question Six.');
+  // Restrict up to 3 answers for page three question seven
+  enforceMaxSelection('#page-three-question-seven', 3, 'You can only select up to three options for Question Seven.');
+  // Restrict up to 3 answers for page three question eight
+  enforceMaxSelection('#page-three-question-eight', 3, 'You can only select up to three options for Question Eight.');
+  // Restrict up to 3 answers for page three question nine
+  enforceMaxSelection('#page-three-question-nine', 3, 'You can only select up to three options for Question Nine.');
+  // Restrict up to 3 answers for page three question ten
+  enforceMaxSelection('#page-three-question-ten', 3, 'You can only select up to three options for Question Ten.');
+
 });
 
 /**

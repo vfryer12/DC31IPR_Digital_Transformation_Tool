@@ -87,6 +87,28 @@ document.addEventListener('DOMContentLoaded', function () {
   enforceSingleSelection('#page-four-question-nine', 'You must select exactly one option for Question Nine.');
   // Restrict up to 3 answers for page four question ten
   enforceSingleSelection('#page-four-question-ten', 'You must select exactly one option for Question Ten.');
+
+  //Page Five
+  // Restrict up to 3 answers for page five question One
+  enforceMaxSelection('#page-five-question-one', 3, 'You can only select up to three options for Question One.');
+  // Restrict up to 3 answers for page five question two
+  enforceMaxSelection('#page-five-question-two', 3, 'You can only select up to three options for Question Two.');
+  // Restrict up to 3 answers for page five question three
+  enforceMaxSelection('#page-five-question-three', 3, 'You can only select up to three options for Question Three.');
+  // Restrict up to 3 answers for page five question four
+  enforceSingleSelection('#page-five-question-four', 'You must select exactly one option for Question Four.');
+  // Restrict up to 3 answers for page five question five
+  enforceSingleSelection('#page-five-question-five', 'You must select exactly one option for Question Five.');
+  // Restrict up to 3 answers for page five question six
+  enforceMaxSelection('#page-five-question-six', 3, 'You can only select up to three options for Question Six.');
+  // Restrict up to 3 answers for page five question seven
+  enforceMaxSelection('#page-five-question-seven', 3, 'You can only select up to three options for Question Seven.');
+  // Restrict up to 3 answers for page five question eight
+  enforceSingleSelection('#page-five-question-eight', 'You must select exactly one option for Question Eight.');
+  // Restrict up to 3 answers for page five question nine
+  enforceSingleSelection('#page-five-question-nine', 'You must select exactly one option for Question Nine.');
+  // Restrict up to 3 answers for page five question ten
+  enforceSingleSelection('#page-five-question-ten', 'You must select exactly one option for Question Ten.');
 });
 
 /**

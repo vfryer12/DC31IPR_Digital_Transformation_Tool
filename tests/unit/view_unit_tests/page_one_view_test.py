@@ -106,7 +106,7 @@ def test_page_one_question_two(client):
     dropdown_options = dropdown.find_all('option')
     option_values = [option['value'] for option in dropdown_options if 'value' in option.attrs]
     expected_options = [
-        '', 'cio', 'cto', 'dtm', 'cdo', 'itd', 'bul', 'md', 'dal', 'other'
+        '', 'cio', 'cto', 'dtm', 'cdo', 'itd', 'bul', 'md', 'dal'
     ]
     for value in expected_options:
         assert value in option_values

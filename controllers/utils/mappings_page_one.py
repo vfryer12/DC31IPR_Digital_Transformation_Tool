@@ -16,8 +16,7 @@ answer_map_q2 = {
     'itd': 'IT Director/Manager',
     'bul': 'Business Unit Leader',
     'md': 'Marketing Director',
-    'dal': 'Data Analytics Leader',
-    'other': 'Other'
+    'dal': 'Data Analytics Leader'
 }
 
 # Mapping for question three

@@ -34,8 +34,7 @@ from controllers.utils.mappings_page_two import (
         'behavioral-interview-questions-answer': 'Behavioral Interview Questions',
         'online-assessments-answer': 'Online Assessments',
         'peer-review-answer': 'Peer Review',
-        'hiring-via-recruiter-answer': 'Hiring via Recruiter',
-        'all-of-the-above-answer': 'All of the above'
+        'hiring-via-recruiter-answer': 'Hiring via Recruiter'
     }),
     (answer_map_page_two_q3, {
         'training-programs-answer': 'Training Programs',
@@ -59,11 +58,9 @@ from controllers.utils.mappings_page_two import (
         'feedback-culture-answer': 'Feedback Culture',
         'recognize-and-reward-learning-answer': 'Recognize and Reward Learning',
         'create-learning-communities-answer': 'Create Learning Communities',
-        'stay-updated-answer': 'Stay Updated',
-        'all-of-the-above-answer': 'All of the above'
+        'stay-updated-answer': 'Stay Updated'
     }),
     (answer_map_page_two_q5, {
-        'none-of-the-above-answer': 'None of the above',
         'data-analysis-answer': 'Data Analysis',
         'cybersecurity-answer': 'Cybersecurity',
         'cloud-computing-answer': 'Cloud Computing',

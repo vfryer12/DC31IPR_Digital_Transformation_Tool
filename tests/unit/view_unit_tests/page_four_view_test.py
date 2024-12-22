@@ -199,7 +199,7 @@ def test_page_four_question_five(client):
     question_one_div = soup.find('div', id='page-four-question-five')
     assert question_one_div is not None
 
-    checkboxes = question_one_div.find_all('input', type='checkbox')
+    checkboxes = question_one_div.find_all('input', type='radio')
     assert len(checkboxes) == 10 # There are 10 checkboxes in the HMTL for Question One
 
     # Validate checkbox values

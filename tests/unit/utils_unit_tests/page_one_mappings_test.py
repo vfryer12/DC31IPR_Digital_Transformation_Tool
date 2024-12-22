@@ -28,8 +28,7 @@ from controllers.utils.mappings_page_one import (
         'itd': 'IT Director/Manager',
         'bul': 'Business Unit Leader',
         'md': 'Marketing Director',
-        'dal': 'Data Analytics Leader',
-        'other': 'Other'
+        'dal': 'Data Analytics Leader'
     }),
     (answer_map_q3, {
         'never': 'Never',

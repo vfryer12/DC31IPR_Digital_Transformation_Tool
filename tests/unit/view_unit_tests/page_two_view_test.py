@@ -118,7 +118,7 @@ def test_page_two_question_two(client):
     assert question_one_div is not None
 
     checkboxes = question_one_div.find_all('input', type='checkbox')
-    assert len(checkboxes) == 8 # There are 8 checkboxes in the HMTL for Question Two
+    assert len(checkboxes) == 7
 
     # Validate checkbox values
     expected_checkbox_values = [
@@ -128,8 +128,7 @@ def test_page_two_question_two(client):
         'behavioral-interview-questions-answer',
         'online-assessments-answer',
         'peer-review-answer',
-        'hiring-via-recruiter-answer',
-        'all-of-the-above-answer'
+        'hiring-via-recruiter-answer'
     ]
     actual_checkbox_values = [checkbox['value'] for checkbox in checkboxes]
     for value in expected_checkbox_values:
@@ -172,7 +171,7 @@ def test_page_two_question_four(client):
     assert question_one_div is not None
 
     checkboxes = question_one_div.find_all('input', type='checkbox')
-    assert len(checkboxes) == 11 # There are 11 checkboxes in the HMTL for Question Four
+    assert len(checkboxes) == 10
 
     # Validate checkbox values
     expected_checkbox_values = [
@@ -185,8 +184,7 @@ def test_page_two_question_four(client):
         'feedback-culture-answer',
         'recognize-and-reward-learning-answer',
         'create-learning-communities-answer',
-        'stay-updated-answer',
-        'all-of-the-above-answer'
+        'stay-updated-answer'
     ]
     actual_checkbox_values = [checkbox['value'] for checkbox in checkboxes]
     for value in expected_checkbox_values:

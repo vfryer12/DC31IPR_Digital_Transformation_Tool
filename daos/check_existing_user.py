@@ -1,3 +1,5 @@
+# check_existing_user.py
+
 def check_existing_user(cursor, username, email):
     """
     Checks if a user with the given username or email already exists.

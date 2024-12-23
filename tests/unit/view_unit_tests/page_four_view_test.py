@@ -263,7 +263,7 @@ def test_page_four_question_seven(client):
     expected_checkbox_values = [
         'data-driven-insights-answer',
         'personalization-and-customer-experience-answer',
-        'adapting-to-technological Advancements-answer',
+        'adapting-to-technological-advancements-answer',
         'content-strategy-optimization-answer',
         'social-media-engagement-answer',
         'seo-and-sem-strategies-answer',

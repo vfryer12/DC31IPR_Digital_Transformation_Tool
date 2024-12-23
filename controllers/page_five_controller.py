@@ -68,11 +68,11 @@ def page_five_digital_marketing():
             print("Invalid answer for page five, question five or more than 1 selection made")
             return redirect(url_for('page_five.page_five_digital_marketing'))
         
-        if len(page_five_question_six_answers) != 1 or None in page_five_question_six_answers:
+        if len(page_five_question_six_answers) > 3 or None in page_five_question_six_answers:
             print("Invalid answer for page five, question six or more than 3 selections made")
             return redirect(url_for('page_five.page_five_digital_marketing'))
         
-        if len(page_five_question_seven_answers) != 1 or None in page_five_question_seven_answers:
+        if len(page_five_question_seven_answers) > 3 or None in page_five_question_seven_answers:
             print("Invalid answer for page five, question seven or more than 3 selections made")
             return redirect(url_for('page_five.page_five_digital_marketing'))
         

@@ -48,8 +48,8 @@ def page_two_digital_skills():
         
         # Has to be separate mappings ready for the validation checks
 
-        if len(page_two_question_one_answers) != 3 or None in page_two_question_one_answers:
-            print("Invalid answer for page two, question one. Exactly 3 selections must be made.")
+        if len(page_two_question_one_answers) > 3 or None in page_two_question_one_answers:
+            print("Invalid answer for page two, question one or more than 3 selections made.")
             return redirect(url_for('page_two.page_two_digital_skills'))
         
         if len(page_two_question_two_answers) > 3 or None in page_two_question_two_answers:

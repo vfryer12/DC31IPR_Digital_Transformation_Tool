@@ -1,18 +1,17 @@
-# # algorithm_controller.py
+# algorithm_controller.py
 
 from db_connector import create_connection
-from daos.get_user_answer_weights import get_user_answer_weights
 from daos import get_db_data
-from flask import Blueprint, jsonify, session
+from flask import Blueprint, jsonify, session, render_template
 
 # Create a Blueprint named 'calculate_score' for this controller
 calculate_score_bp = Blueprint('calculate_score', __name__)
 
 # Define thresholds for each section based on the data
 SECTION_THRESHOLDS = {
-    "Digital Strategy": {"happy_path": 33, "pain_path": 138, "median": 85.5},
+    "Digital Strategy": {"happy_path": 30, "pain_path": 138, "median": 84},
     "Digital Skills": {"happy_path": 60, "pain_path": 207, "median": 133.5},
-    "Technology Adoption": {"happy_path": 55, "pain_path": 239, "median": 147},
+    "Technology Adoption": {"happy_path": 58, "pain_path": 239, "median": 148.5},
     "Market Trends": {"happy_path": 30, "pain_path": 154, "median": 92},
     "Digital Marketing": {"happy_path": 35, "pain_path": 185, "median": 110}
 }
@@ -108,10 +107,18 @@ def calculate_score():
     user_weights = {k:v for k,_,v in user_answer_weights}
     knn_sections = find_knn_sections(user_weights, k=5)
 
-    # Return JSON response with detailed feedback
-    return jsonify({
-        "total_score": total_score,
-        "overall_feedback": overall_feedback,
-        "section_feedback": section_feedback,
-        "knn_sections": knn_sections
-    })
+    return render_template(
+        "ReportPage.html",
+        total_score=total_score,
+        overall_feedback=overall_feedback,
+        section_feedback=section_feedback,
+        knn_sections=knn_sections,
+    )
+
+    # # Return JSON response with detailed feedback
+    # return jsonify({
+    #     "total_score": total_score,
+    #     "overall_feedback": overall_feedback,
+    #     "section_feedback": section_feedback,
+    #     "knn_sections": knn_sections
+    # })

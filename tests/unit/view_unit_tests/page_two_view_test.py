@@ -203,9 +203,9 @@ def test_page_two_question_five(client):
 
     # Validate checkbox values
     expected_checkbox_values = [
-        'data-analysis-answer',
-        'cybersecurity-answer',
-        'cloud-computing-answer',
+        'data-analysis-q5-answer',
+        'cybersecurity-q5-answer',
+        'cloud-computing-q5-answer',
         'artificial-intelligence-and-machine-learning-answer',
         'software-development-answer',
         'digital-marketing-answer',
@@ -251,11 +251,10 @@ def test_page_two_question_seven(client):
     assert question_one_div is not None
 
     checkboxes = question_one_div.find_all('input', type='checkbox')
-    assert len(checkboxes) == 7 # There are 7 checkboxes in the HMTL for Question Seven
+    assert len(checkboxes) == 6
 
     # Validate checkbox values
     expected_checkbox_values = [
-        'already-doing-the-listed-options-answer',
         'continuous-learning-answer',
         'networking-answer',
         'following-industry-news-answer',
@@ -276,13 +275,12 @@ def test_page_two_question_eight(client):
     assert question_one_div is not None
 
     checkboxes = question_one_div.find_all('input', type='checkbox')
-    assert len(checkboxes) == 7 # There are 7 checkboxes in the HMTL for Question Seven
+    assert len(checkboxes) == 6
 
     # Validate checkbox values
     expected_checkbox_values = [
-        'already-doing-the-listed-options-answer',
         'skills-assessment-answer',
-        'training-and-development-answer',
+        'training-and-development-q8-answer',
         'hiring-strategy-answer',
         'encourage-continuous-learning-answer',
         'leverage-technology-answer',
@@ -301,11 +299,10 @@ def test_page_two_question_nine(client):
     assert question_one_div is not None
 
     checkboxes = question_one_div.find_all('input', type='checkbox')
-    assert len(checkboxes) == 7 # There are 7 checkboxes in the HMTL for Question Nine
+    assert len(checkboxes) == 6
 
     # Validate checkbox values
     expected_checkbox_values = [
-        'already-doing-the-listed-options-answer',
         'training-and-development-answer',
         'support-and-resources-answer',
         'culture-of-adaptability-answer',
@@ -326,11 +323,10 @@ def test_page_two_question_ten(client):
     assert question_one_div is not None
 
     checkboxes = question_one_div.find_all('input', type='checkbox')
-    assert len(checkboxes) == 8 # There are 8 checkboxes in the HMTL for Question Ten
+    assert len(checkboxes) == 7
 
     # Validate checkbox values
     expected_checkbox_values = [
-        'already-doing-the-listed-options-answer',
         'competitive-compensation-answer',
         'career-development-opportunities-answer',
         'continuous-learning-and-development-answer',

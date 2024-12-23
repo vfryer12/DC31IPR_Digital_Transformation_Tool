@@ -61,9 +61,9 @@ from controllers.utils.mappings_page_two import (
         'stay-updated-answer': 'Stay Updated'
     }),
     (answer_map_page_two_q5, {
-        'data-analysis-answer': 'Data Analysis',
-        'cybersecurity-answer': 'Cybersecurity',
-        'cloud-computing-answer': 'Cloud Computing',
+        'data-analysis-q5-answer': 'Data Analysis',
+        'cybersecurity-q5-answer': 'Cybersecurity',
+        'cloud-computing-q5-answer': 'Cloud Computing',
         'artificial-intelligence-and-machine-learning-answer': 'Artificial Intelligence and Machine Learning',
         'software-development-answer': 'Software Development',
         'digital-marketing-answer': 'Digital Marketing',
@@ -81,7 +81,6 @@ from controllers.utils.mappings_page_two import (
         'outsourcing-answer': 'Outsourcing'
     }),
     (answer_map_page_two_q7, {
-        'already-doing-the-listed-options-answer': 'Already doing the listed options',
         'continuous-learning-answer': 'Continuous Learning',
         'networking-answer': 'Networking',
         'following-industry-news-answer': 'Following Industry News',
@@ -90,9 +89,8 @@ from controllers.utils.mappings_page_two import (
         'certifications-answer': 'Certifications'
     }),
     (answer_map_page_two_q8, {
-        'already-doing-the-listed-options-answer': 'Already doing the listed options',
         'skills-assessment-answer': 'Skills Assessment',
-        'training-and-development-answer': 'Training and Development',
+        'training-and-development-q8-answer': 'Training and Development',
         'hiring-strategy-answer': 'Hiring Strategy',
         'encourage-continuous-learning-answer': 'Encourage Continuous Learning',
         'leverage-technology-answer': 'Leverage Technology',

@@ -38,44 +38,86 @@
                 {% endfor %}
             </ul>
         </div>
-
         <!-- Section 1: Digital Strategy Score and Solutions -->
         <div class="container">
             <div class="title">Digital Strategy</div>
             <p><strong>Score:</strong> {{ user_scores["Digital Strategy"] }}</p>
-        </div>
-            
+        
+            <div class="solutions">
+                <strong>Solutions for Digital Strategy:</strong>
+                <ul>
+                    {% for question, solution in recommended_solutions.items() %}
+                    {% if question >= 1 and question <= 10 %}
+                        <li><strong>Question {{ question }}:</strong></li>
+                        <li><strong>{{ '\n'.join(solution) }}</strong></li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>   
         <!-- Section 2: Digital Skills -->
         <div class="container">
             <div class="title">Digital Skills</div>
             <p><strong>Score:</strong> {{ user_scores["Digital Skills"] }}</p>
-        </div>
-            
+            <div class="solutions">
+                <strong>Solutions for Digital Skills:</strong>
+                <ul>
+                    {% for question, solution in recommended_solutions.items() %}
+                    {% if question >= 11 and question <= 20 %}
+                        <li><strong>Question {{ question }}:</strong></li>
+                        <li><strong>{{ '\n'.join(solution) }}</strong></li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>  
         <!-- Section 3: Technology Adoption -->
         <div class="container">
             <div class="title">Technology Adoption</div>
             <p><strong>Score:</strong> {{ user_scores["Technology Adoption"] }}</p>
-        </div>
-            
+            <div class="solutions">
+                <strong>Solutions for Technology Adoption:</strong>
+                <ul>
+                    {% for question, solution in recommended_solutions.items() %}
+                    {% if question >= 21 and question <= 30 %}
+                        <li><strong>Question {{ question }}:</strong></li>
+                        <li><strong>{{ '\n'.join(solution) }}</strong></li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>   
         <!-- Section 4: Market Trends -->
         <div class="container">
             <div class="title">Market Trends</div>
             <p><strong>Score:</strong> {{ user_scores["Market Trends"] }}</p>
-        </div>
-            
+            <div class="solutions">
+                <strong>Solutions for Technology Adoption:</strong>
+                <ul>
+                    {% for question, solution in recommended_solutions.items() %}
+                    {% if question >= 31 and question <= 40 %}
+                        <li><strong>Question {{ question }}:</strong></li>
+                        <li><strong>{{ '\n'.join(solution) }}</strong></li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>   
         <!-- Section 5: Digital Marketing -->
         <div class="container">
             <div class="title">Digital Marketing</div>
             <p><strong>Score:</strong> {{ user_scores["Digital Marketing"] }}</p>
-        </div>
-
-        <!-- Section 6: Solutions -->
-        <div class="container">
-            <div class="title">Recommended Solutions</div>
-            {% for question, solution in recommended_solutions.items() %}
-                <li><strong>{{ question }}</strong></li>
-                <li><strong>{{ '\n'.join(solution) }}</strong></li>
-            {% endfor %}
+            <div class="solutions">
+                <strong>Solutions for Digital Marketing:</strong>
+                <ul>
+                    {% for question, solution in recommended_solutions.items() %}
+                    {% if question >= 41 and question <= 50 %}
+                        <li><strong>Question {{ question }}:</strong></li>
+                        <li><strong>{{ '\n'.join(solution) }}</strong></li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
     <div id="footer-placeholder"></div>
     </div>

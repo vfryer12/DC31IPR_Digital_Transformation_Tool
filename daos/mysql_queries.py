@@ -28,38 +28,25 @@ SELECT section
 FROM section_answer_weight
 """
 
-GET_USER_SOLUTIONS ="""with user_answers as
-(
-	select ua.questionsid
-		, ua.answersId
-from userAnswers as ua
-where ua.userId = %s
-)
-
-, ranked_answers as 
-(
-select a.questionsId
-	, answersId
-	, weighting
-	, solution
-	, ROW_NUMBER() over(
-		PARTITION by a.questionsId
-order by
-		weighting asc
-	) as weight_row_rank
-from user_answers as ua
-inner join answers as a on
-	ua.questionsid = a.questionsid
-)
-
-SELECT questionsId, answersId, weighting,solution, weight_row_rank
-FROM(
-SELECT ra.*
-, max(case when ua.answersId = ra.answersId then weight_row_rank else NULL end) over(PARTITION by ra.questionsId) as user_weight_row_rank
-from ranked_answers as ra
-left join user_answers as ua on
-ua.answersId = ra.answersId
-) AS X
-WHERE weight_row_rank <= 3
-and weight_row_rank <= user_weight_row_rank
+GET_USER_SOLUTIONS ="""WITH user_answers AS (
+        SELECT ua.questionsid, ua.answersId
+        FROM userAnswers AS ua
+        WHERE ua.userId = %s
+    ),
+    ranked_answers AS (
+        SELECT q.question, a.questionsid, a.id AS answersId, a.weighting, a.solution,
+               ROW_NUMBER() OVER(PARTITION BY a.questionsId ORDER BY a.weighting ASC) AS weight_row_rank
+        FROM user_answers AS ua
+        INNER JOIN answers AS a ON ua.questionsid = a.questionsid
+        inner join questions as q on q.id = a.questionsid
+    )
+    SELECT question, answersId, weighting, solution, weight_row_rank
+    FROM (
+        SELECT ra.*, 
+               MAX(CASE WHEN ua.answersId = ra.answersId THEN weight_row_rank ELSE NULL END) 
+               OVER (PARTITION BY ra.questionsId) AS user_weight_row_rank
+        FROM ranked_answers AS ra
+        LEFT JOIN user_answers AS ua ON ua.answersId = ra.answersId
+    ) AS X
+    WHERE weight_row_rank <= 3 AND weight_row_rank <= user_weight_row_rank;
 """

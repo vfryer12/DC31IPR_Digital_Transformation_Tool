@@ -28,6 +28,29 @@ def get_section_answer_weights(conn, user_id: int) -> list[tuple[str, int, int]]
 
     return vals
 
+def get_answer_solutions(conn, user_id: int) -> list[tuple[int, int, int, str, int]]:
+    """Returns (questionsId, answersId, weighting,solution, weight_row_rank)"""
+    try:
+        # Create a cursor object to interact with the database
+        cursor = conn.cursor()
+
+        # Format the query
+        query = dedent(mysql_queries.GET_USER_SOLUTIONS)
+
+        # Execute the query and fetch the results
+        vals = run_sql(cursor, query, [user_id])
+
+        # Close the cursor
+        cursor.close()
+
+        # Check if solutions were found
+        if not vals:
+            print(f"No solutions found for user_id {user_id}")
+        return vals
+    except Exception as e:
+        print(f"Error retrieving solutions for user {user_id}: {e}")
+        return []
+
 
 def run_sql(cursor, query: str, params: list):
     """

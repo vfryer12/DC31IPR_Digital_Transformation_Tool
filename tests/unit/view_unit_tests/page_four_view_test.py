@@ -232,7 +232,7 @@ def test_page_four_question_six(client):
 
     # Validate checkbox values
     expected_checkbox_values = [
-        'investing-in-emerging-technologies-answer',
+        'investing-in-emerging-technologies-q6-answer',
         'continuous-learning-and-development-answer',
         'agile-and-flexible-approach-answer',
         'customer-centric-focus-answer',

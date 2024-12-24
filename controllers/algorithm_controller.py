@@ -3,6 +3,7 @@
 from db_connector import create_connection
 from daos import get_db_data
 from flask import Blueprint, jsonify, session, render_template
+from collections import defaultdict
 
 # Create a Blueprint named 'calculate_score' for this controller
 calculate_score_bp = Blueprint('calculate_score', __name__)
@@ -60,7 +61,7 @@ def find_knn_sections(user_scores, k=5):
         for section, score in user_scores.items()
     }
     # Sort sections by distance from median and select top-k
-    sorted_sections = sorted(distances.items(), key=lambda x: x[1])
+    sorted_sections = sorted(distances.items(), key=lambda x: x[1], reverse=True)
     return [
         {"section": section, "distance": distance}
         for section, distance in sorted_sections[:k]
@@ -80,6 +81,12 @@ def calculate_score():
     # Retrieve user weights from the database
     conn = create_connection()
     user_answer_weights = get_db_data.get_section_answer_weights(conn, user_id)
+    user_answer_solutions = get_db_data.get_answer_solutions(conn, user_id)
+
+    question_solution_dict = defaultdict(set)
+    for questionsId, _, _,solution, _ in user_answer_solutions:
+        question_solution_dict[questionsId].add(solution)
+
     conn.close()
 
     unique_section_names = list(set([i[0] for i in user_answer_weights]))
@@ -113,12 +120,6 @@ def calculate_score():
         overall_feedback=overall_feedback,
         section_feedback=section_feedback,
         knn_sections=knn_sections,
+        user_scores=section_weight_dict,
+        recommended_solutions=question_solution_dict
     )
-
-    # # Return JSON response with detailed feedback
-    # return jsonify({
-    #     "total_score": total_score,
-    #     "overall_feedback": overall_feedback,
-    #     "section_feedback": section_feedback,
-    #     "knn_sections": knn_sections
-    # })

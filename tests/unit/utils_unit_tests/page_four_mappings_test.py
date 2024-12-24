@@ -75,7 +75,7 @@ from controllers.utils.mappings_page_four import (
         'collaborating-with-tech-partners-answer': 'Collaborating with Tech Partners'
     }),
     (answer_map_page_four_q6, {
-        'investing-in-emerging-technologies-answer': 'Investing in Emerging Technologies',
+        'investing-in-emerging-technologies-q6-answer': 'Investing in Emerging Technologies',
         'continuous-learning-and-development-answer': 'Continuous Learning and Development',
         'agile-and-flexible-approach-answer': 'Agile and Flexible Approach',
         'customer-centric-focus-answer': 'Customer-Centric Focus',

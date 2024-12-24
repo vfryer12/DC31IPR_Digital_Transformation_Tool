@@ -14,7 +14,7 @@ def create_app():
     from controllers.page_three_controller import page_three_bp
     from controllers.page_four_controller import page_four_bp
     from controllers.page_five_controller import page_five_bp
-    # Import survey controller blueprints
+    # Import survey controller blueprint
     from controllers.algorithm_controller import calculate_score_bp
 
     app.register_blueprint(login_bp)

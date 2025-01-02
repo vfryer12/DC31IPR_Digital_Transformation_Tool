@@ -4,56 +4,122 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Submit Page</title>
+    <title>Report Page</title>
     <link rel="stylesheet" type="text/css" href="/static/content/report-page.css">
     <script src="\static\FetchAssessmentHeader.js" type="module"></script>
     <script src="\static\FetchAssessmentFooter.js" type="module"></script>
 </head>
 <body>
-    <div class = "main">
+    <div class="main">
         <div id="header-placeholder"></div>
         <h1>Assessment Overview</h1>
         <div class="container">
-            <div class="title">Report Page Title</div>
-            <div class="subtitle">Subtitle</div>
-            <div class="breakdown">Assessment Breakdown</div>
+            <div class="title">Report Summary</div>
+            <div class="breakdown">
+                <p><strong>Total Score:</strong> {{ total_score }}</p>
+                <p><strong>Overall Feedback:</strong> {{ overall_feedback }}</p>
+            </div>
         </div>
 
         <div class="container">
-            <div class="title">Algorithm Score</div>
-            <!-- Content for algorithm score -->
+            <div class="title">Section Feedback</div>
+            <ul>
+                {% for section, feedback in section_feedback.items() %}
+                    <li><strong>{{ section }}:</strong> {{ feedback }}</li>
+                {% endfor %}
+            </ul>
         </div>
 
         <div class="container">
-            <div class="title">Page One Score</div>
-            <div class="breakdown">Page One Breakdown</div>
+            <div class="title">Sections that require the most attention</div>
+            <ul>
+                 {% for knn in knn_sections %}
+                    <li><strong>{{ knn.section }}</strong>: Distance from median - {{ knn.distance }}</li>
+                {% endfor %}
+            </ul>
         </div>
-
+        <!-- Section 1: Digital Strategy Score and Solutions -->
         <div class="container">
-            <div class="title">Page Two Score</div>
-            <div class="breakdown">Page Two Breakdown</div>
-        </div>
-
+            <div class="title">Digital Strategy</div>
+            <p><strong>Score:</strong> {{ user_scores["Digital Strategy"] }}</p>
+        
+            <div class="solutions">
+                <strong>Solutions for Digital Strategy:</strong>
+                <ul>
+                    {% for question_info, solution in recommended_solutions.items() %}
+                    {% if question_info[0] == 1 %}                    
+                        <li><strong>Question: {{ question_info[2] }}:</strong></li>
+                        <li><strong>{{ '\n'.join(solution) }}</strong></li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>   
+        <!-- Section 2: Digital Skills -->
         <div class="container">
-            <div class="title">Page Three Score</div>
-            <div class="breakdown">Page Three Breakdown</div>
-        </div>
-
+            <div class="title">Digital Skills</div>
+            <p><strong>Score:</strong> {{ user_scores["Digital Skills"] }}</p>
+            <div class="solutions">
+                <strong>Solutions for Digital Skills:</strong>
+                <ul>
+                    {% for question_info, solution in recommended_solutions.items() %}
+                    {% if question_info[0] == 2 %}                    
+                        <li><strong>Question: {{ question_info[2] }}:</strong></li>
+                        <li><strong>{{ '\n'.join(solution) }}</strong></li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>  
+        <!-- Section 3: Technology Adoption -->
         <div class="container">
-            <div class="title">Page Five Score</div>
-            <div class="breakdown">Page Five Breakdown</div>
-        </div>
-
+            <div class="title">Technology Adoption</div>
+            <p><strong>Score:</strong> {{ user_scores["Technology Adoption"] }}</p>
+            <div class="solutions">
+                <strong>Solutions for Technology Adoption:</strong>
+                <ul>
+                    {% for question_info, solution in recommended_solutions.items() %}
+                    {% if question_info[0] == 3 %}                    
+                        <li><strong>Question: {{ question_info[2] }}:</strong></li>
+                        <li><strong>{{ '\n'.join(solution) }}</strong></li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>   
+        <!-- Section 4: Market Trends -->
         <div class="container">
-            <div class="title">What the Company is Doing Well</div>
-            <!-- Content for what the company is doing well -->
-        </div>
-
+            <div class="title">Market Trends</div>
+            <p><strong>Score:</strong> {{ user_scores["Market Trends"] }}</p>
+            <div class="solutions">
+                <strong>Solutions for Market Trends:</strong>
+                <ul>
+                    {% for question_info, solution in recommended_solutions.items() %}
+                    {% if question_info[0] == 4 %}                    
+                        <li><strong>Question: {{ question_info[2] }}:</strong></li>
+                        <li><strong>{{ '\n'.join(solution) }}</strong></li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>   
+        <!-- Section 5: Digital Marketing -->
         <div class="container">
-            <div class="title">Solutions</div>
-            <!-- Content for solutions -->
+            <div class="title">Digital Marketing</div>
+            <p><strong>Score:</strong> {{ user_scores["Digital Marketing"] }}</p>
+            <div class="solutions">
+                <strong>Solutions for Digital Marketing:</strong>
+                <ul>
+                    {% for question_info, solution in recommended_solutions.items() %}
+                    {% if question_info[0] == 5 %}                    
+                        <li><strong>Question: {{ question_info[2] }}:</strong></li>
+                        <li><strong>{{ '\n'.join(solution) }}</strong></li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
-    </div>
     <div id="footer-placeholder"></div>
+    </div>
 </body>
 </html>

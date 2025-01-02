@@ -1,15 +1,18 @@
 # algorithm_controller.py
 
-from flask import Blueprint, jsonify, session
+from db_connector import create_connection
+from daos import get_db_data
+from flask import Blueprint, jsonify, session, render_template
+from collections import defaultdict
 
 # Create a Blueprint named 'calculate_score' for this controller
 calculate_score_bp = Blueprint('calculate_score', __name__)
 
-# Define thresholds for each section based on the provided data
+# Define thresholds for each section based on the data
 SECTION_THRESHOLDS = {
-    "Digital Strategy": {"happy_path": 33, "pain_path": 138, "median": 85.5},
+    "Digital Strategy": {"happy_path": 30, "pain_path": 138, "median": 84},
     "Digital Skills": {"happy_path": 60, "pain_path": 207, "median": 133.5},
-    "Tech Adaptation": {"happy_path": 55, "pain_path": 239, "median": 147},
+    "Technology Adoption": {"happy_path": 58, "pain_path": 239, "median": 148.5},
     "Market Trends": {"happy_path": 30, "pain_path": 154, "median": 92},
     "Digital Marketing": {"happy_path": 35, "pain_path": 185, "median": 110}
 }
@@ -58,7 +61,7 @@ def find_knn_sections(user_scores, k=5):
         for section, score in user_scores.items()
     }
     # Sort sections by distance from median and select top-k
-    sorted_sections = sorted(distances.items(), key=lambda x: x[1])
+    sorted_sections = sorted(distances.items(), key=lambda x: x[1], reverse=True)
     return [
         {"section": section, "distance": distance}
         for section, distance in sorted_sections[:k]
@@ -75,34 +78,58 @@ def calculate_score():
 
     user_id = session['user_id']
 
-    # Example user weights (replace with actual database query in production)
-    user_weights = {
-        "Digital Strategy": 90,
-        "Digital Skills": 120,
-        "Tech Adaptation": 150,
-        "Market Trends": 95,
-        "Digital Marketing": 100
-    }
+    # Retrieve user weights from the database
+    conn = create_connection()
+    user_answer_weights = get_db_data.get_section_answer_weights(conn, user_id)
+    user_answer_solutions = get_db_data.get_answer_solutions(conn, user_id)
+
+    # question_solution_dict = defaultdict(set)
+    # for row in user_answer_solutions:
+    #     question_solution_dict[row.question].add(row.solution)
+
+    question_set = set()
+    for row in user_answer_solutions:
+        question_set.add(tuple([row.sectionid, row.questionsid, row.question]))
+
+    section_info = {}
+    for q in question_set:
+        sols = [row.solution for row in user_answer_solutions if row.questionsid == q[1]]
+        section_info[q] = sols
+
+
+    conn.close()
+
+    unique_section_names = list(set([i[0] for i in user_answer_weights]))
+
+    section_weight_dict = {section_name: 0 for section_name in unique_section_names}
+    
+    for section_name, _, weight in user_answer_weights:
+        section_weight_dict[section_name]+=weight
 
     # Calculate section-wise feedback
     section_feedback = {
         section: assess_section_score(section, score)
-        for section, score in user_weights.items()
+        for section, score in section_weight_dict.items()
     }
 
+    user_weight_list = [i[-1] for i in user_answer_weights]
+
     # Calculate total score
-    total_score = sum(user_weights.values())
+    total_score = sum(user_weight_list)
 
     # Assess overall score
     overall_feedback = assess_overall_score(total_score)
 
     # Find k-nearest sections
+    user_weights = {k:v for k,_,v in user_answer_weights}
     knn_sections = find_knn_sections(user_weights, k=5)
 
-    # Return JSON response with detailed feedback
-    return jsonify({
-        "total_score": total_score,
-        "overall_feedback": overall_feedback,
-        "section_feedback": section_feedback,
-        "knn_sections": knn_sections
-    })
+    return render_template(
+        "ReportPage.html",
+        total_score=total_score,
+        overall_feedback=overall_feedback,
+        section_feedback=section_feedback,
+        knn_sections=knn_sections,
+        user_scores=section_weight_dict,
+        recommended_solutions=section_info
+    )

@@ -29,31 +29,37 @@ def test_registration_page_render(client):
     assert username_input is not None
     assert username_input['name'] == 'username'
     assert username_input['type'] == 'text'
+    assert 'required' in username_input.attrs
     
     fname_input = soup.find('input', {'id': 'fname'})
     assert fname_input is not None
     assert fname_input['name'] == 'fname'
     assert fname_input['type'] == 'text'
+    assert 'required' in fname_input.attrs
     
     lname_input = soup.find('input', {'id': 'lname'})
     assert lname_input is not None
     assert lname_input['name'] == 'lname'
     assert lname_input['type'] == 'text'
+    assert 'required' in lname_input.attrs
     
     email_input = soup.find('input', {'id': 'email'})
     assert email_input is not None
     assert email_input['name'] == 'email'
     assert email_input['type'] == 'email'
+    assert 'required' in email_input.attrs
 
     pwd_input = soup.find('input', {'id': 'pwd'})
     assert pwd_input is not None
     assert pwd_input['name'] == 'pwd'
     assert pwd_input['type'] == 'password'
+    assert 'required' in pwd_input.attrs
 
     cpwd_input = soup.find('input', {'id': 'cpwd'})
     assert cpwd_input is not None
     assert cpwd_input['name'] == 'cpwd'
     assert cpwd_input['type'] == 'password'
+    assert 'required' in cpwd_input.attrs
 
     # Check buttons
     registration_button = soup.find('input', {'value': 'Submit'})

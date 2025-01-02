@@ -8,27 +8,39 @@
     <link rel="stylesheet" type="text/css" href="/static/content/registration-page.css">
 </head>
 <body>
-    <div class="registration">
+    <div class="registration-container">
         <h2>Registration Form</h2>
         <form action="/registration" method="post">
             <div class="registration-border">
-                <label for="username">Username:</label><br>
-                <input type="text" id="username" name="username" required><br>
-                <label for="fname">First Name:</label><br>
-                <input type="text" id="fname" name="fname" required><br>
-                <label for="lname">Last Name:</label><br>
-                <input type="text" id="lname" name="lname" required><br>
-                <label for="email">Email:</label><br>
-                <input type="email" id="email" name="email" required><br>
-                <label for="pwd">Password:</label><br>
-                <input type="password" id="pwd" name="pwd" required><br>
-                <label for="cpwd">Confirm Password:</label><br>
-                <input type="password" id="cpwd" name="cpwd" required><br>
+                <div>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div>
+                    <label for="fname">First Name:</label>
+                    <input type="text" id="fname" name="fname" required>
+                </div>
+                <div>
+                    <label for="lname">Last Name:</label>
+                    <input type="text" id="lname" name="lname" required>
+                </div>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div>
+                    <label for="pwd">Password:</label>
+                    <input type="password" id="pwd" name="pwd" required>
+                </div>
+                <div>
+                    <label for="cpwd">Confirm Password:</label>
+                    <input type="password" id="cpwd" name="cpwd" required>
+                </div>
             </div>
-            <!-- Navigation Button -->
-            <button type="button" onclick="history.back();">Back</button>
-            <!-- Submit Button -->
-            <input type="submit" value="Submit">
+            <div class="button-container">
+                <button type="button" onclick="history.back();">Back</button>
+                <input type="submit" value="Submit">
+            </div>
         </form>
     </div>
 </body>

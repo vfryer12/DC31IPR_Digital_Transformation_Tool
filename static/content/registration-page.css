@@ -1,39 +1,113 @@
+/* General Styles */
 body {
     display: grid;
     place-items: center;
     height: 100vh;
-    background-color: #f0f0f0;
-    margin: 0; /* Add this to remove default body margin */
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1e90ff, #87cefa);
+    color: #333;
 }
 
+/* Registration Container */
 .registration-container {
-    width: 300px;
-    padding: 16px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
-}
-
-.registration-container h2 {
-    text-align: center;
-}
-
-.registration-container form div + div {
-    margin-top: 1rem;
-}
-
-.registration-border {
-    border: 2px solid #000;
+    width: 360px;
     padding: 20px;
-    border-radius: 5px;
-}
-
-.registration-container form div {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     text-align: center;
+    animation: fadeIn 0.8s ease;
+    box-sizing: border-box;
 }
 
+/* Heading */
+.registration-container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #1e90ff;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+/* Form Elements */
+.registration-container form div {
+    margin-bottom: 15px;
+}
+
+.registration-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    text-align: left;
+    color: #555;
+}
+
+.registration-container input[type="text"],
+.registration-container input[type="email"],
+.registration-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.registration-container input[type="text"]:focus,
+.registration-container input[type="email"]:focus,
+.registration-container input[type="password"]:focus {
+    border-color: #1e90ff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(30, 144, 255, 0.4);
+}
+
+/* Button Styles */
 .button-container {
     display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.button-container input[type="submit"],
+.button-container button {
+    width: 48%;
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-sizing: border-box;
+}
+
+.button-container input[type="submit"] {
+    background-color: #1e90ff;
+    color: #fff;
+}
+
+.button-container input[type="submit"]:hover {
+    background-color: #1c86ee;
+}
+
+.button-container button {
+    background-color: #f0f8ff;
+    color: #555;
+}
+
+.button-container button:hover {
+    background-color: #e0efff;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

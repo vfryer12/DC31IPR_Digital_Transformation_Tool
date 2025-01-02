@@ -65,6 +65,11 @@ def test_registration_page_render(client):
     registration_button = soup.find('input', {'value': 'Submit'})
     assert registration_button['type'] == "submit"
 
+    # BacK button
+    back_button = soup.find('button', string='Back')
+    assert back_button is not None
+    assert back_button['onclick'] == "history.back();"
+
 def test_registration_page_post_failure(client):
     """Test posting to the registaion endpoint with invalid credentials."""
     response = client.post('/registration', data={

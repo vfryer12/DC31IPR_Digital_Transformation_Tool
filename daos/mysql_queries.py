@@ -34,13 +34,13 @@ GET_USER_SOLUTIONS ="""WITH user_answers AS (
         WHERE ua.userId = %s
     ),
     ranked_answers AS (
-        SELECT q.question, a.questionsid, a.id AS answersId, a.weighting, a.solution,
+        SELECT q.question, a.questionsid, a.id AS answersId, a.weighting, a.solution, q.sectionid,
                ROW_NUMBER() OVER(PARTITION BY a.questionsId ORDER BY a.weighting ASC) AS weight_row_rank
         FROM user_answers AS ua
         INNER JOIN answers AS a ON ua.questionsid = a.questionsid
         inner join questions as q on q.id = a.questionsid
     )
-    SELECT question, answersId, weighting, solution, weight_row_rank
+    SELECT question, questionsid, answersId, weighting, solution, weight_row_rank, sectionid
     FROM (
         SELECT ra.*, 
                MAX(CASE WHEN ua.answersId = ra.answersId THEN weight_row_rank ELSE NULL END) 

@@ -2,6 +2,7 @@
 
 from textwrap import dedent
 from daos import mysql_queries
+from collections import namedtuple
 
 def get_section_answer_weights(conn, user_id: int) -> list[tuple[str, int, int]]:
     """
@@ -29,7 +30,7 @@ def get_section_answer_weights(conn, user_id: int) -> list[tuple[str, int, int]]
     return vals
 
 def get_answer_solutions(conn, user_id: int) -> list[tuple[int, int, int, str, int]]:
-    """Returns (questionsId, answersId, weighting,solution, weight_row_rank)"""
+    """Returns (question, questionsId, answersId, weighting, solution, weight_row_rank)"""
     try:
         # Create a cursor object to interact with the database
         cursor = conn.cursor()
@@ -68,10 +69,12 @@ def run_sql(cursor, query: str, params: list):
         # Execute the query with the provided parameters
         cursor.execute(query, params)
 
+        DbRow = namedtuple("DbRow", [i.lower() for i in cursor.column_names])
+
         # Fetch all results from the executed query
-        weights = cursor.fetchall() # [(1,2)]
+        data = [DbRow(*row) for row in cursor.fetchall()]
         
-        return weights
+        return data
     except Exception as e:
         # Print the error message if there's an exception
         print(f"Error in query: {e}")

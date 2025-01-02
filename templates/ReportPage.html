@@ -46,9 +46,9 @@
             <div class="solutions">
                 <strong>Solutions for Digital Strategy:</strong>
                 <ul>
-                    {% for question, solution in recommended_solutions.items() %}
-                    {% if question >= 1 and question <= 10 %}
-                        <li><strong>Question {{ question }}:</strong></li>
+                    {% for question_info, solution in recommended_solutions.items() %}
+                    {% if question_info[0] == 1 %}                    
+                        <li><strong>Question: {{ question_info[2] }}:</strong></li>
                         <li><strong>{{ '\n'.join(solution) }}</strong></li>
                     {% endif %}
                     {% endfor %}
@@ -62,9 +62,9 @@
             <div class="solutions">
                 <strong>Solutions for Digital Skills:</strong>
                 <ul>
-                    {% for question, solution in recommended_solutions.items() %}
-                    {% if question >= 11 and question <= 20 %}
-                        <li><strong>Question {{ question }}:</strong></li>
+                    {% for question_info, solution in recommended_solutions.items() %}
+                    {% if question_info[0] == 2 %}                    
+                        <li><strong>Question: {{ question_info[2] }}:</strong></li>
                         <li><strong>{{ '\n'.join(solution) }}</strong></li>
                     {% endif %}
                     {% endfor %}
@@ -78,9 +78,9 @@
             <div class="solutions">
                 <strong>Solutions for Technology Adoption:</strong>
                 <ul>
-                    {% for question, solution in recommended_solutions.items() %}
-                    {% if question >= 21 and question <= 30 %}
-                        <li><strong>Question {{ question }}:</strong></li>
+                    {% for question_info, solution in recommended_solutions.items() %}
+                    {% if question_info[0] == 3 %}                    
+                        <li><strong>Question: {{ question_info[2] }}:</strong></li>
                         <li><strong>{{ '\n'.join(solution) }}</strong></li>
                     {% endif %}
                     {% endfor %}
@@ -92,11 +92,11 @@
             <div class="title">Market Trends</div>
             <p><strong>Score:</strong> {{ user_scores["Market Trends"] }}</p>
             <div class="solutions">
-                <strong>Solutions for Technology Adoption:</strong>
+                <strong>Solutions for Market Trends:</strong>
                 <ul>
-                    {% for question, solution in recommended_solutions.items() %}
-                    {% if question >= 31 and question <= 40 %}
-                        <li><strong>Question {{ question }}:</strong></li>
+                    {% for question_info, solution in recommended_solutions.items() %}
+                    {% if question_info[0] == 4 %}                    
+                        <li><strong>Question: {{ question_info[2] }}:</strong></li>
                         <li><strong>{{ '\n'.join(solution) }}</strong></li>
                     {% endif %}
                     {% endfor %}
@@ -110,9 +110,9 @@
             <div class="solutions">
                 <strong>Solutions for Digital Marketing:</strong>
                 <ul>
-                    {% for question, solution in recommended_solutions.items() %}
-                    {% if question >= 41 and question <= 50 %}
-                        <li><strong>Question {{ question }}:</strong></li>
+                    {% for question_info, solution in recommended_solutions.items() %}
+                    {% if question_info[0] == 5 %}                    
+                        <li><strong>Question: {{ question_info[2] }}:</strong></li>
                         <li><strong>{{ '\n'.join(solution) }}</strong></li>
                     {% endif %}
                     {% endfor %}

@@ -83,9 +83,19 @@ def calculate_score():
     user_answer_weights = get_db_data.get_section_answer_weights(conn, user_id)
     user_answer_solutions = get_db_data.get_answer_solutions(conn, user_id)
 
-    question_solution_dict = defaultdict(set)
-    for questionsId, _, _,solution, _ in user_answer_solutions:
-        question_solution_dict[questionsId].add(solution)
+    # question_solution_dict = defaultdict(set)
+    # for row in user_answer_solutions:
+    #     question_solution_dict[row.question].add(row.solution)
+
+    question_set = set()
+    for row in user_answer_solutions:
+        question_set.add(tuple([row.sectionid, row.questionsid, row.question]))
+
+    section_info = {}
+    for q in question_set:
+        sols = [row.solution for row in user_answer_solutions if row.questionsid == q[1]]
+        section_info[q] = sols
+
 
     conn.close()
 
@@ -121,5 +131,5 @@ def calculate_score():
         section_feedback=section_feedback,
         knn_sections=knn_sections,
         user_scores=section_weight_dict,
-        recommended_solutions=question_solution_dict
+        recommended_solutions=section_info
     )

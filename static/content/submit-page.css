@@ -4,8 +4,8 @@
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
-    background: #fff; /* White background */
-    color: #1e90ff; /* Matching blue font color */
+    background: #fff;
+    color: #1e90ff;
     display: flex;
     justify-content: center;
     align-items: center;

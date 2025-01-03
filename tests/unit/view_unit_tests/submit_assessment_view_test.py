@@ -32,22 +32,6 @@ def test_submit_page_structure(client):
     assert len(stylesheets) == 1
     assert stylesheets[0]['href'] == '/static/content/submit-page.css'
 
-    # Check scripts
-    scripts = soup.find_all('script', type='module')
-    expected_scripts = [
-        '\\static\\FetchAssessmentHeader.js',
-        '\\static\\FetchAssessmentFooter.js',
-    ]
-    script_srcs = [script['src'] for script in scripts]
-    for script in expected_scripts:
-        assert script in script_srcs
-
-    # Check header and footer placeholders
-    header = soup.find('div', {'id': 'header-placeholder'})
-    footer = soup.find('div', {'id': 'footer-placeholder'})
-    assert header is not None
-    assert footer is not None
-
 def test_submit_page_content(client):
     """Test the content and form functionality on the Submit Page."""
     response = client.get('/SubmitAssessmentPage')

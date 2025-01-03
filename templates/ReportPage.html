@@ -39,7 +39,7 @@
             </ul>
         </div>
         <!-- Section 1: Digital Strategy Score and Solutions -->
-        <div class="container">
+        <div class="container tile digital-strategy-tile">
             <div class="title">Digital Strategy</div>
             <p><strong>Score:</strong> {{ user_scores["Digital Strategy"] }}</p>
         
@@ -49,14 +49,14 @@
                     {% for question_info, solution in recommended_solutions.items() %}
                     {% if question_info[0] == 1 %}                    
                         <li><strong>Question: {{ question_info[2] }}:</strong></li>
-                        <li><strong>{{ '\n'.join(solution) }}</strong></li>
-                    {% endif %}
+                        <li><span class="solution-text">{{ '\n'.join(solution) }}</span></li>
+                        {% endif %}
                     {% endfor %}
                 </ul>
             </div>
         </div>   
         <!-- Section 2: Digital Skills -->
-        <div class="container">
+        <div class="container tile digital-skills-tile">
             <div class="title">Digital Skills</div>
             <p><strong>Score:</strong> {{ user_scores["Digital Skills"] }}</p>
             <div class="solutions">
@@ -65,14 +65,14 @@
                     {% for question_info, solution in recommended_solutions.items() %}
                     {% if question_info[0] == 2 %}                    
                         <li><strong>Question: {{ question_info[2] }}:</strong></li>
-                        <li><strong>{{ '\n'.join(solution) }}</strong></li>
+                        <li><span class="solution-text">{{ '\n'.join(solution) }}</span></li>
                     {% endif %}
                     {% endfor %}
                 </ul>
             </div>
         </div>  
         <!-- Section 3: Technology Adoption -->
-        <div class="container">
+        <div class="container tile technology-adoption-tile">
             <div class="title">Technology Adoption</div>
             <p><strong>Score:</strong> {{ user_scores["Technology Adoption"] }}</p>
             <div class="solutions">
@@ -81,14 +81,14 @@
                     {% for question_info, solution in recommended_solutions.items() %}
                     {% if question_info[0] == 3 %}                    
                         <li><strong>Question: {{ question_info[2] }}:</strong></li>
-                        <li><strong>{{ '\n'.join(solution) }}</strong></li>
+                        <li><span class="solution-text">{{ '\n'.join(solution) }}</span></li>
                     {% endif %}
                     {% endfor %}
                 </ul>
             </div>
         </div>   
         <!-- Section 4: Market Trends -->
-        <div class="container">
+        <div class="container tile market-trends-tile">
             <div class="title">Market Trends</div>
             <p><strong>Score:</strong> {{ user_scores["Market Trends"] }}</p>
             <div class="solutions">
@@ -97,14 +97,14 @@
                     {% for question_info, solution in recommended_solutions.items() %}
                     {% if question_info[0] == 4 %}                    
                         <li><strong>Question: {{ question_info[2] }}:</strong></li>
-                        <li><strong>{{ '\n'.join(solution) }}</strong></li>
+                        <li><span class="solution-text">{{ '\n'.join(solution) }}</span></li>
                     {% endif %}
                     {% endfor %}
                 </ul>
             </div>
         </div>   
         <!-- Section 5: Digital Marketing -->
-        <div class="container">
+        <div class="container tile digital-marketing-tile">
             <div class="title">Digital Marketing</div>
             <p><strong>Score:</strong> {{ user_scores["Digital Marketing"] }}</p>
             <div class="solutions">
@@ -113,7 +113,7 @@
                     {% for question_info, solution in recommended_solutions.items() %}
                     {% if question_info[0] == 5 %}                    
                         <li><strong>Question: {{ question_info[2] }}:</strong></li>
-                        <li><strong>{{ '\n'.join(solution) }}</strong></li>
+                        <li><span class="solution-text">{{ '\n'.join(solution) }}</span></li>
                     {% endif %}
                     {% endfor %}
                 </ul>

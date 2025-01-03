@@ -24,9 +24,9 @@ body {
     display: flex;
     flex-direction: column;
     position: relative;
-    min-height: 100vh; /* Ensure footer stays inside */
+    min-height: 100vh;
     box-sizing: border-box;
-    padding-bottom: 100px; /* Space for footer */
+    padding-bottom: 100px;
 }
 
 /* Header */
@@ -47,7 +47,7 @@ header h1 {
 
 /* Footer */
 footer {
-    width: calc(100% - 40px); /* Match padding of .main */
+    width: calc(100% - 40px);
     background: #1e90ff;
     color: #fff;
     text-align: center;
@@ -55,8 +55,8 @@ footer {
     border-radius: 0 0 15px 15px;
     position: absolute;
     bottom: 0;
-    left: 20px; /* Match .main's padding */
-    right: 20px; /* Match .main's padding */
+    left: 20px;
+    right: 20px;
 }
 
 /* Question Container */
@@ -70,28 +70,28 @@ footer {
 
 /* Checkbox Group */
 .checkbox-group {
-    display: block; /* Standard block container */
-    padding: 10px; /* Padding inside the border */
-    border: 2px solid #1e90ff; /* Border around the group */
-    border-radius: 10px; /* Rounded corners */
-    box-sizing: border-box; /* Include padding in width/height */
+    display: block;
+    padding: 10px;
+    border: 2px solid #1e90ff;
+    border-radius: 10px;
+    box-sizing: border-box;
 }
 
 /* Labels and Checkboxes */
 .checkbox-group label {
-    display: inline-flex; /* Side-by-side alignment */
-    align-items: baseline; /* Align checkbox and label text vertically */
-    gap: 15px; /* Space between checkbox and label text */
-    font-size: 18px; /* Text size */
-    color: #1e90ff; /* Label text color */
+    display: inline-flex;
+    align-items: baseline;
+    gap: 15px;
+    font-size: 18px;
+    color: #1e90ff;
     padding: 10px;
-    margin-bottom: 10px; /* Space between rows */
+    margin-bottom: 10px;
 }
 
 .checkbox-group input[type="checkbox"] {
-    transform: scale(1.7); /* Slightly larger checkbox */
-    margin: 0; /* Reset default margin */
-    vertical-align: middle; /* Align with label text */
+    transform: scale(1.7);
+    margin: 0;
+    vertical-align: middle;
 }
 
 /* Buttons */

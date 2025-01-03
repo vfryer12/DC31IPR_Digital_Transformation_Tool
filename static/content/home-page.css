@@ -1,5 +1,6 @@
-/* styles.css */
+/* home-page.css */
 
+/* General Styles */
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
@@ -11,6 +12,7 @@ body {
     height: 100vh;
 }
 
+/* Home Container */
 .home-container {
     width: 90%;
     max-width: 600px;
@@ -21,6 +23,7 @@ body {
     padding: 20px;
 }
 
+/* Heading */
 header h1 {
     font-size: 2.2rem;
     color: #1e90ff;
@@ -28,12 +31,14 @@ header h1 {
     font-weight: bold;
 }
 
+/* Main Paragraph */
 .main p {
     font-size: 1rem;
     color: #555;
     margin: 20px 0;
 }
 
+/* Button Styles */
 button {
     background-color: #1e90ff;
     color: white;

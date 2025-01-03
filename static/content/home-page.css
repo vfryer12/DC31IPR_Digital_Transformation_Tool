@@ -1,26 +1,56 @@
-.header, .main, .footer {
-    border: 1px solid black;
-    padding: 20px;
-    margin: 10px;
-}
-.header {
-    display: flex;
-    align-items: center;
-}
-.logo {
-    width: 50px;
-    height: 50px;
-    border: 1px solid black;
-    margin-right: 20px;
-}
-.google-form {
-    width: 100%;
-    min-height: 200px;
-    border: 1px solid black;
-    padding: 20px;
-    margin-top: 10px;
-    box-sizing: border-box;
+/* styles.css */
+
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1e90ff, #87ceeb);
+    color: #333;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
+}
+
+.home-container {
+    width: 90%;
+    max-width: 600px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding: 20px;
+}
+
+header h1 {
+    font-size: 2.2rem;
+    color: #1e90ff;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.main p {
+    font-size: 1rem;
+    color: #555;
+    margin: 20px 0;
+}
+
+button {
+    background-color: #1e90ff;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #005eb8;
+}
+
+button:active {
+    background-color: #004a94;
+    transform: scale(0.98);
 }

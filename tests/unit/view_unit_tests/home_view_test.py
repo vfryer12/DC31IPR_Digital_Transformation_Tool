@@ -20,16 +20,7 @@ def test_user_profile_page_render(client):
     soup = BeautifulSoup(response.data, 'html.parser')
     
     # Check title
-    assert soup.title.string == 'User Profile'
-
-    # Check header
-    header = soup.find('div', {'class': 'header'})
-    assert header is not None
-    assert header.find('h1').string == 'User Profile'
-
-    # Check logo
-    logo = header.find('div', {'class': 'logo'})
-    assert logo is not None
+    assert soup.title.string == 'Home Page'
 
     # Check main section
     main = soup.find('div', {'class': 'main'})
@@ -38,7 +29,3 @@ def test_user_profile_page_render(client):
     assert start_button is not None
     assert 'onclick' in start_button.attrs
     assert start_button['onclick'] == "window.location.href='/PageOneDigitalStrategy';"
-
-    # Check footer
-    footer = soup.find('div', {'class': 'footer'})
-    assert footer is not None

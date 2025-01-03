@@ -2,7 +2,7 @@
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
-    background: #f9f9f9;
+    background: #fff;
     color: #1e90ff;
     display: flex;
     justify-content: center;
@@ -19,7 +19,7 @@ body {
     padding: 20px;
     border: 4px solid #1e90ff;
     border-radius: 15px;
-    background-color: #fff;
+    background-color: #fff; /* White background */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;

@@ -63,3 +63,10 @@ def login():
 
     # Render the login page with an empty model
     return render_template('LoginPage.html', login_model=login_model)
+
+# Homepage Route
+@login_bp.route('/')
+def home():
+    # Retrieve username from session, default to "Guest" if not logged in
+    username = session.get('username', 'Guest')
+    return render_template('HomePage.html', username=username)

@@ -30,8 +30,7 @@ def test_page_five_structure(client):
     # Check stylesheets
     stylesheets = soup.find_all('link', rel='stylesheet')
     expected_stylesheets = [
-        '/static/content/home-page.css',
-        '/static/content/page-one.css'
+        '/static/content/standard-page.css'
     ]
     hrefs=[link['href'] for link in stylesheets]
     for stylesheet in expected_stylesheets:

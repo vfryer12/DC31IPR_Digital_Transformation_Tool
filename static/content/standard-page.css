@@ -1,0 +1,118 @@
+/* General Body Styles */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: #f9f9f9;
+    color: #1e90ff;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+/* Main Container */
+.main {
+    width: 90%;
+    max-width: 800px;
+    padding: 20px;
+    border: 4px solid #1e90ff;
+    border-radius: 15px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-height: 100vh; /* Ensure footer stays inside */
+    box-sizing: border-box;
+    padding-bottom: 100px; /* Space for footer */
+}
+
+/* Header */
+header {
+    width: 100%;
+    background: #1e90ff;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-bottom: 20px;
+    border-radius: 15px 15px 0 0;
+}
+
+header h1 {
+    font-size: 36px;
+    margin: 0;
+}
+
+/* Footer */
+footer {
+    width: calc(100% - 40px); /* Match padding of .main */
+    background: #1e90ff;
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+    border-radius: 0 0 15px 15px;
+    position: absolute;
+    bottom: 0;
+    left: 20px; /* Match .main's padding */
+    right: 20px; /* Match .main's padding */
+}
+
+/* Question Container */
+.question-container {
+    border: 2px solid #1e90ff;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 20px;
+    position: relative;
+}
+
+/* Checkbox Group */
+.checkbox-group {
+    display: block; /* Standard block container */
+    padding: 10px; /* Padding inside the border */
+    border: 2px solid #1e90ff; /* Border around the group */
+    border-radius: 10px; /* Rounded corners */
+    box-sizing: border-box; /* Include padding in width/height */
+}
+
+/* Labels and Checkboxes */
+.checkbox-group label {
+    display: inline-flex; /* Side-by-side alignment */
+    align-items: baseline; /* Align checkbox and label text vertically */
+    gap: 15px; /* Space between checkbox and label text */
+    font-size: 18px; /* Text size */
+    color: #1e90ff; /* Label text color */
+    padding: 10px;
+    margin-bottom: 10px; /* Space between rows */
+}
+
+.checkbox-group input[type="checkbox"] {
+    transform: scale(1.7); /* Slightly larger checkbox */
+    margin: 0; /* Reset default margin */
+    vertical-align: middle; /* Align with label text */
+}
+
+/* Buttons */
+button {
+    background-color: #1e90ff;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #156ab8;
+    transform: translateY(-2px);
+}
+
+button:active {
+    background-color: #0e4a86;
+    transform: translateY(0);
+}

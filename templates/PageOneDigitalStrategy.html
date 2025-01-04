@@ -23,6 +23,7 @@
             <div class="question-container" id="question-one">
                 <label for="question-one">Question One</label>
                 <h3>How is your digital strategy aligned with your overall business strategy?</h3>
+                <p>(Select one)</p>
                 <div class="radio-buttons">
                     <input type="radio" id="no-plan" name="question-one" value="1">
                     <label for="no-plan">No plan in place</label><br>
@@ -36,6 +37,7 @@
             <div class="question-container" id="question-two">
                 <label for="question-two-dropdown">Question Two</label>
                 <h3>Who is responsible for driving the digital strategy in your organisation?</h3>
+                <p>(Select one)</p>
                 <select name="question-two" id="question-two-dropdown">
                     <option value="" disabled selected>Please select</option>
                     <option value="cio">Chief Information Officer (CIO)</option>
@@ -51,38 +53,41 @@
             <!-- Question Three -->
             <div class="question-container" id="question-three">
                 <label for="question-three">Question Three</label>
-                <h3>How often is your digital strategy reviewed and updated?</h3>
-                <input type="radio" name="question-three" value="never" id="question-three-never"><label for="question-three-never">Never</label>
-                <input type="radio" name="question-three" value="monthly" id="question-three-monthly"><label for="question-three-monthly">Every Month</label>
-                <input type="radio" name="question-three" value="quarterly" id="question-three-quarterly"><label for="question-three-quarterly">Quarterly</label>
-                <input type="radio" name="question-three" value="year" id="question-three-year"><label for="question-three-year">Annually</label>
-                <input type="radio" name="question-three" value="continuous" id="question-three-continuous"><label for="question-three-continuous">Continuous</label>
+                <h3>How often is your digital strategy reviewed and updated? (Select one)</h3>
+                <p>(Select one)</p>
+                <input type="radio" name="question-three" value="never" id="question-three-never"><label for="question-three-never">Never</label><br>
+                <input type="radio" name="question-three" value="monthly" id="question-three-monthly"><label for="question-three-monthly">Every Month</label><br>
+                <input type="radio" name="question-three" value="quarterly" id="question-three-quarterly"><label for="question-three-quarterly">Quarterly</label><br>
+                <input type="radio" name="question-three" value="year" id="question-three-year"><label for="question-three-year">Annually</label><br>
+                <input type="radio" name="question-three" value="continuous" id="question-three-continuous"><label for="question-three-continuous">Continuous</label><br>
             </div>
             <!-- Question Four -->
             <div class="question-container" id="question-four">
                 <label for="question-four">Question Four</label>
-                <h3>How do you measure the success of your digital strategy? (Select one)</h3>
-                <div class="checkbox-group">
-                    <input type="checkbox" id="return-on-investment-answer" name="question-four" value="return-on-investment-answer">
+                <h3>How do you measure the success of your digital strategy?</h3>
+                <p>(Select one)</p>
+                <div class="radio-group">
+                    <input type="radio" id="return-on-investment-answer" name="question-four" value="return-on-investment-answer">
                     <label for="return-on-investment-answer">Return on Investment (ROI)</label><br>
-                    <input type="checkbox" id="conversion-rates-answer" name="question-four" value="conversion-rates-answer">
+                    <input type="radio" id="conversion-rates-answer" name="question-four" value="conversion-rates-answer">
                     <label for="conversion-rates-answer">Conversion Rates</label><br>
-                    <input type="checkbox" id="customer-acquisition-cost-and-customer-lifetime-value-answer" name="question-four" value="customer-acquisition-cost-and-customer-lifetime-value-answer">
+                    <input type="radio" id="customer-acquisition-cost-and-customer-lifetime-value-answer" name="question-four" value="customer-acquisition-cost-and-customer-lifetime-value-answer">
                     <label for="customer-acquisition-cost-and-customer-lifetime-value-answer">Customer Acquisition Cost (CAC) and Customer Lifetime Value (CLV)</label><br>
-                    <input type="checkbox" id="website-traffic-answer" name="question-four" value="website-traffic-answer">
+                    <input type="radio" id="website-traffic-answer" name="question-four" value="website-traffic-answer">
                     <label for="website-traffic-answer">Website Traffic</label><br>
-                    <input type="checkbox" id="customer-engagement-answer" name="question-four" value="customer-engagement-answer">
+                    <input type="radio" id="customer-engagement-answer" name="question-four" value="customer-engagement-answer">
                     <label for="customer-engagement-answer">Customer Engagement</label><br>
-                    <input type="checkbox" id="social-media-metrics-and-email-marketing-metrics-answer" name="question-four" value="social-media-metrics-and-email-marketing-metrics-answer">
+                    <input type="radio" id="social-media-metrics-and-email-marketing-metrics-answer" name="question-four" value="social-media-metrics-and-email-marketing-metrics-answer">
                     <label for="social-media-metrics-and-email-marketing-metrics-answer">Social Media Metrics and Email Marketing Metrics</label><br>
-                    <input type="checkbox" id="seo-rankings-answer" name="question-four" value="seo-rankings-answer">
+                    <input type="radio" id="seo-rankings-answer" name="question-four" value="seo-rankings-answer">
                     <label for="seo-rankings-answer">SEO Rankings</label><br>
                 </div>
-            </div>            
+            </div>                        
             <!-- Question Five -->
             <div class="question-container" id="question-five">
                 <label for="question-five">Question Five</label>
-                <h3>What key performance indicators (KPIs) are used to track your digital strategy? (Select up to three)</h3>
+                <h3>What key performance indicators (KPIs) are used to track your digital strategy?</h3>
+                <p>(Select up to three)</p>
                 <div class="checkbox-group">
                     <input type="checkbox" id="csat-metrics-answer" name="question-five" value="csat-metrics-answer">
                     <label for="csat-metrics-answer">Customer Satisfaction Score(CSAT)</label><br>
@@ -131,7 +136,8 @@
             <!-- Question Six -->
             <div class="question-container" id="question-six">
                 <label for="question-six">Question Six</label>
-                <h3>How do you ensure that all employees understand and align with the digital strategy? (Select up to three)</h3>
+                <h3>How do you ensure that all employees understand and align with the digital strategy?</h3>
+                <p>(Select up to three)</p>
                 <div class="checkbox-group">
                     <input type="checkbox" id="clear-communication-answer" name="question-six" value="clear-communication-answer">
                     <label for="clear-communication-answer">Clear Communication</label><br>
@@ -152,7 +158,8 @@
             <!-- Question Seven -->
             <div class="question-container" id="question-seven">
                 <label>Question Seven</label>
-                <h3>What challenges have you faced in implementing your digital strategy? (Select up to three)</h3>
+                <h3>What challenges have you faced in implementing your digital strategy?</h3>
+                <p>(Select up to three)</p>
                 <div class="checkbox-group">
                     <input type="checkbox" id="alignment-answer" name="question-seven" value="alignment-answer">
                     <label for="alignment-answer">Alignment</label><br>
@@ -173,26 +180,28 @@
             <!-- Question Eight -->
             <div class="question-container" id="question-eight">
                 <label for="question-eight">Question Eight</label>
-                <h3>How do you incorporate feedback and lessons learned into your digital strategy? (Select one)</h3>
-                <div class="checkbox-group">
-                    <input type="checkbox" id="feedback-mechanisms-answer" name="question-eight" value="feedback-mechanisms-answer">
+                <h3>How do you incorporate feedback and lessons learned into your digital strategy?</h3>
+                <p>(Select one)</p>
+                <div class="radio-group">
+                    <input type="radio" id="feedback-mechanisms-answer" name="question-eight" value="feedback-mechanisms-answer">
                     <label for="feedback-mechanisms-answer">Feedback Mechanisms</label><br>
-                    <input type="checkbox" id="data-analysis-answer" name="question-eight" value="data-analysis-answer">
+                    <input type="radio" id="data-analysis-answer" name="question-eight" value="data-analysis-answer">
                     <label for="data-analysis-answer">Data Analysis</label><br>
-                    <input type="checkbox" id="regular-reviews-answer" name="question-eight" value="regular-reviews-answer">
+                    <input type="radio" id="regular-reviews-answer" name="question-eight" value="regular-reviews-answer">
                     <label for="regular-reviews-answer">Regular Reviews</label><br>
-                    <input type="checkbox" id="adaptability-answer" name="question-eight" value="adaptability-answer">
+                    <input type="radio" id="adaptability-answer" name="question-eight" value="adaptability-answer">
                     <label for="adaptability-answer">Adaptability</label><br>
-                    <input type="checkbox" id="communication-answer" name="question-eight" value="communication-answer">
+                    <input type="radio" id="communication-answer" name="question-eight" value="communication-answer">
                     <label for="communication-answer">Communication</label><br>
-                    <input type="checkbox" id="documentation-answer" name="question-eight" value="documentation-answer">
+                    <input type="radio" id="documentation-answer" name="question-eight" value="documentation-answer">
                     <label for="documentation-answer">Documentation</label><br>
                 </div>
-            </div>
+            </div>            
             <!-- Question Nine -->
             <div class="question-container" id="question-nine">
                 <label for="question-nine">Question Nine</label>
-                <h3>How do you integrate emerging technologies into your digital strategy? (Select up to two)</h3>
+                <h3>How do you integrate emerging technologies into your digital strategy?</h3>
+                <p>(Select up to two)</p>
                 <div class="checkbox-group">
                     <input type="checkbox" id="strategic-fit-answer" name="question-nine" value="strategic-fit-answer">
                     <label for="strategic-fit-answer">Strategic Fit</label><br>
@@ -211,22 +220,23 @@
             <!-- Question Ten -->
             <div class="question-container" id="question-ten">
                 <label for="question-ten">Question Ten</label>
-                <h3>How does your digital strategy address the customer journey? (Select one)</h3>
-                <div class="checkbox-group">
-                    <input type="checkbox" id="understanding-needs-answer" name="question-ten" value="understanding-needs-answer">
+                <h3>How does your digital strategy address the customer journey?</h3>
+                <p>(Select one)</p>
+                <div class="radio-group">
+                    <input type="radio" id="understanding-needs-answer" name="question-ten" value="understanding-needs-answer">
                     <label for="understanding-needs-answer">Understanding Needs</label><br>
-                    <input type="checkbox" id="personalization-answer" name="question-ten" value="personalization-answer">
+                    <input type="radio" id="personalization-answer" name="question-ten" value="personalization-answer">
                     <label for="personalization-answer">Personalization</label><br>
-                    <input type="checkbox" id="seamless-experience-answer" name="question-ten" value="seamless-experience-answer">
+                    <input type="radio" id="seamless-experience-answer" name="question-ten" value="seamless-experience-answer">
                     <label for="seamless-experience-answer">Seamless Experience</label><br>
-                    <input type="checkbox" id="customer-feedback-answer" name="question-ten" value="customer-feedback-answer">
+                    <input type="radio" id="customer-feedback-answer" name="question-ten" value="customer-feedback-answer">
                     <label for="customer-feedback-answer">Customer Feedback</label><br>
-                    <input type="checkbox" id="engagement-answer" name="question-ten" value="engagement-answer">
+                    <input type="radio" id="engagement-answer" name="question-ten" value="engagement-answer">
                     <label for="engagement-answer">Engagement</label><br>
-                    <input type="checkbox" id="measurement-answer" name="question-ten" value="measurement-answer">
+                    <input type="radio" id="measurement-answer" name="question-ten" value="measurement-answer">
                     <label for="measurement-answer">Measurement</label><br>
                 </div>
-            </div>            
+            </div>                      
             <!-- Navigation Buttons -->
             <button type="button" onclick="history.back();">Back</button>
             <button type="button" onclick="window.location='/PageTwoDigitalSkills';">Next</button>

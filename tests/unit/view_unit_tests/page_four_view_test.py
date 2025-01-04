@@ -89,7 +89,7 @@ def test_page_four_question_one(client):
     assert question_one_div is not None
 
     checkboxes = question_one_div.find_all('input', type='checkbox')
-    assert len(checkboxes) == 10 # There are 10 checkboxes in the HMTL for Question One
+    assert len(checkboxes) == 10
 
     # Validate checkbox values
     expected_checkbox_values = [
@@ -109,15 +109,15 @@ def test_page_four_question_one(client):
         assert value in actual_checkbox_values
 
 def test_page_four_question_two(client):
-    """Test Question Two (checkboxes) on Page Four: Market Trends."""
+    """Test Question Two (radio buttons) on Page Four: Market Trends."""
     response = client.get('/PageFourMarketTrends')
     soup = BeautifulSoup(response.data, 'html.parser')
 
     question_one_div = soup.find('div', id='page-four-question-two')
     assert question_one_div is not None
 
-    checkboxes = question_one_div.find_all('input', type='checkbox')
-    assert len(checkboxes) == 8 # There are 8 checkboxes in the HMTL for Question One
+    checkboxes = question_one_div.find_all('input', type='radio')
+    assert len(checkboxes) == 8
 
         # Validate checkbox values
     expected_checkbox_values = [
@@ -143,7 +143,7 @@ def test_page_four_question_three(client):
     assert question_one_div is not None
 
     checkboxes = question_one_div.find_all('input', type='checkbox')
-    assert len(checkboxes) == 10 # There are 10 checkboxes in the HMTL for Question One
+    assert len(checkboxes) == 10
 
         # Validate checkbox values
     expected_checkbox_values = [
@@ -171,7 +171,7 @@ def test_page_four_question_four(client):
     assert question_one_div is not None
 
     checkboxes = question_one_div.find_all('input', type='checkbox')
-    assert len(checkboxes) == 10 # There are 10 checkboxes in the HMTL for Question One
+    assert len(checkboxes) == 10
 
         # Validate checkbox values
     expected_checkbox_values = [
@@ -199,7 +199,7 @@ def test_page_four_question_five(client):
     assert question_one_div is not None
 
     checkboxes = question_one_div.find_all('input', type='radio')
-    assert len(checkboxes) == 10 # There are 10 checkboxes in the HMTL for Question One
+    assert len(checkboxes) == 10
 
     # Validate checkbox values
     expected_checkbox_values = [
@@ -227,7 +227,7 @@ def test_page_four_question_six(client):
     assert question_one_div is not None
 
     checkboxes = question_one_div.find_all('input', type='checkbox')
-    assert len(checkboxes) == 10 # There are 10 checkboxes in the HMTL for Question One
+    assert len(checkboxes) == 10
 
     # Validate checkbox values
     expected_checkbox_values = [
@@ -256,7 +256,7 @@ def test_page_four_question_seven(client):
     assert question_one_div is not None
 
     checkboxes = question_one_div.find_all('input', type='checkbox')
-    assert len(checkboxes) == 10 # There are 10 checkboxes in the HMTL for Question One
+    assert len(checkboxes) == 10
 
     # Validate checkbox values
     expected_checkbox_values = [
@@ -284,7 +284,7 @@ def test_page_four_question_eight(client):
     assert question_one_div is not None
 
     checkboxes = question_one_div.find_all('input', type='checkbox')
-    assert len(checkboxes) == 6 # There are 10 checkboxes in the HMTL for Question One
+    assert len(checkboxes) == 6
 
     # Validate checkbox values
     expected_checkbox_values = [
@@ -308,7 +308,7 @@ def test_page_four_question_nine(client):
     assert question_one_div is not None
 
     checkboxes = question_one_div.find_all('input', type='checkbox')
-    assert len(checkboxes) == 6 # There are 10 checkboxes in the HMTL for Question One
+    assert len(checkboxes) == 6
 
     # Validate checkbox values
     expected_checkbox_values = [
@@ -332,7 +332,7 @@ def test_page_four_question_ten(client):
     assert question_one_div is not None
 
     checkboxes = question_one_div.find_all('input', type='checkbox')
-    assert len(checkboxes) == 6 # There are 10 checkboxes in the HMTL for Question One
+    assert len(checkboxes) == 6
 
     # Validate checkbox values
     expected_checkbox_values = [

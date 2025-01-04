@@ -109,14 +109,14 @@ def test_page_three_question_one(client):
         assert value in actual_checkbox_values
 
 def test_page_three_question_two(client):
-    """Test Question Two (checkboxes) on Page Three: Technology Adoption."""
+    """Test Question Two (radio buttons) on Page Three: Technology Adoption."""
     response = client.get('/PageThreeTechnologyAdoption')
     soup = BeautifulSoup(response.data, 'html.parser')
 
     question_one_div = soup.find('div', id='page-three-question-two')
     assert question_one_div is not None
 
-    checkboxes = question_one_div.find_all('input', type='checkbox')
+    checkboxes = question_one_div.find_all('input', type='radio')
     assert len(checkboxes) == 10 # There are 10 checkboxes in the HMTL for Question Two
 
     # Validate checkbox values

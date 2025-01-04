@@ -127,15 +127,15 @@ def test_page_one_question_three(client):
     assert 'continuous' in radio_values
 
 def test_page_one_question_four(client):
-    """Test Question Four (checkboxes) on Page One: Digital Strategy."""
+    """Test Question Four (radio buttons) on Page One: Digital Strategy."""
     response = client.get('/PageOneDigitalStrategy')
     soup = BeautifulSoup(response.data, 'html.parser')
 
     question_four_div = soup.find('div', id='question-four')
     assert question_four_div is not None
 
-    checkboxes = question_four_div.find_all('input', type='checkbox')
-    assert len(checkboxes) == 7  # There are 7 checkboxes in the HTML for Question Four
+    checkboxes = question_four_div.find_all('input', type='radio')
+    assert len(checkboxes) == 7
 
     # Validate checkbox values
     expected_checkbox_values = [
@@ -160,7 +160,7 @@ def test_page_one_question_five(client):
     assert question_four_div is not None
 
     checkboxes = question_four_div.find_all('input', type='checkbox')
-    assert len(checkboxes) == 21  # There are 21 checkboxes in the HTML for Question Five
+    assert len(checkboxes) == 21
 
     # Validate checkbox values
     expected_checkbox_values = [
@@ -200,7 +200,7 @@ def test_page_one_question_six(client):
     assert question_four_div is not None
 
     checkboxes = question_four_div.find_all('input', type='checkbox')
-    assert len(checkboxes) == 7  # There are 7 checkboxes in the HTML for Question Five
+    assert len(checkboxes) == 7
 
     # Validate checkbox values
     expected_checkbox_values = [
@@ -225,7 +225,7 @@ def test_page_one_question_seven(client):
     assert question_four_div is not None
 
     checkboxes = question_four_div.find_all('input', type='checkbox')
-    assert len(checkboxes) == 7  # There are 7 checkboxes in the HTML for Question Five
+    assert len(checkboxes) == 7
 
     # Validate checkbox values
     expected_checkbox_values = [
@@ -242,15 +242,15 @@ def test_page_one_question_seven(client):
         assert value in actual_checkbox_values
 
 def test_page_one_question_eight(client):
-    """Test Question Eight (checkboxes) on Page One: Digital Strategy."""
+    """Test Question Eight (radio buttons) on Page One: Digital Strategy."""
     response = client.get('/PageOneDigitalStrategy')
     soup = BeautifulSoup(response.data, 'html.parser')
 
     question_four_div = soup.find('div', id='question-eight')
     assert question_four_div is not None
 
-    checkboxes = question_four_div.find_all('input', type='checkbox')
-    assert len(checkboxes) == 6  # There are 6 checkboxes in the HTML for Question Five
+    checkboxes = question_four_div.find_all('input', type='radio')
+    assert len(checkboxes) == 6
 
     # Validate checkbox values
     expected_checkbox_values = [
@@ -274,7 +274,7 @@ def test_page_one_question_nine(client):
     assert question_four_div is not None
 
     checkboxes = question_four_div.find_all('input', type='checkbox')
-    assert len(checkboxes) == 6  # There are 6 checkboxes in the HTML for Question Five
+    assert len(checkboxes) == 6
 
     # Validate checkbox values
     expected_checkbox_values = [
@@ -290,15 +290,15 @@ def test_page_one_question_nine(client):
         assert value in actual_checkbox_values
 
 def test_page_one_question_ten(client):
-    """Test Question Ten (checkboxes) on Page One: Digital Strategy."""
+    """Test Question Ten (radio buttons) on Page One: Digital Strategy."""
     response = client.get('/PageOneDigitalStrategy')
     soup = BeautifulSoup(response.data, 'html.parser')
 
     question_four_div = soup.find('div', id='question-ten')
     assert question_four_div is not None
 
-    checkboxes = question_four_div.find_all('input', type='checkbox')
-    assert len(checkboxes) == 6  # There are 6 checkboxes in the HTML for Question Five
+    checkboxes = question_four_div.find_all('input', type='radio')
+    assert len(checkboxes) == 6 
 
     # Validate checkbox values
     expected_checkbox_values = [

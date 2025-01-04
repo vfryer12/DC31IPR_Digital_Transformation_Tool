@@ -118,3 +118,17 @@ button:active {
     background-color: #0e4a86;
     transform: translateY(0);
 }
+
+.radio-group input[type="radio"] {
+    margin-right: 10px;
+}
+
+.radio-group label {
+    font-size: 18px;
+    color: #1e90ff;
+}
+
+.radio-group {
+    margin-top: 10px;
+    line-height: 1.8;
+}

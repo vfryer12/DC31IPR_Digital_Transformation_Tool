@@ -4,12 +4,12 @@ from app import app
 
 @pytest.fixture
 def client():
+
     app.config['TESTING'] = True
     with app.test_client() as client:
         yield client
 
 def test_registration_page_render(client):
-    """Test if registration page renders correctly"""
     response = client.get('/registration')
     assert response.status_code == 200
 
@@ -71,7 +71,6 @@ def test_registration_page_render(client):
     assert back_button['onclick'] == "history.back();"
 
 def test_registration_page_post_failure(client):
-    """Test posting to the registaion endpoint with invalid credentials."""
     response = client.post('/registration', data={
         'username': 'wronguser',
         'fname': 'wrongname',

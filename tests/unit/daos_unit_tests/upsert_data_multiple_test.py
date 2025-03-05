@@ -5,7 +5,7 @@ from daos.upsert_data_multiple import upsert_multiple_answers
 
 @pytest.fixture
 def mock_cursor():
-    """Fixture to create a mock cursor."""
+
     return MagicMock()
 
 

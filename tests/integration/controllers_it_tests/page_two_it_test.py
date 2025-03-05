@@ -11,18 +11,14 @@ def client():
 
 # Test for page rendering
 def test_page_two_render(client):
-    """
-    Test if the PageTwoDigitalSkills page renders correctly.
-    """
+
     response = client.get('/PageTwoDigitalSkills')
     assert response.status_code == 200  # Ensure the page loads successfully
     assert b'PageTwoDigitalSkills' in response.data  # Check for unique content
 
 # Test for valid data submission
 def test_page_two_valid_submission(client, monkeypatch):
-    """
-    Test if valid form submission is processed correctly.
-    """
+
     # Mock session
     with client.session_transaction() as sess:
         sess['user_id'] = 1
@@ -58,9 +54,7 @@ def test_page_two_valid_submission(client, monkeypatch):
 
 # Test for missing session
 def test_page_two_missing_session(client):
-    """
-    Test if the user is redirected to login when session is missing.
-    """
+
     response = client.post('/PageTwoDigitalSkills', data={
         'page-two-question-one': ['option1']
     }, follow_redirects=False)
@@ -70,9 +64,7 @@ def test_page_two_missing_session(client):
 
 # Test for invalid data submission
 def test_page_two_invalid_submission(client, monkeypatch):
-    """
-    Test if invalid form submissions are handled correctly.
-    """
+
     # Mock session
     with client.session_transaction() as sess:
         sess['user_id'] = 1
@@ -90,9 +82,7 @@ def test_page_two_invalid_submission(client, monkeypatch):
 
 # Test for database connection failure
 def test_page_two_db_connector_failure(client, monkeypatch):
-    """
-    Test if database connection failure is handled gracefully.
-    """
+
     # Mock session
     with client.session_transaction() as sess:
         sess['user_id'] = 1

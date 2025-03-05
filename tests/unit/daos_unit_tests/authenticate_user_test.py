@@ -4,7 +4,7 @@ from daos.authenticate_user import authenticate_user
 
 @pytest.fixture
 def mock_cursor():
-    """Fixture to create a mock cursor."""
+
     return MagicMock()
 
 # Positive Test: Correct username and password

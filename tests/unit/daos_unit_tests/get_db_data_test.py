@@ -1,7 +1,7 @@
 # get_db_data.py
 
 import pytest
-from unittest.mock import Mock, call
+from unittest.mock import Mock
 from daos import mysql_queries
 from daos.get_db_data import get_section_answer_weights
 from textwrap import dedent

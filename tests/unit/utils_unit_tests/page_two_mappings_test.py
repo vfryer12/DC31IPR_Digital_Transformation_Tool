@@ -1,6 +1,5 @@
 import pytest
 
-# Import the mappings
 from controllers.utils.mappings_page_two import (
     answer_map_page_two_q1,
     answer_map_page_two_q2,

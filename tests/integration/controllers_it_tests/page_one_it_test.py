@@ -1,27 +1,25 @@
 import pytest
-from unittest.mock import MagicMock, call
-from flask import url_for, session
+from unittest.mock import MagicMock
+from flask import session
 from app import app
+import logging
 
 @pytest.fixture
 def client():
+
     app.config['TESTING'] = True
     with app.test_client() as client:
         yield client
 
 # Test for page rendering
 def test_page_one_render(client):
-    """
-    Test if the PageOneDigitalStrategy page renders correctly.
-    """
+
     response = client.get('/PageOneDigitalStrategy')
-    assert response.status_code == 200  # Ensure the page loads successfully
-    assert b'PageOneDigitalStrategy' in response.data  # Ensure the page header or unique identifier is present
+    assert response.status_code == 200
+    assert b'PageOneDigitalStrategy' in response.data
 
 def test_page_one_valid_submission(client, monkeypatch):
-    """
-    Test if the form submission processes valid data successfully.
-    """
+
     # Mock the session
     with client.session_transaction() as sess:
         sess['user_id'] = 1
@@ -59,32 +57,27 @@ def test_page_one_valid_submission(client, monkeypatch):
     }, follow_redirects=True)
 
     # Debugging output
-    print("Response status:", response.status_code)
-    print("Mock upsert_single calls:", mock_upsert_single.mock_calls)
-    print("Mock upsert_multiple calls:", mock_upsert_multiple.mock_calls)
+    logging.debug("Response status:", response.status_code)
+    logging.debug("Mock upsert_single calls:", mock_upsert_single.mock_calls)
+    logging.debug("Mock upsert_multiple calls:", mock_upsert_multiple.mock_calls)
     
     # Ensure no validation errors
-    assert response.status_code == 200  # Ensure final status is OK
+    assert response.status_code == 200
 
 # Test for missing session
 def test_page_one_missing_session(client):
-    """
-    Test if the user is redirected to login when session is missing.
-    """
 
     response = client.post('/PageOneDigitalStrategy', data={
         'question-one': 'option1',
         'question-two': 'option2'
     }, follow_redirects=False)
 
-    assert response.status_code == 302  # Ensure redirection
-    assert response.location == '/login'  # Expect relative URL
+    assert response.status_code == 302
+    assert response.location == '/login'
 
 # Test for invalid data submission
 def test_page_one_invalid_submission(client, monkeypatch):
-    """
-    Test if invalid form submissions are handled correctly.
-    """
+
     with client.session_transaction() as sess:
         sess['user_id'] = 1
 
@@ -100,17 +93,15 @@ def test_page_one_invalid_submission(client, monkeypatch):
 
     # Simulate a POST request with invalid data
     response = client.post('/PageOneDigitalStrategy', data={
-        'question-one': 'invalid_option',  # Invalid option not in mapping
+        'question-one': 'invalid_option',
     }, follow_redirects=False)
 
-    assert response.status_code == 302  # Ensure redirection
+    assert response.status_code == 302
     assert response.location == '/PageOneDigitalStrategy'
 
 # Test for database connection failure
 def test_page_one_db_connector_failure(client, monkeypatch):
-    """
-    Test if database connection failure is handled correctly.
-    """
+
     with client.session_transaction() as sess:
         sess['user_id'] = 1
 
@@ -122,5 +113,5 @@ def test_page_one_db_connector_failure(client, monkeypatch):
         'question-two': 'option2'
     }, follow_redirects=False)
 
-    assert response.status_code == 302  # Ensure redirection
+    assert response.status_code == 302
     assert response.location == '/PageOneDigitalStrategy'

@@ -9,7 +9,7 @@ def client():
         yield client
 
 def test_page_three_structure(client):
-    """Test the overall structure and metadata of Page Three: Technology Adoption."""
+
     response = client.get('/PageThreeTechnologyAdoption')
     assert response.status_code == 200
 
@@ -64,7 +64,7 @@ def test_page_three_structure(client):
     
 
 def test_page_three_navigation_buttons(client):
-    """Test the navigation buttons on Page Three: Technology Adoption."""
+
     response = client.get('/PageThreeTechnologyAdoption')
     soup = BeautifulSoup(response.data, 'html.parser')
 
@@ -81,7 +81,7 @@ def test_page_three_navigation_buttons(client):
     assert next_button['onclick'] == "window.location='/PageFourMarketTrends';"
 
 def test_page_three_question_one(client):
-    """Test Question One (checkboxes) on Page Three: Technology Adoption."""
+
     response = client.get('/PageThreeTechnologyAdoption')
     soup = BeautifulSoup(response.data, 'html.parser')
 
@@ -89,7 +89,7 @@ def test_page_three_question_one(client):
     assert question_one_div is not None
 
     checkboxes = question_one_div.find_all('input', type='checkbox')
-    assert len(checkboxes) == 10 # There are 10 checkboxes in the HMTL for Question One
+    assert len(checkboxes) == 10
 
     # Validate checkbox values
     expected_checkbox_values = [
@@ -109,7 +109,7 @@ def test_page_three_question_one(client):
         assert value in actual_checkbox_values
 
 def test_page_three_question_two(client):
-    """Test Question Two (radio buttons) on Page Three: Technology Adoption."""
+
     response = client.get('/PageThreeTechnologyAdoption')
     soup = BeautifulSoup(response.data, 'html.parser')
 
@@ -117,7 +117,7 @@ def test_page_three_question_two(client):
     assert question_one_div is not None
 
     checkboxes = question_one_div.find_all('input', type='radio')
-    assert len(checkboxes) == 10 # There are 10 checkboxes in the HMTL for Question Two
+    assert len(checkboxes) == 10
 
     # Validate checkbox values
     expected_checkbox_values = [
@@ -137,7 +137,7 @@ def test_page_three_question_two(client):
         assert value in actual_checkbox_values
 
 def test_page_three_question_three(client):
-    """Test Question Three (checkboxes) on Page Three: Technology Adoption."""
+
     response = client.get('/PageThreeTechnologyAdoption')
     soup = BeautifulSoup(response.data, 'html.parser')
 
@@ -145,7 +145,7 @@ def test_page_three_question_three(client):
     assert question_one_div is not None
 
     checkboxes = question_one_div.find_all('input', type='checkbox')
-    assert len(checkboxes) == 10 # There are 10 checkboxes in the HMTL for Question Three
+    assert len(checkboxes) == 10
 
     # Validate checkbox values
     expected_checkbox_values = [
@@ -165,7 +165,7 @@ def test_page_three_question_three(client):
         assert value in actual_checkbox_values
 
 def test_page_three_question_four(client):
-    """Test Question Four (checkboxes) on Page Three: Technology Adoption."""
+
     response = client.get('/PageThreeTechnologyAdoption')
     soup = BeautifulSoup(response.data, 'html.parser')
 
@@ -173,7 +173,7 @@ def test_page_three_question_four(client):
     assert question_one_div is not None
 
     checkboxes = question_one_div.find_all('input', type='checkbox')
-    assert len(checkboxes) == 10 # There are 10 checkboxes in the HMTL for Question Four
+    assert len(checkboxes) == 10
 
     # Validate checkbox values
     expected_checkbox_values = [
@@ -193,7 +193,7 @@ def test_page_three_question_four(client):
         assert value in actual_checkbox_values
 
 def test_page_three_question_five(client):
-    """Test Question Five (checkboxes) on Page Three: Technology Adoption."""
+
     response = client.get('/PageThreeTechnologyAdoption')
     soup = BeautifulSoup(response.data, 'html.parser')
 
@@ -201,7 +201,7 @@ def test_page_three_question_five(client):
     assert question_one_div is not None
 
     checkboxes = question_one_div.find_all('input', type='checkbox')
-    assert len(checkboxes) == 10 # There are 10 checkboxes in the HMTL for Question Five
+    assert len(checkboxes) == 10
 
     # Validate checkbox values
     expected_checkbox_values = [
@@ -222,7 +222,7 @@ def test_page_three_question_five(client):
 
 
 def test_page_three_question_six(client):
-    """Test Question Six (checkboxes) on Page Three: Technology Adoption."""
+
     response = client.get('/PageThreeTechnologyAdoption')
     soup = BeautifulSoup(response.data, 'html.parser')
 
@@ -230,7 +230,7 @@ def test_page_three_question_six(client):
     assert question_one_div is not None
 
     checkboxes = question_one_div.find_all('input', type='checkbox')
-    assert len(checkboxes) == 10 # There are 10 checkboxes in the HMTL for Question Six
+    assert len(checkboxes) == 10
 
     # Validate checkbox values
     expected_checkbox_values = [
@@ -251,7 +251,7 @@ def test_page_three_question_six(client):
 
 
 def test_page_three_question_seven(client):
-    """Test Question Seven (checkboxes) on Page Three: Technology Adoption."""
+
     response = client.get('/PageThreeTechnologyAdoption')
     soup = BeautifulSoup(response.data, 'html.parser')
 
@@ -259,7 +259,7 @@ def test_page_three_question_seven(client):
     assert question_one_div is not None
 
     checkboxes = question_one_div.find_all('input', type='checkbox')
-    assert len(checkboxes) == 10 # There are 10 checkboxes in the HMTL for Question Seven
+    assert len(checkboxes) == 10
 
     # Validate checkbox values
     expected_checkbox_values = [
@@ -280,7 +280,7 @@ def test_page_three_question_seven(client):
 
 
 def test_page_three_question_eight(client):
-    """Test Question Eight (checkboxes) on Page Three: Technology Adoption."""
+
     response = client.get('/PageThreeTechnologyAdoption')
     soup = BeautifulSoup(response.data, 'html.parser')
 
@@ -288,7 +288,7 @@ def test_page_three_question_eight(client):
     assert question_one_div is not None
 
     checkboxes = question_one_div.find_all('input', type='checkbox')
-    assert len(checkboxes) == 10 # There are 10 checkboxes in the HMTL for Question Eight
+    assert len(checkboxes) == 10
 
     # Validate checkbox values
     expected_checkbox_values = [
@@ -308,7 +308,7 @@ def test_page_three_question_eight(client):
         assert value in actual_checkbox_values
 
 def test_page_three_question_nine(client):
-    """Test Question Nine (checkboxes) on Page Three: Technology Adoption."""
+
     response = client.get('/PageThreeTechnologyAdoption')
     soup = BeautifulSoup(response.data, 'html.parser')
 
@@ -316,7 +316,7 @@ def test_page_three_question_nine(client):
     assert question_one_div is not None
 
     checkboxes = question_one_div.find_all('input', type='checkbox')
-    assert len(checkboxes) == 10 # There are 10 checkboxes in the HMTL for Question Nine
+    assert len(checkboxes) == 10
 
     # Validate checkbox values
     expected_checkbox_values = [
@@ -336,7 +336,7 @@ def test_page_three_question_nine(client):
         assert value in actual_checkbox_values
 
 def test_page_three_question_ten(client):
-    """Test Question Ten (checkboxes) on Page Three: Technology Adoption."""
+
     response = client.get('/PageThreeTechnologyAdoption')
     soup = BeautifulSoup(response.data, 'html.parser')
 
@@ -344,7 +344,7 @@ def test_page_three_question_ten(client):
     assert question_one_div is not None
 
     checkboxes = question_one_div.find_all('input', type='checkbox')
-    assert len(checkboxes) == 10 # There are 10 checkboxes in the HMTL for Question Ten
+    assert len(checkboxes) == 10
 
     # Validate checkbox values
     expected_checkbox_values = [

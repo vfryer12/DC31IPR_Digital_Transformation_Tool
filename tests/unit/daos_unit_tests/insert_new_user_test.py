@@ -4,7 +4,7 @@ from daos.insert_new_user import insert_new_user
 
 @pytest.fixture
 def mock_cursor():
-    """Fixture to create a mock cursor."""
+
     return MagicMock()
 
 def test_insert_new_user(mock_cursor):

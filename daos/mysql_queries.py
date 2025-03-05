@@ -28,14 +28,15 @@ SELECT section
 FROM section_answer_weight
 """
 
-GET_USER_SOLUTIONS ="""WITH user_answers AS (
+GET_USER_SOLUTIONS = """
+WITH user_answers AS (
         SELECT ua.questionsid, ua.answersId
         FROM userAnswers AS ua
         WHERE ua.userId = %s
     ),
     ranked_answers AS (
-        SELECT q.question, a.questionsid, a.id AS answersId, a.weighting, a.solution, q.sectionid,
-               ROW_NUMBER() OVER(PARTITION BY a.questionsId ORDER BY a.weighting ASC) AS weight_row_rank
+        select DISTINCT q.question, a.questionsid, a.id AS answersId, a.weighting, a.solution, q.sectionid,
+               DENSE_RANK() OVER(PARTITION BY a.questionsId ORDER BY a.weighting ASC) AS weight_row_rank
         FROM user_answers AS ua
         INNER JOIN answers AS a ON ua.questionsid = a.questionsid
         inner join questions as q on q.id = a.questionsid
@@ -48,5 +49,5 @@ GET_USER_SOLUTIONS ="""WITH user_answers AS (
         FROM ranked_answers AS ra
         LEFT JOIN user_answers AS ua ON ua.answersId = ra.answersId
     ) AS X
-    WHERE weight_row_rank <= 3 AND weight_row_rank <= user_weight_row_rank;
-"""
+    WHERE weight_row_rank <= 3 AND weight_row_rank <= user_weight_row_rank
+    ;"""

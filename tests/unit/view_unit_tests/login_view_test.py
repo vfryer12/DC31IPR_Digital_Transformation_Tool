@@ -7,7 +7,6 @@ def client():
     app.config['TESTING'] = True
     with app.test_client() as client:
         with client.session_transaction() as sess:
-            # Simulate a logged-in user by adding 'username' to the session
             sess['username'] = 'testuser'
             sess['password'] = 'password'
         yield client

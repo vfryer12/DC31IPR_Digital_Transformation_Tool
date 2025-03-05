@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import logging
 
 def test_login():
     # Start a new browser session 
@@ -24,6 +25,6 @@ def test_login():
         # Return the driver if login is successful
         return driver
     except Exception as e:
-        print(f"Login failed: {e}")
-        driver.quit()  # Close the driver if login fails
+        logging.debug(f"Login failed: {e}")
+        driver.quit()
         return None

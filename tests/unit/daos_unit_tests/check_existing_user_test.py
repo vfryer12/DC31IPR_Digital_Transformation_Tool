@@ -4,7 +4,7 @@ from daos.check_existing_user import check_existing_user
 
 @pytest.fixture
 def mock_cursor():
-    """Fixture to provide a mock database cursor."""
+
     return MagicMock()
 
 

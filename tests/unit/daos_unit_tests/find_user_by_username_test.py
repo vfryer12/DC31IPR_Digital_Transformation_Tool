@@ -5,7 +5,7 @@ from daos.find_user_by_username import find_user_by_username
 @pytest.fixture
 # Mock cursor and its behavior
 def mock_cursor():
-    """Fixture to create a mock cursor."""
+
     return MagicMock()
 
 # Positive Test: User exists in the database

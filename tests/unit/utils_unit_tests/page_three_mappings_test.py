@@ -1,6 +1,6 @@
 import pytest
 
-# Import the mappings
+
 from controllers.utils.mappings_page_three import (
     answer_map_page_three_q1,
     answer_map_page_three_q2,
@@ -14,7 +14,7 @@ from controllers.utils.mappings_page_three import (
     answer_map_page_three_q10
 )
 
-# Positive tests
+
 @pytest.mark.parametrize("mapping,expected_pairs", [
     (answer_map_page_three_q1, {
         'define-clear-objectives-answer': 'Define Clear Objectives',
@@ -139,9 +139,7 @@ from controllers.utils.mappings_page_three import (
 ])
 
 def test_positive_mappings(mapping, expected_pairs):
-    """
-    Test that each mapping contains all expected key-value pairs.
-    """
+
     for key, value in expected_pairs.items():
         assert key in mapping, f"Key {key} is missing from the mapping."
         assert mapping[key] == value, f"Key {key} has incorrect value. Expected {value}, got {mapping[key]}."

@@ -9,7 +9,6 @@ def client():
         yield client
 
 def test_page_four_structure(client):
-    """Test the overall structure and metadata of Page Four: PageFourMarketTrends."""
     response = client.get('/PageFourMarketTrends')
     assert response.status_code == 200
 
@@ -63,7 +62,6 @@ def test_page_four_structure(client):
     assert h1_tag.string == 'Market Trends'
 
 def test_page_four_navigation_buttons(client):
-    """Test the navigation buttons on Page Four: Market Trends."""
     response = client.get('/PageFourMarketTrends')
     soup = BeautifulSoup(response.data, 'html.parser')
 
@@ -81,7 +79,6 @@ def test_page_four_navigation_buttons(client):
 
 
 def test_page_four_question_one(client):
-    """Test Question One (checkboxes) on Page Four: Market Trends."""
     response = client.get('/PageFourMarketTrends')
     soup = BeautifulSoup(response.data, 'html.parser')
 
@@ -109,7 +106,6 @@ def test_page_four_question_one(client):
         assert value in actual_checkbox_values
 
 def test_page_four_question_two(client):
-    """Test Question Two (radio buttons) on Page Four: Market Trends."""
     response = client.get('/PageFourMarketTrends')
     soup = BeautifulSoup(response.data, 'html.parser')
 
@@ -135,7 +131,6 @@ def test_page_four_question_two(client):
         assert value in actual_checkbox_values
 
 def test_page_four_question_three(client):
-    """Test Question Four (checkboxes) on Page Four: Market Trends."""
     response = client.get('/PageFourMarketTrends')
     soup = BeautifulSoup(response.data, 'html.parser')
 
@@ -163,7 +158,6 @@ def test_page_four_question_three(client):
         assert value in actual_checkbox_values
 
 def test_page_four_question_four(client):
-    """Test Question Four (checkboxes) on Page Four: Market Trends."""
     response = client.get('/PageFourMarketTrends')
     soup = BeautifulSoup(response.data, 'html.parser')
 
@@ -173,7 +167,6 @@ def test_page_four_question_four(client):
     checkboxes = question_one_div.find_all('input', type='checkbox')
     assert len(checkboxes) == 10
 
-        # Validate checkbox values
     expected_checkbox_values = [
         'leveraging-data-and-analytics-answer',
         'continuous-market-analysis-answer',
@@ -191,7 +184,6 @@ def test_page_four_question_four(client):
         assert value in actual_checkbox_values
 
 def test_page_four_question_five(client):
-    """Test Question Five (checkboxes) on Page Four: Market Trends."""
     response = client.get('/PageFourMarketTrends')
     soup = BeautifulSoup(response.data, 'html.parser')
 
@@ -219,7 +211,6 @@ def test_page_four_question_five(client):
         assert value in actual_checkbox_values
 
 def test_page_four_question_six(client):
-    """Test Question Six (checkboxes) on Page Four: Market Trends."""
     response = client.get('/PageFourMarketTrends')
     soup = BeautifulSoup(response.data, 'html.parser')
 
@@ -248,7 +239,6 @@ def test_page_four_question_six(client):
 
 
 def test_page_four_question_seven(client):
-    """Test Question Seven (checkboxes) on Page Four: Market Trends."""
     response = client.get('/PageFourMarketTrends')
     soup = BeautifulSoup(response.data, 'html.parser')
 
@@ -276,7 +266,6 @@ def test_page_four_question_seven(client):
         assert value in actual_checkbox_values
 
 def test_page_four_question_eight(client):
-    """Test Question Eight (checkboxes) on Page Four: Market Trends."""
     response = client.get('/PageFourMarketTrends')
     soup = BeautifulSoup(response.data, 'html.parser')
 
@@ -300,7 +289,6 @@ def test_page_four_question_eight(client):
         assert value in actual_checkbox_values
 
 def test_page_four_question_nine(client):
-    """Test Question Nine (checkboxes) on Page Four: Market Trends."""
     response = client.get('/PageFourMarketTrends')
     soup = BeautifulSoup(response.data, 'html.parser')
 
@@ -324,7 +312,6 @@ def test_page_four_question_nine(client):
         assert value in actual_checkbox_values
 
 def test_page_four_question_ten(client):
-    """Test Question Ten (checkboxes) on Page Four: Market Trends."""
     response = client.get('/PageFourMarketTrends')
     soup = BeautifulSoup(response.data, 'html.parser')
 

@@ -1,6 +1,5 @@
 import pytest
 
-# Sample mappings for testing
 from controllers.utils.mappings_page_five import (
     answer_map_page_five_q1,
     answer_map_page_five_q2,
@@ -98,9 +97,7 @@ def test_page_five_mappings(mapping, expected_keys, expected_values):
 ])
 
 def test_page_five_negative_mappings(mapping, unexpected_keys, unexpected_values):
-    """
-    Negative tests to ensure mappings do not include unexpected keys or values.
-    """
+
     # Check that unexpected keys are NOT in the mapping
     for key in unexpected_keys:
         assert key not in mapping, f"Unexpected key {key} found in the mapping."

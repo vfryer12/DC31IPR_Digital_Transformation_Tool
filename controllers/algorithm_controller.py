@@ -67,11 +67,12 @@ def find_knn_sections(user_scores, k=5):
         for section, distance in sorted_sections[:k]
     ]
 
+def format_solution(sol_text: str):
+    return sol_text.removesuffix(".") + "."
+
 @calculate_score_bp.route('/calculate_score', methods=['GET'])
 def calculate_score():
-    """
-    Retrieve user data and calculate the score.
-    """
+
     # Check if the user is logged in
     if 'user_id' not in session:
         return jsonify({"error": "User not logged in"}), 400
@@ -83,19 +84,18 @@ def calculate_score():
     user_answer_weights = get_db_data.get_section_answer_weights(conn, user_id)
     user_answer_solutions = get_db_data.get_answer_solutions(conn, user_id)
 
-    # question_solution_dict = defaultdict(set)
-    # for row in user_answer_solutions:
-    #     question_solution_dict[row.question].add(row.solution)
-
     question_set = set()
+    # Iterate through each row in the user_answer_solutions list
     for row in user_answer_solutions:
+        # Add a tuple containing section ID, question ID, and the question itself to the question_set
         question_set.add(tuple([row.sectionid, row.questionsid, row.question]))
 
     section_info = {}
+    # Iterate through each unique question tuple in question_set
     for q in question_set:
-        sols = [row.solution for row in user_answer_solutions if row.questionsid == q[1]]
+        sols = [format_solution(row.solution) for row in user_answer_solutions if row.questionsid == q[1]]
+        # Map the current question tuple to its corresponding list of solutions    
         section_info[q] = sols
-
 
     conn.close()
 

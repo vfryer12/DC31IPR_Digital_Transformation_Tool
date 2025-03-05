@@ -111,11 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
   enforceSingleSelection('#page-five-question-ten', 'You must select exactly one option for Question Ten.');
 });
 
-/**
- * Enforces that only one checkbox is selected for a given question.
- * @param {string} questionSelector - The selector for the question's checkbox group.
- * @param {string} errorMessage - The error message to display if the rule is violated.
- */
+
 function enforceSingleSelection(questionSelector, errorMessage) {
   var checkboxes = document.querySelectorAll(`${questionSelector} .checkbox-group input[type="checkbox"]`);
   checkboxes.forEach(function (checkbox) {
@@ -129,12 +125,6 @@ function enforceSingleSelection(questionSelector, errorMessage) {
   });
 }
 
-/**
- * Enforces that a maximum number of checkboxes are selected for a given question.
- * @param {string} questionSelector - The selector for the question's checkbox group.
- * @param {number} maxSelections - The maximum number of checkboxes allowed.
- * @param {string} errorMessage - The error message to display if the rule is violated.
- */
 function enforceMaxSelection(questionSelector, maxSelections, errorMessage) {
   var checkboxes = document.querySelectorAll(`${questionSelector} .checkbox-group input[type="checkbox"]`);
   checkboxes.forEach(function (checkbox) {

@@ -13,7 +13,6 @@ from controllers.utils.mappings_page_four import (
     answer_map_page_four_q10
 )
 
-
 @pytest.mark.parametrize("mapping,expected_pairs", [
     (answer_map_page_four_q1, {
         'market-research-and-analysis-answer': 'Market Research and Analysis',
@@ -133,7 +132,6 @@ def test_page_four_positive_mappings(mapping, expected_pairs):
     # Verify that all expected values are present
     for value in expected_pairs.values():
         assert value in mapping.values(), f"Expected value {value} is missing from the mapping."
-
 
 @pytest.mark.parametrize("mapping,unexpected_keys,unexpected_values", [
     (answer_map_page_four_q1,

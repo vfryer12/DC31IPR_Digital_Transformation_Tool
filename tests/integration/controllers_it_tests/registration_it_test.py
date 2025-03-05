@@ -34,11 +34,11 @@ def test_registration_success(client, monkeypatch):
     # Mock execute and fetchone
     def mock_execute(query, params):
         if "INSERT INTO user" in query:
-            return None  # Simulate successful insertion
+            return None
         elif "SELECT * FROM user" in query:
-            return None  # Simulate no existing user found
+            return None
     mock_cursor.execute.side_effect = mock_execute
-    mock_cursor.fetchone.return_value = None  # No existing user
+    mock_cursor.fetchone.return_value = None
 
     # Simulate sending a POST request to the registration page
     response = client.post('/registration', data={
@@ -48,7 +48,7 @@ def test_registration_success(client, monkeypatch):
     }, follow_redirects=True)
 
     # Validate the final response
-    assert response.status_code == 200  # Final page status
+    assert response.status_code == 200
 
 # Test for registration with an existing username or email
 def test_registration_existing_user(client, monkeypatch):

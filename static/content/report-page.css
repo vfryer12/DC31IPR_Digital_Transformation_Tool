@@ -69,23 +69,23 @@ footer {
 
 /* Specific Background Colors for Each Section */
 .digital-strategy-tile {
-    background-color: #f0f4f8; /* Soft greyish-blue */
+    background-color: #f0f4f8; /* Blue */
 }
 
 .digital-skills-tile {
-    background-color: #f9f9f9; /* Light warm grey */
+    background-color: #f9f9f9; /* Grey */
 }
 
 .technology-adoption-tile {
-    background-color: #e6f7f1; /* Muted mint green */
+    background-color: #e6f7f1; /* Green */
 }
 
 .market-trends-tile {
-    background-color: #f4f3f8; /* Pale lavender */
+    background-color: #f4f3f8; /* Lavender */
 }
 
 .digital-marketing-tile {
-    background-color: #fdf2f4; /* Subtle blush pink */
+    background-color: #fdf2f4; /* Pink */
 }
 
 /* Title Styling */

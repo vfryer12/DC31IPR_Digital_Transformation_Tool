@@ -1,9 +1,8 @@
+import logging
 from textwrap import dedent
 
 def get_user_answer_weights(cursor, user_id:int) -> list[tuple[int,int]]:
-    """
-    Retrieves the user answers and associated weights from the database.
-    """
+
     try:
         query = dedent("""
             SELECT ua.questionsId, a.weighting
@@ -15,5 +14,5 @@ def get_user_answer_weights(cursor, user_id:int) -> list[tuple[int,int]]:
         weights = cursor.fetchall() # [(1,2)]
         return weights
     except Exception as e:
-        print(f"Error in get_user_weights: {e}")
+        logging.debug(f"Error in get_user_weights: {e}")
         return None

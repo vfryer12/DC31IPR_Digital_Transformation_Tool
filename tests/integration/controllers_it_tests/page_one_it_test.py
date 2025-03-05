@@ -1,6 +1,5 @@
 import pytest
 from unittest.mock import MagicMock
-from flask import session
 from app import app
 import logging
 
@@ -50,10 +49,10 @@ def test_page_one_valid_submission(client, monkeypatch):
     
     # Simulate a POST request with updated data matching the expected keys
     response = client.post('/PageOneDigitalStrategy', data={
-        'question-one': '1',  # Using '1' for the answer key for question one
-        'question-two': 'cio',  # Correct key for CIO role
-        'question-three': 'never',  # Correct key for frequency
-        'question-four': ['return-on-investment-answer'],  # Correct key for ROI
+        'question-one': '1',
+        'question-two': 'cio',
+        'question-three': 'never',
+        'question-four': ['return-on-investment-answer'],
     }, follow_redirects=True)
 
     # Debugging output

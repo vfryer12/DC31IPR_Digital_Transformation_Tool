@@ -1,5 +1,4 @@
-# algorithm_it_test.py
-
+import logging
 import pytest
 from unittest.mock import MagicMock
 from app import create_app
@@ -24,7 +23,6 @@ def test_submit_page_render(client):
     assert b'Thank You' in response.data
     # Check if the form is present
     assert b'<form action="/calculate_score" method="get">' in response.data
-
 
 def test_submit_page_get(client, monkeypatch):
 
@@ -57,12 +55,10 @@ def test_submit_page_get(client, monkeypatch):
     
     # Output the response data for debugging
     # This will show what the response looks like
-    print(response.data)
+    logging.debug(response.data)
     
     # Check if the response is correct
     assert response.status_code == 200
-
-# Negative Tests
 
 def test_submit_page_invalid_route(client):
 

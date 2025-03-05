@@ -40,7 +40,7 @@ def test_page_five_structure(client):
     # Check scrips
     scripts = soup.find_all('script', type='module')
     expected_stylesheets = [
-        '\\static\\PageOne.js',
+        '\\static\\PageFunctionality.js',
         '\\static\\FetchAssessmentHeader.js',
         '\\static\\FetchAssessmentFooter.js'
     ]
@@ -64,11 +64,10 @@ def test_page_five_structure(client):
     assert h1_tag.string == 'Digital Marketing'
 
 def test_page_four_navigation_buttons(client):
-    """Test the navigation buttons on Page Five: Digital Marketing."""
     response = client.get('/PageFiveDigitalMarketing')
     soup = BeautifulSoup(response.data, 'html.parser')
 
-    # Check navigation buttons using the `string` argument
+    # Check navigation buttons using the string argument
     submit_button = soup.find('button', type='submit')
     assert submit_button is not None
 
@@ -187,7 +186,6 @@ def test_page_five_question_four(client):
     actual_checkbox_values = [checkbox['value'] for checkbox in checkboxes]
     for value in expected_checkbox_values:
         assert value in actual_checkbox_values
-
 
 def test_page_five_question_five(client):
     response = client.get('/PageFiveDigitalMarketing')

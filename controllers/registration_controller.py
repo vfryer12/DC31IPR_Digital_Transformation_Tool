@@ -1,4 +1,3 @@
-# registration_controller.py
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from db_connector import create_connection, close_connection
 from models.login_model import LoginModel

@@ -1,11 +1,8 @@
-# algorithm_controller.py
-
 from db_connector import create_connection
 from daos import get_db_data
 from flask import Blueprint, jsonify, session, render_template
-from collections import defaultdict
 
-# Create a Blueprint named 'calculate_score' for this controller
+# Create a Blueprint named calculate_score for this controller
 calculate_score_bp = Blueprint('calculate_score', __name__)
 
 # Define thresholds for each section based on the data

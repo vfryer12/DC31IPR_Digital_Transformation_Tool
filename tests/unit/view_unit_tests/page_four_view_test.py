@@ -4,6 +4,7 @@ from app import app
 
 @pytest.fixture
 def client():
+
     app.config['TESTING'] = True
     with app.test_client() as client:
         yield client
@@ -38,7 +39,7 @@ def test_page_four_structure(client):
     # Check scrips
     scripts = soup.find_all('script', type='module')
     expected_stylesheets = [
-        '\\static\\PageOne.js',
+        '\\static\\PageFunctionality.js',
         '\\static\\FetchAssessmentHeader.js',
         '\\static\\FetchAssessmentFooter.js'
     ]
@@ -65,7 +66,7 @@ def test_page_four_navigation_buttons(client):
     response = client.get('/PageFourMarketTrends')
     soup = BeautifulSoup(response.data, 'html.parser')
 
-    # Check navigation buttons using the `string` argument
+    # Check navigation buttons using the string argument
     submit_button = soup.find('button', type='submit')
     assert submit_button is not None
 
@@ -76,7 +77,6 @@ def test_page_four_navigation_buttons(client):
     next_button = soup.find('button', string='Next')
     assert next_button is not None
     assert next_button['onclick'] == "window.location='/PageFiveDigitalMarketing';"
-
 
 def test_page_four_question_one(client):
     response = client.get('/PageFourMarketTrends')

@@ -1,6 +1,5 @@
 # get_db_data.py
 
-import pytest
 from unittest.mock import Mock
 from daos import mysql_queries
 from daos.get_db_data import get_section_answer_weights
@@ -77,6 +76,5 @@ FROM section_answer_weight
 """,
         [user_id],
     )
-    # Verify the query and parameters
-    # Ensure the cursor was closed
+
     mock_cursor.close.assert_called_once()

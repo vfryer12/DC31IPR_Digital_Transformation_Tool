@@ -39,7 +39,7 @@ def test_page_one_structure(client):
     # Check scripts
     scripts = soup.find_all('script', type='module')
     expected_scripts = [
-        '\\static\\PageOne.js',
+        '\\static\\PageFunctionality.js',
         '\\static\\FetchAssessmentHeader.js',
         '\\static\\FetchAssessmentFooter.js'
     ]
@@ -66,7 +66,7 @@ def test_page_one_navigation_buttons(client):
     response = client.get('/PageOneDigitalStrategy')
     soup = BeautifulSoup(response.data, 'html.parser')
 
-    # Check navigation buttons using the `string` argument
+    # Check navigation buttons using the string argument
     submit_button = soup.find('button', type='submit')
     assert submit_button is not None
 

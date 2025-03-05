@@ -1,6 +1,5 @@
 import pytest
 from unittest.mock import MagicMock
-from flask import session
 from app import app
 
 @pytest.fixture

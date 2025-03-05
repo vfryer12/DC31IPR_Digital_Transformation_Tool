@@ -12,7 +12,7 @@ def test_page_one_to_page_two():
         return
 
     try:
-        # Step 1: Navigate to Page One Digital Strategy
+        # Navigate to Page One Digital Strategy
         logging.debug("Navigating to Page One Digital Strategy")
         driver.get("http://127.0.0.1:5000/PageOneDigitalStrategy")
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "no-plan")))

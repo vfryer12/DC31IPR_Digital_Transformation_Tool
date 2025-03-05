@@ -8,7 +8,6 @@ def mock_cursor():
 
     return MagicMock()
 
-
 def test_upsert_multiple_answers_success(mock_cursor):
     answers_list = ["Answer 1", "Answer 2", "Answer 3"]
     question_id = 101
@@ -46,7 +45,8 @@ def test_upsert_multiple_answers_success(mock_cursor):
     mock_cursor.execute.assert_has_calls(insert_calls, any_order=True)
 
     # Assert the total number of queries executed
-    assert mock_cursor.execute.call_count == 7  # 1 DELETE + 3 SELECT + 3 INSERT
+    # 1 DELETE + 3 SELECT + 3 INSERT
+    assert mock_cursor.execute.call_count == 7
 
 
 def test_upsert_multiple_answers_skip_missing(mock_cursor):
@@ -96,4 +96,5 @@ def test_upsert_multiple_answers_skip_missing(mock_cursor):
     )
 
     # Assert the total number of queries executed
-    assert mock_cursor.execute.call_count == 6  # 1 DELETE + 3 SELECT + 2 INSERT
+    # 1 DELETE + 3 SELECT + 2 INSERT
+    assert mock_cursor.execute.call_count == 6

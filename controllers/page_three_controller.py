@@ -1,3 +1,4 @@
+import logging
 from flask import Blueprint, request, session, redirect, url_for, render_template
 from controllers.utils.mappings_page_three import answer_map_page_three_q1, answer_map_page_three_q2, answer_map_page_three_q3, answer_map_page_three_q4, answer_map_page_three_q5, answer_map_page_three_q6, answer_map_page_three_q7, answer_map_page_three_q8, answer_map_page_three_q9, answer_map_page_three_q10
 from db_connector import create_connection, close_connection
@@ -8,10 +9,10 @@ page_three_bp = Blueprint('page_three', __name__)
 @page_three_bp.route('/PageThreeTechnologyAdoption', methods=['GET', 'POST'])
 
 def page_three_technology_adoption():
-    print("page_three_technology_adoption inside function")
-    print(request)
+    logging.debug("page_three_technology_adoption inside function")
+    logging.debug(request)
     if request.method == 'POST':
-        print('POST page three request received')
+        logging.debug('POST page three request received')
 
         # Get form data
         page_three_question_one_values   = request.form.getlist('page-three-question-one')
@@ -25,13 +26,13 @@ def page_three_technology_adoption():
         page_three_question_nine_values  = request.form.getlist('page-three-question-nine')
         page_three_question_ten_values   = request.form.getlist('page-three-question-ten')
 
-        print(f"Received data - Question One: {page_three_question_one_values}, Question Two: {page_three_question_two_values}, Question Three: {page_three_question_three_values}, Question Four: {page_three_question_four_values}, Question Five: {page_three_question_five_values}, Question Six: {page_three_question_six_values}, Question Seven: {page_three_question_seven_values}, Question Eight: {page_three_question_eight_values}, Question Nine: {page_three_question_nine_values}, Question Ten: {page_three_question_ten_values}")
+        logging.debug(f"Received data - Question One: {page_three_question_one_values}, Question Two: {page_three_question_two_values}, Question Three: {page_three_question_three_values}, Question Four: {page_three_question_four_values}, Question Five: {page_three_question_five_values}, Question Six: {page_three_question_six_values}, Question Seven: {page_three_question_seven_values}, Question Eight: {page_three_question_eight_values}, Question Nine: {page_three_question_nine_values}, Question Ten: {page_three_question_ten_values}")
 
         if 'user_id' in session:
             user_id = session['user_id']
-            print(f"User ID from session: {user_id}")
+            logging.debug(f"User ID from session: {user_id}")
         else:
-            print("No user ID in session")
+            logging.debug("No user ID in session")
             return redirect(url_for('login.login'))
         
         # Ensure the form values are correctly mapped
@@ -46,52 +47,51 @@ def page_three_technology_adoption():
         page_three_question_nine_answers  = [answer_map_page_three_q9.get(value, None) for value in page_three_question_nine_values]
         page_three_question_ten_answers   = [answer_map_page_three_q10.get(value, None) for value in page_three_question_ten_values]
         
-                # Has to be separate mappings ready for the validation checks
-
+                # Temporary separate mappings for easier debugging
         if len(page_three_question_one_answers) > 3 or None in page_three_question_one_answers:
-            print("Invalid answer for page three, question one or more than 3 selections made")
+            logging.debug("Invalid answer for page three, question one or more than 3 selections made")
             return redirect(url_for('page_three.page_three_technology_adoption'))
         
         if len(page_three_question_two_answers) != 1 or None in page_three_question_two_answers:
-            print("Invalid answer for page three, question two or more than 1 selection made")
+            logging.debug("Invalid answer for page three, question two or more than 1 selection made")
             return redirect(url_for('page_three.page_three_technology_adoption'))
         
         if len(page_three_question_three_answers) > 3 or None in page_three_question_three_answers:
-            print("Invalid answer for page three, question three or more than 3 selections made")
+            logging.debug("Invalid answer for page three, question three or more than 3 selections made")
             return redirect(url_for('page_three.page_three_technology_adoption'))
 
         if len(page_three_question_four_answers) > 3 or None in page_three_question_four_answers:
-            print("Invalid answer for page three, question four or more than 3 selections made")
+            logging.debug("Invalid answer for page three, question four or more than 3 selections made")
             return redirect(url_for('page_three.page_three_technology_adoption'))
         
         if len(page_three_question_five_answers) > 3 or None in page_three_question_five_answers:
-            print("Invalid answer for page three, question five or more than 3 selections made")
+            logging.debug("Invalid answer for page three, question five or more than 3 selections made")
             return redirect(url_for('page_three.page_three_technology_adoption'))
         
         if len(page_three_question_six_answers) > 3 or None in page_three_question_six_answers:
-            print("Invalid answer for page three, question six or more than 3 selections made")
+            logging.debug("Invalid answer for page three, question six or more than 3 selections made")
             return redirect(url_for('page_three.page_three_technology_adoption'))
         
         if len(page_three_question_seven_answers) > 3 or None in page_three_question_seven_answers:
-            print("Invalid answer for page three, question seven or more than 3 selections made")
+            logging.debug("Invalid answer for page three, question seven or more than 3 selections made")
             return redirect(url_for('page_three.page_three_technology_adoption'))
         
         if len(page_three_question_eight_answers) > 3 or None in page_three_question_eight_answers:
-            print("Invalid answer for page three, question eight or more than 3 selections made")
+            logging.debug("Invalid answer for page three, question eight or more than 3 selections made")
             return redirect(url_for('page_three.page_three_technology_adoption'))
         
         if len(page_three_question_nine_answers) > 3 or None in page_three_question_nine_answers:
-            print("Invalid answer for page three, question nine or more than 3 selections made")
+            logging.debug("Invalid answer for page three, question nine or more than 3 selections made")
             return redirect(url_for('page_three.page_three_technology_adoption'))
         
         if len(page_three_question_ten_answers) > 3 or None in page_three_question_ten_answers:
-            print("Invalid answer for page three, question ten")
+            logging.debug("Invalid answer for page three, question ten")
             return redirect(url_for('page_three.page_three_technology_adoption'))
         
         try:
             conn = create_connection()
             if conn:
-                print("Connection established")
+                logging.debug("Connection established")
                 cursor = conn.cursor()
 
                 question_one_id = 21
@@ -118,15 +118,15 @@ def page_three_technology_adoption():
                 upsert_multiple_answers(cursor, page_three_question_ten_answers, question_ten_id, user_id)
 
                 conn.commit()
-                print("Successfully inserted data into userAnswers table")
+                logging.debug("Successfully inserted data into userAnswers table")
 
                 cursor.close()
             else:
-                print("Failed to establish database connection")
+                logging.debug("Failed to establish database connection")
                 return redirect(url_for('page_three.page_three_technology_adoption'))
 
         except Exception as e:
-            print(f"An error occurred: {e}")
+            logging.debug(f"An error occurred: {e}")
             return redirect(url_for('page_three.page_three_technology_adoption'))
 
         finally:
@@ -134,6 +134,6 @@ def page_three_technology_adoption():
 
         return redirect(url_for('page_three.page_three_technology_adoption'))
 
-    print("GET Page three request received - Rendering form")
+    logging.debug("GET Page three request received - Rendering form")
     return render_template('PageThreeTechnologyAdoption.html')
         

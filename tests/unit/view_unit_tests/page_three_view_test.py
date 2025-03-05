@@ -4,6 +4,7 @@ from app import app
 
 @pytest.fixture
 def client():
+
     app.config['TESTING'] = True
     with app.test_client() as client:
         yield client
@@ -39,7 +40,7 @@ def test_page_three_structure(client):
     # Check scripts
     scripts = soup.find_all('script', type='module')
     expected_scripts = [
-        '\\static\\PageOne.js',
+        '\\static\\PageFunctionality.js',
         '\\static\\FetchAssessmentHeader.js',
         '\\static\\FetchAssessmentFooter.js'
     ]
@@ -62,13 +63,12 @@ def test_page_three_structure(client):
     assert h1_tag is not None
     assert h1_tag.string == 'Technology Adoption'
     
-
 def test_page_three_navigation_buttons(client):
 
     response = client.get('/PageThreeTechnologyAdoption')
     soup = BeautifulSoup(response.data, 'html.parser')
 
-    # Check navigation buttons using the `string` argument
+    # Check navigation buttons using the string argument
     submit_button = soup.find('button', type='submit')
     assert submit_button is not None
 
@@ -220,7 +220,6 @@ def test_page_three_question_five(client):
     for value in expected_checkbox_values:
         assert value in actual_checkbox_values
 
-
 def test_page_three_question_six(client):
 
     response = client.get('/PageThreeTechnologyAdoption')
@@ -249,7 +248,6 @@ def test_page_three_question_six(client):
     for value in expected_checkbox_values:
         assert value in actual_checkbox_values
 
-
 def test_page_three_question_seven(client):
 
     response = client.get('/PageThreeTechnologyAdoption')
@@ -277,7 +275,6 @@ def test_page_three_question_seven(client):
     actual_checkbox_values = [checkbox['value'] for checkbox in checkboxes]
     for value in expected_checkbox_values:
         assert value in actual_checkbox_values
-
 
 def test_page_three_question_eight(client):
 

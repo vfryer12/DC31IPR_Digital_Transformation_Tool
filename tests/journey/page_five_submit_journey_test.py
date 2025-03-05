@@ -11,7 +11,7 @@ def test_page_five_submit_journey():
         return
 
     try:
-        # Step 1: Navigate to Page Five Digital Marketing
+        # Navigate to Page Five Digital Marketing
         logging.debug("Navigating to Page Five Marketing")
         driver.get("http://127.0.0.1:5000/PageFiveDigitalMarketing")
 

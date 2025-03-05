@@ -21,7 +21,6 @@ window.addEventListener('load', function() {
     }
 });
 
-
 document.getElementById('question-two-dropdown').addEventListener('change', function() {
     var otherText = document.getElementById('other-text');
     if(this.value === 'other') {
@@ -54,7 +53,6 @@ document.getElementById('other-text').addEventListener('keypress', function(even
         this.value = ''; // Clear the input field after adding to the list
     }
 });
-
 
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('button[onclick="history.back();"]').addEventListener('click', function() {

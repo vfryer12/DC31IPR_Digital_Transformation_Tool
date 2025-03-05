@@ -1,3 +1,4 @@
+import logging
 from flask import Blueprint, render_template, request, redirect, url_for, session
 from db_connector import create_connection, close_connection
 from controllers.utils.mappings_page_one import answer_map_q1, answer_map_q2, answer_map_q3, answer_map_q4, answer_map_q5, answer_map_q6, answer_map_q7, answer_map_q8, answer_map_q9, answer_map_q10
@@ -9,10 +10,10 @@ page_one_bp = Blueprint('page_one', __name__)
 @page_one_bp.route('/PageOneDigitalStrategy', methods=['GET', 'POST'])
 
 def page_one_digital_strategy():
-    print("page_one_digital_strategy inside function")
-    print(request)
+    logging.debug("page_one_digital_strategy inside function")
+    logging.debug(request)
     if request.method == 'POST':
-        print("POST page one request received")
+        logging.debug("POST page one request received")
         
         # Get form data
         question_one_values   = request.form.get('question-one')
@@ -26,14 +27,13 @@ def page_one_digital_strategy():
         question_nine_values  = request.form.getlist('question-nine')
         question_ten_values   = request.form.getlist('question-ten')
 
-        print(f"Received data - Question One: {question_one_values}, Question Two: {question_two_values}, Question Three: {question_three_values}, Question Four: {question_four_values}, Question Five: {question_five_values}, Question Six: {question_six_values}, Question Seven: {question_seven_values}, Question Eight: {question_eight_values}, Question Nine: {question_nine_values}, Question Ten: {question_ten_values}")
-
+        logging.debug(f"Received data - Question One: {question_one_values}, Question Two: {question_two_values}, Question Three: {question_three_values}, Question Four: {question_four_values}, Question Five: {question_five_values}, Question Six: {question_six_values}, Question Seven: {question_seven_values}, Question Eight: {question_eight_values}, Question Nine: {question_nine_values}, Question Ten: {question_ten_values}")
 
         if 'user_id' in session:
             user_id = session['user_id']
-            print(f"User ID from session: {user_id}")
+            logging.debug(f"User ID from session: {user_id}")
         else:
-            print("No user ID in session")
+            logging.debug("No user ID in session")
             return redirect(url_for('login.login'))
 
         # Ensure the form values are correctly mapped
@@ -49,49 +49,49 @@ def page_one_digital_strategy():
         question_ten_answers   = [answer_map_q10.get(value, None) for value in question_ten_values]
         
         if not question_one_answer:
-            print("Invalid answer for question one")
+            logging.debug("Invalid answer for question one")
             return redirect(url_for('page_one.page_one_digital_strategy'))
 
         if not question_two_answer:
-            print("Invalid answer for question two")
+            logging.debug("Invalid answer for question two")
             return redirect(url_for('page_one.page_one_digital_strategy'))
 
         if not question_three_answer:
-            print("Invalid answer for question three")
+            logging.debug("Invalid answer for question three")
             return redirect(url_for('page_one.page_one_digital_strategy'))
 
         if len(question_four_answers) != 1 or None in question_four_answers:
-            print("Invalid answer for question four: Must have exactly one valid answer")
+            logging.debug("Invalid answer for question four: Must have exactly one valid answer")
             return redirect(url_for('page_one.page_one_digital_strategy'))
 
         if len(question_five_answers) > 3 or None in question_five_answers:
-            print("Invalid answer for question five or more than three selections made")
+            logging.debug("Invalid answer for question five or more than three selections made")
             return redirect(url_for('page_one.page_one_digital_strategy'))
         
         if len(question_six_answers) > 3 or None in question_six_answers:
-            print("Invalid answer for question six or more than three selections made")
+            logging.debug("Invalid answer for question six or more than three selections made")
             return redirect(url_for('page_one.page_one_digital_strategy'))
         
         if len(question_seven_answers) > 3 or None in question_seven_answers:
-            print("Invalid answer for question seven or more than three selections made")
+            logging.debug("Invalid answer for question seven or more than three selections made")
             return redirect(url_for('page_one.page_one_digital_strategy'))
         
         if len(question_eight_answers) != 1 or None in question_eight_answers:
-            print("Invalid answer for question eight or more than one selection made")
+            logging.debug("Invalid answer for question eight or more than one selection made")
             return redirect(url_for('page_one.page_one_digital_strategy'))
         
         if len(question_nine_answers) > 2 or None in question_nine_answers:
-            print("Invalid answer for question nine or more than two selections made")
+            logging.debug("Invalid answer for question nine or more than two selections made")
             return redirect(url_for('page_one.page_one_digital_strategy'))
         
         if len(question_ten_answers) != 1 or None in question_ten_answers:
-            print("Invalid answer for question te or more than one selection made")
+            logging.debug("Invalid answer for question te or more than one selection made")
             return redirect(url_for('page_one.page_one_digital_strategy'))
 
         try:
             conn = create_connection()
             if conn:
-                print("Connection established")
+                logging.debug("Connection established")
                 cursor = conn.cursor()
 
                 question_one_id   = 1
@@ -120,15 +120,15 @@ def page_one_digital_strategy():
                 upsert_multiple_answers(cursor, question_ten_answers, question_ten_id, user_id)
 
                 conn.commit()
-                print("Successfully inserted/upserted data into userAnswers table")
+                logging.debug("Successfully inserted/upserted data into userAnswers table")
 
                 cursor.close()
             else:
-                print("Failed to establish database connection")
+                logging.debug("Failed to establish database connection")
                 return redirect(url_for('page_one.page_one_digital_strategy'))
 
         except Exception as e:
-            print(f"An error occurred: {e}")
+            logging.debug(f"An error occurred: {e}")
             return redirect(url_for('page_one.page_one_digital_strategy'))
 
         finally:
@@ -136,5 +136,5 @@ def page_one_digital_strategy():
 
         return redirect(url_for('page_one.page_one_digital_strategy'))
 
-    print("GET page one request received - Rendering form")
+    logging.debug("GET page one request received - Rendering form")
     return render_template('PageOneDigitalStrategy.html')

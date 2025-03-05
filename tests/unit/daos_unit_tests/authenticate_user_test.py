@@ -7,7 +7,6 @@ def mock_cursor():
 
     return MagicMock()
 
-# Positive Test: Correct username and password
 def test_authenticate_user_positive(mock_cursor):
     mock_cursor.fetchone.return_value = {"id": 1, "username": "test_user", "password": "encrypted_password"}
     
@@ -26,7 +25,6 @@ def test_authenticate_user_positive(mock_cursor):
     )
     assert result == {"id": 1, "username": "test_user", "password": "encrypted_password"}
 
-# Negative Test: Incorrect username or password
 def test_authenticate_user_negative(mock_cursor):
     # Simulates authentication failure
     mock_cursor.fetchone.return_value = None

@@ -8,7 +8,6 @@ def mock_cursor():
 
     return MagicMock()
 
-
 def test_upsert_single_answer_update_existing(mock_cursor):
 
     answer_value = "Updated Answer"
@@ -52,7 +51,7 @@ def test_upsert_single_answer_insert_new(mock_cursor):
     user_id = 6
 
     # Mock database responses
-    # Simulate the answer ID exists in the `answers` table
+    # Simulate the answer ID exists in the answers table
     mock_cursor.fetchone.side_effect = [
         (2,),  # Answer ID for the provided answer
     ]
@@ -118,5 +117,3 @@ def test_upsert_single_answer_exception_handling(mock_cursor):
         upsert_single_answer(mock_cursor, answer_value, question_id, user_id)
     except Exception:
         pytest.fail("Exception was not handled in upsert_single_answer")
-
-    # Verify the error was logged (can be checked by adding a log mock or print validation if necessary)

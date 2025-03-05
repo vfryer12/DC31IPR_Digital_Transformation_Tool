@@ -12,7 +12,7 @@ def test_page_two_submit_journey():
         return
 
     try:
-        # Step 1: Navigate to Page Two Digital Skills
+        # Navigate to Page Two Digital Skills
         logging.debug("Navigating to Page Two Digital Skills")
         driver.get("http://127.0.0.1:5000/PageTwoDigitalSkills")
 

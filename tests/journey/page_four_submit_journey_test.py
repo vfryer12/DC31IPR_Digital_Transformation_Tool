@@ -11,7 +11,7 @@ def test_page_four_submit_journey():
         return
 
     try:
-        # Step 1: Navigate to Page Four Market Trends
+        # Navigate to Page Four Market Trends
         logging.debug("Navigating to Page Four Market Trends")
         driver.get("http://127.0.0.1:5000/PageFourMarketTrends")
 

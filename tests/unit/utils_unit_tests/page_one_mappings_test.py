@@ -161,4 +161,3 @@ def test_page_one_negative_mappings(mapping, unexpected_keys, unexpected_values)
     # Ensure unexpected values are NOT in the mapping
     for value in unexpected_values:
         assert value not in mapping.values(), f"Unexpected value {value} found in the mapping."
-

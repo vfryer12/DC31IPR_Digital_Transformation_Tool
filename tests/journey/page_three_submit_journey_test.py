@@ -11,7 +11,7 @@ def test_page_three_submit_journey():
         return
 
     try:
-        # Step 1: Navigate to Page Three Digital Skills
+        # Navigate to Page Three Digital Skills
         logging.debug("Navigating to Page Three Digital Skills")
         driver.get("http://127.0.0.1:5000/PageThreeTechnologyAdoption")
 

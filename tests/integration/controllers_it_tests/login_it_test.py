@@ -3,7 +3,6 @@ from unittest.mock import MagicMock
 from app import create_app
 from unittest.mock import MagicMock
 
-
 @pytest.fixture
 def client():
 

@@ -7,7 +7,7 @@ def test_registration_to_login_journey():
     driver = webdriver.Chrome()
 
     try:
-        # Step 1: Navigate to the registration page
+        # Navigate to the registration page
         driver.get("http://127.0.0.1:5000/registration")
         
         # Fill in the registration form

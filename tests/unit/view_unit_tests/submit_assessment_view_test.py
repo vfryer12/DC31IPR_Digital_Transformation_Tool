@@ -4,12 +4,12 @@ from app import app
 
 @pytest.fixture
 def client():
+    
     app.config['TESTING'] = True
     with app.test_client() as client:
         yield client
 
 def test_submit_page_structure(client):
-    """Test the overall structure and metadata of the Submit Page."""
     response = client.get('/SubmitAssessmentPage')
     assert response.status_code == 200
 
@@ -33,7 +33,6 @@ def test_submit_page_structure(client):
     assert stylesheets[0]['href'] == '/static/content/submit-page.css'
 
 def test_submit_page_content(client):
-    """Test the content and form functionality on the Submit Page."""
     response = client.get('/SubmitAssessmentPage')
     soup = BeautifulSoup(response.data, 'html.parser')
 

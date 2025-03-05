@@ -1,26 +1,22 @@
 import pytest
 from unittest.mock import MagicMock
-from flask import session
+from app import app
 
 @pytest.fixture
 def client():
-    from app import app
+
     app.config['TESTING'] = True
     with app.test_client() as client:
         yield client
 
 def test_page_three_render(client):
-    """
-    Test if the PageThreeTechnologyAdoption page renders correctly.
-    """
+
     response = client.get('/PageThreeTechnologyAdoption')
     assert response.status_code == 200
-    assert b'PageThreeTechnologyAdoption' in response.data  # Ensure unique identifier
+    assert b'PageThreeTechnologyAdoption' in response.data
 
 def test_page_three_valid_submission(client, monkeypatch):
-    """
-    Test valid data submission and successful processing.
-    """
+
     # Mock the session
     with client.session_transaction() as sess:
         sess['user_id'] = 1
@@ -51,19 +47,16 @@ def test_page_three_valid_submission(client, monkeypatch):
     assert response.status_code == 200
 
 def test_page_three_missing_session(client):
-    """
-    Test redirection when session is missing.
-    """
+
     response = client.post('/PageThreeTechnologyAdoption', data={
         'page-three-question-one': ['1'],
     }, follow_redirects=False)
+
     assert response.status_code == 302
-    assert response.location.endswith('/login')  # Ensure redirection to login
+    assert response.location.endswith('/login')
 
 def test_page_three_invalid_submission(client, monkeypatch):
-    """
-    Test handling of invalid form submissions.
-    """
+
     with client.session_transaction() as sess:
         sess['user_id'] = 1
 
@@ -76,12 +69,10 @@ def test_page_three_invalid_submission(client, monkeypatch):
     }, follow_redirects=False)
 
     assert response.status_code == 302
-    assert response.location.endswith('/PageThreeTechnologyAdoption')  # Redirect to the same page
+    assert response.location.endswith('/PageThreeTechnologyAdoption')
 
 def test_page_three_db_connector_failure(client, monkeypatch):
-    """
-    Test handling of database connection failure.
-    """
+ 
     with client.session_transaction() as sess:
         sess['user_id'] = 1
 
@@ -93,4 +84,4 @@ def test_page_three_db_connector_failure(client, monkeypatch):
     }, follow_redirects=False)
 
     assert response.status_code == 302
-    assert response.location.endswith('/PageThreeTechnologyAdoption')  # Redirect to the same page
+    assert response.location.endswith('/PageThreeTechnologyAdoption')

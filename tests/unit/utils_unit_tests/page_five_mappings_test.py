@@ -1,6 +1,5 @@
 import pytest
 
-# Sample mappings for testing
 from controllers.utils.mappings_page_five import (
     answer_map_page_five_q1,
     answer_map_page_five_q2,
@@ -48,9 +47,7 @@ from controllers.utils.mappings_page_five import (
 ])
 
 def test_page_five_mappings(mapping, expected_keys, expected_values):
-    """
-    Test mappings for Page Five questions to ensure expected keys and values are present.
-    """
+
     # Check that all expected keys are in the mapping
     for key in expected_keys:
         assert key in mapping, f"Key {key} is missing in the mapping."
@@ -62,7 +59,6 @@ def test_page_five_mappings(mapping, expected_keys, expected_values):
     # Ensure there are no duplicate keys or values
     assert len(mapping.keys()) == len(set(mapping.keys())), "Duplicate keys found in the mapping."
     assert len(mapping.values()) == len(set(mapping.values())), "Duplicate values found in the mapping."
-
 
 @pytest.mark.parametrize("mapping,unexpected_keys,unexpected_values", [
     (answer_map_page_five_q1, 
@@ -98,9 +94,7 @@ def test_page_five_mappings(mapping, expected_keys, expected_values):
 ])
 
 def test_page_five_negative_mappings(mapping, unexpected_keys, unexpected_values):
-    """
-    Negative tests to ensure mappings do not include unexpected keys or values.
-    """
+
     # Check that unexpected keys are NOT in the mapping
     for key in unexpected_keys:
         assert key not in mapping, f"Unexpected key {key} found in the mapping."

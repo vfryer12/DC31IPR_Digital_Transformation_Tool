@@ -4,15 +4,14 @@ from app import app
 
 @pytest.fixture
 def client():
+
     app.config['TESTING'] = True
     with app.test_client() as client:
         with client.session_transaction() as sess:
-            # Simulate a logged-in user by adding 'username' to the session
             sess['username'] = 'testuser'
         yield client
 
 def test_user_profile_page_render(client):
-    """Test if User Profile page renders correctly"""
     response = client.get('/')
     assert response.status_code == 200
 

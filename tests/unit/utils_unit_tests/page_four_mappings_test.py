@@ -1,6 +1,5 @@
 import pytest
 
-# Import all the mappings
 from controllers.utils.mappings_page_four import (
     answer_map_page_four_q1,
     answer_map_page_four_q2,
@@ -13,7 +12,6 @@ from controllers.utils.mappings_page_four import (
     answer_map_page_four_q9,
     answer_map_page_four_q10
 )
-
 
 @pytest.mark.parametrize("mapping,expected_pairs", [
     (answer_map_page_four_q1, {
@@ -123,10 +121,9 @@ from controllers.utils.mappings_page_four import (
         'competitive-benchmarking-answer': 'Competitive Benchmarking'
     })
 ])
+
 def test_page_four_positive_mappings(mapping, expected_pairs):
-    """
-    Positive tests to ensure mappings contain all expected key-value pairs.
-    """
+
     # Verify that each key-value pair exists in the mapping
     for key, value in expected_pairs.items():
         assert key in mapping, f"Key {key} is missing from the mapping."
@@ -135,7 +132,6 @@ def test_page_four_positive_mappings(mapping, expected_pairs):
     # Verify that all expected values are present
     for value in expected_pairs.values():
         assert value in mapping.values(), f"Expected value {value} is missing from the mapping."
-
 
 @pytest.mark.parametrize("mapping,unexpected_keys,unexpected_values", [
     (answer_map_page_four_q1,
@@ -170,9 +166,7 @@ def test_page_four_positive_mappings(mapping, expected_pairs):
      ['Missing Value', 'Fake ID']),
 ])
 def test_page_four_negative_mappings(mapping, unexpected_keys, unexpected_values):
-    """
-    Negative tests to ensure mappings do not include unexpected keys or values.
-    """
+
     # Ensure unexpected keys are NOT in the mapping
     for key in unexpected_keys:
         assert key not in mapping, f"Unexpected key {key} found in the mapping."

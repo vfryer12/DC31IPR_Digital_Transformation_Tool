@@ -1,4 +1,4 @@
-# login_controller.py
+import logging
 from flask import Blueprint, render_template, request, redirect, url_for, flash, session
 from db_connector import create_connection, close_connection
 from models.login_model import LoginModel
@@ -15,41 +15,41 @@ def login():
         login_model.username = request.form.get('username', '').strip()
         login_model.password = request.form.get('password', '').strip()
         # Debugging line
-        print(f"Username from form: {login_model.username}, Password from form: {login_model.password}")
+        logging.debug(f"Username from form: {login_model.username}, Password from form: {login_model.password}")
 
         conn = create_connection()
         if conn:
-            print("Connection established")
+            logging.debug("Connection established")
             my_cursor = conn.cursor()
 
             try:
-                print("Executing query")
+                logging.debug("Executing query")
                 user = find_user_by_username(my_cursor, login_model.username)
                 if user:
                     # Check password
                     authenticated_user = authenticate_user(my_cursor, login_model.username, login_model.password)
 
                     if authenticated_user:
-                        print("User found")
+                        logging.debug("User found")
                         session['username'] = login_model.username
                         # Ensure index is correct for user ID
                         session['user_id'] = user[0]
-                        print(f"Session data set: user_id={user[0]}, username={login_model.username}")
+                        logging.debug(f"Session data set: user_id={user[0]}, username={login_model.username}")
                         flash('Login successful!', 'success')
                         # Redirect to home page after login
                         return redirect(url_for('index'))
                     else:
-                        print("Password incorrect")
+                        logging.debug("Password incorrect")
                         flash('Password incorrect. Please try again.', 'danger')
                         return redirect(url_for('login.login'))
 
                 else:
-                    print("Username not found")
+                    logging.debug("Username not found")
                     flash('Username not found. Please try again or register.', 'danger')
                     return redirect(url_for('login.login'))
 
             except Exception as e:
-                print(f"Error executing query: {e}")
+                logging.debug(f"Error executing query: {e}")
                 flash(f'Error: {e}', 'danger')
 
             finally:
@@ -57,7 +57,7 @@ def login():
                 close_connection(conn)
 
         else:
-            print("Failed to establish database connection")
+            logging.debug("Failed to establish database connection")
             flash('Database connection failed.', 'danger')
             return redirect(url_for('login.login'))
 

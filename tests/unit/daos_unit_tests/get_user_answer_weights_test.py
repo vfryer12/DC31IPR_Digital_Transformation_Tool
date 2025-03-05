@@ -4,7 +4,7 @@ from daos.get_user_answer_weights import get_user_answer_weights
 
 @pytest.fixture
 def mock_cursor():
-    """Fixture to provide a mock database cursor."""
+
     return MagicMock()
 
 from textwrap import dedent

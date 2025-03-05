@@ -1,3 +1,5 @@
+import logging
+import os
 import mysql.connector
 from mysql.connector import Error
 
@@ -5,21 +7,21 @@ def create_connection():
     try:
         conn = mysql.connector.connect(
             host='192.168.1.188',
-            user='root',
-            password='.20Un123QL!',
+            user=os.environ["PROJECT_USER"],
+            password=os.environ["PROJECT_PASSWORD"],
             database='individual_project'
         )
         if conn.is_connected():
-            print("Connection successfully created")
+            logging.debug("Connection successfully created")
             return conn
     except Error as e:
-        print(f"Error: {e}")
+        logging.debug(f"Error: {e}")
         return None
 
 def close_connection(conn):
     try:
         if conn.is_connected():
             conn.close()
-            print("Connection closed.")
+            logging.debug("Connection closed.")
     except NameError:
-        print("Connection was never established")
+        logging.debug("Connection was never established")

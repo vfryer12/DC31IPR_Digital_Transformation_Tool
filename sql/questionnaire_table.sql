@@ -1,4 +1,5 @@
--- Select all from questionnaire
+-- This code is purely for assessment purposes and is not intended for actual implementation in any real-life system.
+
 SELECT * FROM questionnaire;
 
 -- Create the questionnaire table

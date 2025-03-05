@@ -1,3 +1,5 @@
+-- This code is purely for assessment purposes and is not intended for actual implementation in any real-life system.
+
 SELECT * FROM questions;
 
 -- Create the questions table

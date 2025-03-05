@@ -4,12 +4,12 @@ from app import app
 
 @pytest.fixture
 def client():
+
     app.config['TESTING'] = True
     with app.test_client() as client:
         yield client
 
 def test_page_one_structure(client):
-    """Test the overall structure and metadata of Page One: Digital Strategy."""
     response = client.get('/PageOneDigitalStrategy')
     assert response.status_code == 200
 
@@ -39,7 +39,7 @@ def test_page_one_structure(client):
     # Check scripts
     scripts = soup.find_all('script', type='module')
     expected_scripts = [
-        '\\static\\PageOne.js',
+        '\\static\\PageFunctionality.js',
         '\\static\\FetchAssessmentHeader.js',
         '\\static\\FetchAssessmentFooter.js'
     ]
@@ -63,11 +63,10 @@ def test_page_one_structure(client):
     assert h1_tag.string == 'Digital Strategy'
 
 def test_page_one_navigation_buttons(client):
-    """Test the navigation buttons on Page One: Digital Strategy."""
     response = client.get('/PageOneDigitalStrategy')
     soup = BeautifulSoup(response.data, 'html.parser')
 
-    # Check navigation buttons using the `string` argument
+    # Check navigation buttons using the string argument
     submit_button = soup.find('button', type='submit')
     assert submit_button is not None
 
@@ -80,7 +79,7 @@ def test_page_one_navigation_buttons(client):
     assert next_button['onclick'] == "window.location='/PageTwoDigitalSkills';"
 
 def test_page_one_question_one(client):
-    """Test Question One (radio buttons) on Page One: Digital Strategy."""
+
     response = client.get('/PageOneDigitalStrategy')
     soup = BeautifulSoup(response.data, 'html.parser')
 
@@ -94,7 +93,6 @@ def test_page_one_question_one(client):
     assert '3' in radio_values
 
 def test_page_one_question_two(client):
-    """Test Question Two (dropdown) on Page One: Digital Strategy."""
     response = client.get('/PageOneDigitalStrategy')
     soup = BeautifulSoup(response.data, 'html.parser')
 
@@ -111,7 +109,6 @@ def test_page_one_question_two(client):
         assert value in option_values
 
 def test_page_one_question_three(client):
-    """Test Question Three (radio buttons) on Page One: Digital Strategy."""
     response = client.get('/PageOneDigitalStrategy')
     soup = BeautifulSoup(response.data, 'html.parser')
 
@@ -127,7 +124,7 @@ def test_page_one_question_three(client):
     assert 'continuous' in radio_values
 
 def test_page_one_question_four(client):
-    """Test Question Four (radio buttons) on Page One: Digital Strategy."""
+
     response = client.get('/PageOneDigitalStrategy')
     soup = BeautifulSoup(response.data, 'html.parser')
 
@@ -152,7 +149,6 @@ def test_page_one_question_four(client):
         assert value in actual_checkbox_values
 
 def test_page_one_question_five(client):
-    """Test Question Five (checkboxes) on Page One: Digital Strategy."""
     response = client.get('/PageOneDigitalStrategy')
     soup = BeautifulSoup(response.data, 'html.parser')
 
@@ -192,7 +188,6 @@ def test_page_one_question_five(client):
 
 
 def test_page_one_question_six(client):
-    """Test Question Six (checkboxes) on Page One: Digital Strategy."""
     response = client.get('/PageOneDigitalStrategy')
     soup = BeautifulSoup(response.data, 'html.parser')
 
@@ -217,7 +212,6 @@ def test_page_one_question_six(client):
         assert value in actual_checkbox_values
 
 def test_page_one_question_seven(client):
-    """Test Question Seven (checkboxes) on Page One: Digital Strategy."""
     response = client.get('/PageOneDigitalStrategy')
     soup = BeautifulSoup(response.data, 'html.parser')
 
@@ -242,7 +236,6 @@ def test_page_one_question_seven(client):
         assert value in actual_checkbox_values
 
 def test_page_one_question_eight(client):
-    """Test Question Eight (radio buttons) on Page One: Digital Strategy."""
     response = client.get('/PageOneDigitalStrategy')
     soup = BeautifulSoup(response.data, 'html.parser')
 
@@ -266,7 +259,6 @@ def test_page_one_question_eight(client):
         assert value in actual_checkbox_values
 
 def test_page_one_question_nine(client):
-    """Test Question Nine (checkboxes) on Page One: Digital Strategy."""
     response = client.get('/PageOneDigitalStrategy')
     soup = BeautifulSoup(response.data, 'html.parser')
 
@@ -290,7 +282,6 @@ def test_page_one_question_nine(client):
         assert value in actual_checkbox_values
 
 def test_page_one_question_ten(client):
-    """Test Question Ten (radio buttons) on Page One: Digital Strategy."""
     response = client.get('/PageOneDigitalStrategy')
     soup = BeautifulSoup(response.data, 'html.parser')
 

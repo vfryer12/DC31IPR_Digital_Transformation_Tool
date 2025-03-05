@@ -4,7 +4,7 @@ window.addEventListener('load', function() {
 
     // Calculate the width of the range input instead of the container
     const rangeWidth = rangeInput.offsetWidth;
-    const labelWidth = 18; // Approximate width of each label
+    const labelWidth = 18;
 
     for (let i = 0; i <= 10; i++) {
         let label = document.createElement('span');
@@ -21,14 +21,13 @@ window.addEventListener('load', function() {
     }
 });
 
-
 document.getElementById('question-two-dropdown').addEventListener('change', function() {
     var otherText = document.getElementById('other-text');
     if(this.value === 'other') {
         otherText.style.display = 'inline-block';
     } else {
         otherText.style.display = 'none';
-        document.getElementById('list-output').innerHTML = ''; // Clear the list
+        document.getElementById('list-output').innerHTML = '';
     }
 });
 
@@ -46,7 +45,7 @@ document.getElementById('other-text').addEventListener('keypress', function(even
         removeBtn.textContent = 'X';
         removeBtn.className = 'remove-item';
         removeBtn.onclick = function() {
-            listOutput.innerHTML = ''; // Remove the item from the list
+            listOutput.innerHTML = '';
         };
         
         listItem.appendChild(removeBtn);
@@ -54,7 +53,6 @@ document.getElementById('other-text').addEventListener('keypress', function(even
         this.value = ''; // Clear the input field after adding to the list
     }
 });
-
 
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('button[onclick="history.back();"]').addEventListener('click', function() {
@@ -74,7 +72,7 @@ document.getElementById('next-button').addEventListener('click', function() {
 document.getElementById('save-button').addEventListener('click', function(event) {
     var otherText = document.getElementById('other-text');
     if(document.getElementById('question-two-dropdown').value === 'other' && !otherText.value.trim()) {
-        event.preventDefault(); // Prevent form submission
+        event.preventDefault();
         alert('Please specify the role in the text box before saving.');
     }
 });

@@ -69,23 +69,23 @@ footer {
 
 /* Specific Background Colors for Each Section */
 .digital-strategy-tile {
-    background-color: #f0f4f8; /* Soft greyish-blue */
+    background-color: #f0f4f8; /* Blue */
 }
 
 .digital-skills-tile {
-    background-color: #f9f9f9; /* Light warm grey */
+    background-color: #f9f9f9; /* Grey */
 }
 
 .technology-adoption-tile {
-    background-color: #e6f7f1; /* Muted mint green */
+    background-color: #e6f7f1; /* Green */
 }
 
 .market-trends-tile {
-    background-color: #f4f3f8; /* Pale lavender */
+    background-color: #f4f3f8; /* Lavender */
 }
 
 .digital-marketing-tile {
-    background-color: #fdf2f4; /* Subtle blush pink */
+    background-color: #fdf2f4; /* Pink */
 }
 
 /* Title Styling */
@@ -93,7 +93,7 @@ footer {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 15px;
-    color: #1e3a8a; /* Dark blue for titles */
+    color: #1e3a8a;
 }
 
 /* Solutions Styling */
@@ -115,12 +115,12 @@ footer {
 /* Dark blue for the question text */
 .solutions ul li strong {
     font-weight: bold;
-    color: #1e3a8a; /* Dark blue for the question */
+    color: #1e3a8a;
 }
 
 /* Lighter blue for the solution text */
 .solutions ul li span.solution-text {
-    color: #6fa3f7; /* Lighter blue for the solutions */
+    color: #6fa3f7;
     font-weight: normal;
     font-size: 16px;
     line-height: 1.6;

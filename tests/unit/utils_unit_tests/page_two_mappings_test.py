@@ -1,6 +1,5 @@
 import pytest
 
-# Import the mappings
 from controllers.utils.mappings_page_two import (
     answer_map_page_two_q1,
     answer_map_page_two_q2,
@@ -117,14 +116,11 @@ from controllers.utils.mappings_page_two import (
     })
 ])
 def test_positive_mappings(mapping, expected_pairs):
-    """
-    Test that each mapping contains all expected key-value pairs.
-    """
+
     for key, value in expected_pairs.items():
         assert key in mapping, f"Key {key} is missing from the mapping."
         assert mapping[key] == value, f"Key {key} has incorrect value. Expected {value}, got {mapping[key]}."
 
-# Negative tests
 @pytest.mark.parametrize("mapping,unexpected_keys,unexpected_values", [
     (answer_map_page_two_q1,
      ['invalid-key-1', 'fake-key'], 
@@ -158,9 +154,7 @@ def test_positive_mappings(mapping, expected_pairs):
      ['Missing Value', 'Fake ID']),
 ])
 def test_page_two_negative_mappings(mapping, unexpected_keys, unexpected_values):
-    """
-    Negative tests to ensure mappings do not include unexpected keys or values.
-    """
+
     # Ensure unexpected keys are NOT in the mapping
     for key in unexpected_keys:
         assert key not in mapping, f"Unexpected key {key} found in the mapping."
@@ -168,4 +162,3 @@ def test_page_two_negative_mappings(mapping, unexpected_keys, unexpected_values)
     # Ensure unexpected values are NOT in the mapping
     for value in unexpected_values:
         assert value not in mapping.values(), f"Unexpected value {value} found in the mapping."
-

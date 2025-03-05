@@ -5,18 +5,17 @@ from daos.upsert_data_single import upsert_single_answer
 
 @pytest.fixture
 def mock_cursor():
-    """Fixture to create a mock cursor."""
+
     return MagicMock()
 
-
 def test_upsert_single_answer_update_existing(mock_cursor):
-    """Test updating an existing answer."""
+
     answer_value = "Updated Answer"
     question_id = 101
     user_id = 5
 
     # Mock database responses
-    # Simulate the answer ID exists in the `answers` table
+    # Simulate the answer ID exists in the answers table
     mock_cursor.fetchone.side_effect = [
         (1,),  # Answer ID for the provided answer
     ]
@@ -46,13 +45,13 @@ def test_upsert_single_answer_update_existing(mock_cursor):
 
 
 def test_upsert_single_answer_insert_new(mock_cursor):
-    """Test inserting a new answer when no existing answer is found."""
+
     answer_value = "New Answer"
     question_id = 102
     user_id = 6
 
     # Mock database responses
-    # Simulate the answer ID exists in the `answers` table
+    # Simulate the answer ID exists in the answers table
     mock_cursor.fetchone.side_effect = [
         (2,),  # Answer ID for the provided answer
     ]
@@ -82,13 +81,13 @@ def test_upsert_single_answer_insert_new(mock_cursor):
 
 
 def test_upsert_single_answer_no_answer_found(mock_cursor):
-    """Test when no answer is found in the `answers` table."""
+
     answer_value = "Nonexistent Answer"
     question_id = 103
     user_id = 7
 
     # Mock database responses
-    # Simulate no answer found in the `answers` table
+    # Simulate no answer found in the answers table
     mock_cursor.fetchone.side_effect = [None]
 
     # Call the function
@@ -101,11 +100,11 @@ def test_upsert_single_answer_no_answer_found(mock_cursor):
     )
 
     # Ensure no further queries are made since no answer was found
-    assert mock_cursor.execute.call_count == 1  # Only the initial SELECT query
+    assert mock_cursor.execute.call_count == 1
 
 
 def test_upsert_single_answer_exception_handling(mock_cursor):
-    """Test exception handling when a database error occurs."""
+
     answer_value = "Error Test Answer"
     question_id = 104
     user_id = 8
@@ -113,10 +112,8 @@ def test_upsert_single_answer_exception_handling(mock_cursor):
     # Mock the execute method to raise an exception
     mock_cursor.execute.side_effect = Exception("Database error")
 
-    # Call the function and ensure no exception is propagated
+    # Call the function and ensure no exception is produced
     try:
         upsert_single_answer(mock_cursor, answer_value, question_id, user_id)
     except Exception:
         pytest.fail("Exception was not handled in upsert_single_answer")
-
-    # Verify the error was logged (can be checked by adding a log mock or print validation if necessary)

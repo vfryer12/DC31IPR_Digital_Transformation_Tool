@@ -1,21 +1,31 @@
 # DC31IPR_Digital_Transformation_Tool
 An all-encompassing tool designed to aid organisations in evaluating their digital maturity.
 
+The tool is designed as an assessment and is currently in its Minimum Viable Product (MVP) stage, with some functionality still under development.
+
+To use this tool users must create an account. Once the assessment is completed, a detailed report will be generated. The assessment consists of a series of sections designed to evaluate your company’s digital maturity. Based on your score, an algorithm generates an in-depth analysis of various areas within your business, highlighting opportunities for improvement. 
+
+The report provides actionable solutions aimed at achieving optimal outcomes such as cost efficiency, time savings, and fostering innovation. These insights empower you to make informed decisions that will benefit your company.
+
 # How to run
 
 # Installation Information
 
 This guide will help you get started.
 
-
 ## Prerequisites
 
 Before you start make sure you have Python installed on your system. If not you can download it from the official Python website.
 
+The project is also available on gitHub:
+https://github.com/vfryer12/DC31IPR_Digital_Transformation_Tool
 
-## Installation
+## Poetry Installation
 
 The software is packaged and distributed using Poetry. To install the software, follow these steps:
+
+Poetry is the dependency manager. Install it by following the instructions at Poetry's official documentation.
+https://python-poetry.org/docs/?form=MG0AV3
 
 1. Open your terminal or command prompt.
 
@@ -23,51 +33,26 @@ The software is packaged and distributed using Poetry. To install the software, 
 
 3. Run the following command to install the software and its dependencies:
 
-poetry install
+    poetry install
 
+(The poetry install command ensures Flask is available in the virtual environment)
+
+4. After installation, confirm it’s working by running
+poetry --version
 
 ## Running the Software
 
 To run the software, use the following command in your terminal or command prompt:
 
-poetry run <name-of-the-main-script>
+    poetry run python.app
 
-Replace <name-of-the-main-script> with the actual name of the main script of the software.
+## Launching the Application Using Poetry as the Dependency Manager
+This is used for demo and testing
 
-Final step: poetry install
+# Activates the Poetry virtual environment (Only available in below Poetry 2.0.0)
+1/ Run this command:
+        poetry shell
 
-
-## Flask password protection
-
-Flask is a lightweight Python web framework.
-
-An instance of the Flask application is created with app = Flask(__name__). This instance represents the web application and all its functionalities.
-
-A route for login is then defined using @app.route('/submit-login', methods=['POST']). This tells Flask which function should run when a user navigates to a specific URL. In this case the login page.
-
-When a user submits the login form, Flask’s request.form is used to retrieve the username and password from the form data.
-
-Before storing the password in a database, the password is hashed using a library like hashlib. This transforms the password into a fixed-length sequence of bytes adding a layer of security.
-
-When a user logs in the entered password is hashed and compared to the stored hash. If the hashes match, the password is verified
-
-## Using Python Server
-
-Initial test server: python -m http.server 8080
-
-http://localhost:8080/views/HomePage.html
-
-## Using Flask Server
-
-Secondary test server
-
-1/ virtualenv env
-2/ .\env\Scripts\Activate.ps1
-3/ flask run
-4/ http://127.0.0.1:5000
-
-
-## Using Poetry as Server
-
-1/ poetry shell
-2/ python app.py
+# Runs the Python application
+2/ Run this command:
+        python app.py
